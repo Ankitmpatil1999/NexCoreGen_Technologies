@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import { 
-  ArrowRight, 
-  Play, 
-  X, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  Code, 
-  Smartphone, 
-  Cloud, 
-  Palette, 
-  Server, 
-  Headphones, 
-  Check, 
+import React, { useState, useEffect } from 'react';
+import {
+  ArrowRight,
+  Play,
+  X,
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Code,
+  Smartphone,
+  Cloud,
+  Palette,
+  Server,
+  Headphones,
+  Check,
   ExternalLink,
   MessageCircle
 } from 'lucide-react';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsConditions } from './components/TermsConditions';
 
 interface CaseStudy {
   id: string;
@@ -63,6 +65,7 @@ const portfolioData: CaseStudy[] = [
 ];
 
 export function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms'>('home');
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -76,10 +79,57 @@ export function App() {
     details: ''
   });
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#privacy' || hash === '#privacypolicy') {
+        setCurrentPage('privacy');
+      } else if (hash === '#terms' || hash === '#termsconditions') {
+        setCurrentPage('terms');
+      } else if (hash === '' || hash === '#home' || hash === '#') {
+        setCurrentPage('home');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateTo = (page: 'home' | 'privacy' | 'terms') => {
+    setCurrentPage(page);
+    if (page === 'privacy') {
+      window.location.hash = '#privacy';
+    } else if (page === 'terms') {
+      window.location.hash = '#terms';
+    } else {
+      window.location.hash = '#home';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
   };
+
+  if (currentPage === 'privacy') {
+    return (
+      <PrivacyPolicy 
+        onBackToHome={() => navigateTo('home')} 
+        onNavigateToTerms={() => navigateTo('terms')} 
+      />
+    );
+  }
+
+  if (currentPage === 'terms') {
+    return (
+      <TermsConditions 
+        onBackToHome={() => navigateTo('home')} 
+        onNavigateToPrivacy={() => navigateTo('privacy')} 
+      />
+    );
+  }
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-page)', color: 'var(--text-dark)' }}>
@@ -209,23 +259,23 @@ export function App() {
 
             {/* Right Column: Hero Visual with Overlays matching Mockup */}
             <div style={{ position: 'relative' }}>
-              <div 
-                style={{ 
-                  borderRadius: '24px', 
-                  overflow: 'hidden', 
-                  boxShadow: '0 25px 50px -12px rgba(7, 26, 58, 0.25)', 
+              <div
+                style={{
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  boxShadow: '0 25px 50px -12px rgba(7, 26, 58, 0.25)',
                   border: '1px solid rgba(0,0,0,0.08)',
                   position: 'relative'
                 }}
               >
-                <img 
-                  src="/assets/hero-workspace.jpg" 
-                  alt="NextcoreGent Tech Workspace" 
+                <img
+                  src="/assets/hero-workspace.jpg"
+                  alt="NextcoreGent Tech Workspace"
                   style={{ width: '100%', height: '100%', maxHeight: '490px', objectFit: 'cover', display: 'block' }}
                 />
 
                 {/* Top Overlay Badge */}
-                <div 
+                <div
                   style={{
                     position: 'absolute',
                     top: '1.25rem',
@@ -243,11 +293,11 @@ export function App() {
                     boxShadow: '0 4px 14px rgba(0,0,0,0.25)'
                   }}
                 >
-                  Turning Ideas Into Real Products ✨
+                  Turning Ideas Into Real Products
                 </div>
 
                 {/* Bottom Overlay Badge */}
-                <div 
+                <div
                   style={{
                     position: 'absolute',
                     bottom: '1.25rem',
@@ -362,15 +412,15 @@ export function App() {
             {/* Right Column: Authentic Team Image */}
             <div style={{ position: 'relative' }}>
               <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
-                <img 
-                  src="/assets/team-collab.jpg" 
-                  alt="NextcoreGent Team" 
+                <img
+                  src="/assets/team-collab.jpg"
+                  alt="NextcoreGent Team"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </div>
 
               {/* Quote Card on Image */}
-              <div 
+              <div
                 style={{
                   position: 'absolute',
                   bottom: '-20px',
@@ -551,7 +601,7 @@ export function App() {
           </div>
 
           {/* Central Visual: Laptop Dashboard Mockup + Mobile Phone Mockup */}
-          <div 
+          <div
             style={{
               background: '#FFFFFF',
               borderRadius: '24px',
@@ -566,7 +616,7 @@ export function App() {
               {/* Realistic Laptop Device Mockup */}
               <div style={{ position: 'relative', width: '100%', maxWidth: '580px', margin: '0 auto' }}>
                 {/* Screen frame */}
-                <div 
+                <div
                   style={{
                     background: '#0B132B',
                     borderRadius: '16px 16px 4px 4px',
@@ -637,7 +687,7 @@ export function App() {
                 </div>
 
                 {/* Metallic Laptop Base Chassis */}
-                <div 
+                <div
                   style={{
                     width: '106%',
                     margin: '0 -3%',
@@ -649,7 +699,7 @@ export function App() {
                   }}
                 >
                   {/* Laptop opening notch */}
-                  <div 
+                  <div
                     style={{
                       width: '60px',
                       height: '4px',
@@ -663,7 +713,7 @@ export function App() {
 
               {/* Mobile Phone Mockup with Device Bezel */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div 
+                <div
                   style={{
                     width: '260px',
                     background: '#0B132B',
@@ -704,7 +754,7 @@ export function App() {
 
                 {/* Handwritten style tag pointing to device */}
                 <div style={{ marginTop: '1.25rem', color: 'var(--color-green)', fontWeight: 700, fontSize: '1rem', fontStyle: 'italic', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span>⤴</span> Build a Healthier Tomorrow ✨
+                  <span>⤴</span> Build a Healthier Tomorrow
                 </div>
               </div>
             </div>
@@ -720,7 +770,7 @@ export function App() {
               { icon: '🛒', label: 'POS & Payments' },
               { icon: '📊', label: 'Reports & Analytics' }
             ].map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 style={{
                   background: '#FFFFFF',
@@ -760,18 +810,18 @@ export function App() {
           </div>
 
           {/* Branded Client Logo Bar matching Mockup Image 4 */}
-          <div 
-            style={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              alignItems: 'center', 
-              gap: '2.5rem', 
-              flexWrap: 'wrap', 
-              padding: '1.25rem 2rem', 
-              background: '#F8FAFC', 
-              borderRadius: '16px', 
-              border: '1px solid var(--border-color)', 
-              marginBottom: '3.5rem' 
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '2.5rem',
+              flexWrap: 'wrap',
+              padding: '1.25rem 2rem',
+              background: '#F8FAFC',
+              borderRadius: '16px',
+              border: '1px solid var(--border-color)',
+              marginBottom: '3.5rem'
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#16A34A' }}>
@@ -791,7 +841,7 @@ export function App() {
           {/* 5 Project Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem', marginBottom: '2.5rem' }}>
             {portfolioData.map((proj) => (
-              <div 
+              <div
                 key={proj.id}
                 onClick={() => setActiveCaseStudy(proj)}
                 className="saas-card"
@@ -820,7 +870,7 @@ export function App() {
           </div>
 
           <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600 }}>
-            ✨ Click any project card to view comprehensive problem, solution, features, and technology stack.
+            Click any project card to view comprehensive problem, solution, features, and technology stack.
           </div>
         </div>
       </section>
@@ -908,7 +958,7 @@ export function App() {
 
           <div style={{ position: 'relative' }}>
             {/* Horizontal Timeline Connector Bar (Desktop) */}
-            <div 
+            <div
               style={{
                 position: 'absolute',
                 top: '24px',
@@ -998,7 +1048,7 @@ export function App() {
       {/* 11. CONTACT & CTA BANNER (MATCHING IMAGE 4 & 5) */}
       <section id="contact" style={{ padding: '5rem 0' }}>
         <div className="container">
-          <div 
+          <div
             style={{
               background: 'linear-gradient(135deg, #071A3A 0%, #0F2D6B 100%)',
               borderRadius: '24px',
@@ -1010,7 +1060,7 @@ export function App() {
             }}
           >
             {/* Background Corporate Image overlay */}
-            <div 
+            <div
               style={{
                 position: 'absolute',
                 inset: 0,
@@ -1037,19 +1087,19 @@ export function App() {
 
               {/* Direct Instant Action Buttons */}
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
-                <a 
-                  href="https://wa.me/919209282289" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="btn" 
+                <a
+                  href="https://wa.me/919209282289"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn"
                   style={{ background: '#16A34A', color: '#fff', padding: '0.85rem 1.8rem', fontSize: '0.95rem' }}
                 >
                   <MessageCircle size={18} /> Chat on WhatsApp
                 </a>
 
-                <a 
-                  href="mailto:nexcoregen@ankitpatil1999.online" 
-                  className="btn btn-white" 
+                <a
+                  href="mailto:nexcoregen@ankitpatil1999.online"
+                  className="btn btn-white"
                   style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem' }}
                 >
                   <Mail size={18} color="var(--color-navy)" /> Send an Email
@@ -1100,7 +1150,7 @@ export function App() {
                       <p style={{ color: '#CBD5E1', fontSize: '0.95rem' }}>
                         Your project inquiry has been received. Our team will contact you within 24 hours.
                       </p>
-                      <button 
+                      <button
                         onClick={() => setFormSubmitted(false)}
                         className="btn btn-white"
                         style={{ marginTop: '1.5rem', padding: '0.6rem 1.4rem', fontSize: '0.85rem' }}
@@ -1113,23 +1163,23 @@ export function App() {
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                         <div>
                           <label style={formLabel}>YOUR NAME *</label>
-                          <input 
-                            type="text" 
-                            required 
-                            placeholder="Rahul Sharma" 
+                          <input
+                            type="text"
+                            required
+                            placeholder="Rahul Sharma"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            style={formInput} 
+                            style={formInput}
                           />
                         </div>
                         <div>
                           <label style={formLabel}>COMPANY / ORG</label>
-                          <input 
-                            type="text" 
-                            placeholder="Your Company" 
+                          <input
+                            type="text"
+                            placeholder="Your Company"
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            style={formInput} 
+                            style={formInput}
                           />
                         </div>
                       </div>
@@ -1137,43 +1187,43 @@ export function App() {
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                         <div>
                           <label style={formLabel}>PHONE NUMBER *</label>
-                          <input 
-                            type="tel" 
-                            required 
-                            placeholder="+91 9209282289" 
+                          <input
+                            type="tel"
+                            required
+                            placeholder="+91 9209282289"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            style={formInput} 
+                            style={formInput}
                           />
                         </div>
                         <div>
                           <label style={formLabel}>EMAIL ADDRESS *</label>
-                          <input 
-                            type="email" 
-                            required 
-                            placeholder="rahul@example.com" 
+                          <input
+                            type="email"
+                            required
+                            placeholder="rahul@example.com"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            style={formInput} 
+                            style={formInput}
                           />
                         </div>
                       </div>
 
                       <div>
                         <label style={formLabel}>PROJECT DETAILS *</label>
-                        <textarea 
-                          rows={3} 
-                          required 
+                        <textarea
+                          rows={3}
+                          required
                           placeholder="Tell us about your project requirements or what you are looking to build..."
                           value={formData.details}
                           onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                          style={{ ...formInput, resize: 'vertical' }} 
+                          style={{ ...formInput, resize: 'vertical' }}
                         />
                       </div>
 
-                      <button 
-                        type="submit" 
-                        className="btn" 
+                      <button
+                        type="submit"
+                        className="btn"
                         style={{ background: '#1769E0', color: '#fff', padding: '0.85rem', width: '100%', fontSize: '0.95rem' }}
                       >
                         <Send size={16} /> Submit Project Enquiry
@@ -1229,10 +1279,31 @@ export function App() {
             <div>
               © {new Date().getFullYear()} NextcoreGent Technologies. All rights reserved.
             </div>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <span>Privacy Policy</span>
-              <span>Terms & Conditions</span>
-              <span>Sitemap</span>
+            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+              <button 
+                onClick={() => navigateTo('privacy')} 
+                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.82rem', padding: 0 }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+              >
+                Privacy Policy
+              </button>
+              <button 
+                onClick={() => navigateTo('terms')} 
+                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.82rem', padding: 0 }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+              >
+                Terms & Conditions
+              </button>
+              <span 
+                style={{ cursor: 'pointer', color: 'var(--text-muted)', fontSize: '0.82rem' }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+              >
+                Back to Top ↑
+              </span>
             </div>
           </div>
         </div>
@@ -1241,13 +1312,13 @@ export function App() {
       {/* VIDEO DEMO MODAL */}
       {videoModalOpen && (
         <div className="modal-overlay" onClick={() => setVideoModalOpen(false)}>
-          <div 
-            style={{ 
-              maxWidth: '850px', 
-              width: '100%', 
-              background: '#040711', 
-              borderRadius: '20px', 
-              overflow: 'hidden', 
+          <div
+            style={{
+              maxWidth: '850px',
+              width: '100%',
+              background: '#040711',
+              borderRadius: '20px',
+              overflow: 'hidden',
               border: '1px solid rgba(255,255,255,0.15)',
               boxShadow: 'var(--shadow-lg)',
               position: 'relative'
@@ -1258,17 +1329,17 @@ export function App() {
               <div style={{ fontWeight: 700, color: '#fff', fontSize: '0.95rem' }}>
                 FitCore — Real Gym Environment Demo Reel
               </div>
-              <button 
+              <button
                 onClick={() => setVideoModalOpen(false)}
                 style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer' }}
               >
                 <X size={20} />
               </button>
             </div>
-            <video 
-              src="/assets/fitcore-reel.mp4" 
-              autoPlay 
-              controls 
+            <video
+              src="/assets/fitcore-reel.mp4"
+              autoPlay
+              controls
               style={{ width: '100%', maxHeight: '520px', display: 'block' }}
             />
           </div>
@@ -1278,12 +1349,12 @@ export function App() {
       {/* CASE STUDY DETAIL MODAL */}
       {activeCaseStudy && (
         <div className="modal-overlay" onClick={() => setActiveCaseStudy(null)}>
-          <div 
-            style={{ 
-              maxWidth: '680px', 
-              width: '100%', 
-              background: '#FFFFFF', 
-              borderRadius: '20px', 
+          <div
+            style={{
+              maxWidth: '680px',
+              width: '100%',
+              background: '#FFFFFF',
+              borderRadius: '20px',
               padding: '2.5rem',
               boxShadow: 'var(--shadow-lg)',
               position: 'relative',
@@ -1292,7 +1363,7 @@ export function App() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setActiveCaseStudy(null)}
               style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', background: '#F1F5F9', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
             >
@@ -1353,13 +1424,13 @@ export function App() {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={() => {
                 setActiveCaseStudy(null);
                 const el = document.getElementById('contact');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn btn-primary" 
+              className="btn btn-primary"
               style={{ width: '100%' }}
             >
               Build a Similar Solution with Us <ArrowRight size={16} />
