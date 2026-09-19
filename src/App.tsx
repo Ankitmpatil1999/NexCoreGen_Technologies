@@ -168,7 +168,7 @@ export function App() {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Official Logo */}
+          {/* Official Logo (2nd Dark Edition) */}
           <a
             href="#"
             onClick={(e) => {
@@ -176,9 +176,18 @@ export function App() {
               navigateTo('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+              background: '#071A3A',
+              padding: '0.4rem 0.95rem',
+              borderRadius: '12px',
+              boxShadow: '0 4px 14px rgba(7, 26, 58, 0.2)',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
+            }}
           >
-            <Logo variant="light" size="md" />
+            <Logo variant="dark" size="sm" />
           </a>
 
           {/* Nav Links */}
@@ -415,73 +424,37 @@ export function App() {
               </a>
             </div>
 
-            {/* Right Column: 3D Corporate Wall Mockup & Authentic Team */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {/* 3D Illuminated Office Wall Sign Mockup */}
-              <div
-                style={{
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  boxShadow: 'var(--shadow-md)',
-                  border: '1px solid var(--border-color)',
-                  position: 'relative'
-                }}
-              >
+            {/* Right Column: Authentic Team Image */}
+            <div style={{ position: 'relative' }}>
+              <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
                 <img
-                  src="/assets/logo-wall-mockup.png"
-                  alt="NextcoreGent Technologies Office Brand Mockup"
+                  src="/assets/team-collab.jpg"
+                  alt="NextcoreGent Team"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '12px',
-                    left: '12px',
-                    background: 'rgba(7, 26, 58, 0.88)',
-                    backdropFilter: 'blur(8px)',
-                    color: '#fff',
-                    padding: '0.3rem 0.75rem',
-                    borderRadius: '20px',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.04em'
-                  }}
-                >
-                  EXECUTIVE IDENTITY
-                </div>
               </div>
 
-              {/* Authentic Team Image */}
-              <div style={{ position: 'relative' }}>
-                <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-color)' }}>
-                  <img
-                    src="/assets/team-collab.jpg"
-                    alt="NextcoreGent Team"
-                    style={{ width: '100%', height: 'auto', display: 'block' }}
-                  />
+              {/* Quote Card on Image */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-20px',
+                  right: '20px',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(10px)',
+                  padding: '1.25rem',
+                  borderRadius: '16px',
+                  border: '1px solid var(--border-color)',
+                  boxShadow: 'var(--shadow-card)',
+                  maxWidth: '300px'
+                }}
+              >
+                <div style={{ fontSize: '1.2rem', color: 'var(--color-primary)', marginBottom: '0.35rem' }}>“</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-navy)', lineHeight: 1.4 }}>
+                  Great products are built by great people.
                 </div>
-
-                {/* Quote Card on Image */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '-15px',
-                    right: '15px',
-                    background: 'rgba(255, 255, 255, 0.95)',
-                    backdropFilter: 'blur(10px)',
-                    padding: '1rem 1.25rem',
-                    borderRadius: '14px',
-                    border: '1px solid var(--border-color)',
-                    boxShadow: 'var(--shadow-card)',
-                    maxWidth: '280px'
-                  }}
-                >
-                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-navy)', lineHeight: 1.4 }}>
-                    “Great products are built by great people.”
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-                    Ideas Today. A Better Tomorrow.
-                  </div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                  Ideas Today. A Better Tomorrow.
                 </div>
               </div>
             </div>
@@ -1308,16 +1281,25 @@ export function App() {
       <footer style={{ padding: '3.5rem 0 2rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {/* Official Logo & Brand Kit Download Button */}
+            {/* Official Logo (2nd Dark Edition) & Download Button */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <div
-                style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  background: '#071A3A',
+                  padding: '0.55rem 1.25rem',
+                  borderRadius: '14px',
+                  boxShadow: '0 4px 16px rgba(7, 26, 58, 0.25)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                }}
                 onClick={() => {
                   navigateTo('home');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
-                <Logo variant="light" size="lg" />
+                <Logo variant="dark" size="md" />
               </div>
               <button
                 onClick={() => setLogoModalOpen(true)}
@@ -1342,7 +1324,7 @@ export function App() {
                   e.currentTarget.style.background = '#EFF6FF';
                 }}
               >
-                <Download size={13} /> Official Brand Kit
+                <Download size={13} /> Download Official Logo
               </button>
             </div>
 
@@ -1868,86 +1850,46 @@ export function App() {
               </p>
             </div>
 
-            {/* Grid of 4 Brand Assets */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
-              {/* Asset 1: Light Mode (Transparent) */}
-              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                    1. Light Mode Transparent Logo
-                  </div>
-                  <div style={{ background: '#FFFFFF', padding: '1.75rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '110px', border: '1px dashed #CBD5E1', marginBottom: '1rem' }}>
-                    <Logo variant="light" size="lg" />
-                  </div>
-                </div>
-                <a
-                  href="/assets/nextcoregent-logo-light-trans-2x.png"
-                  download="NextcoreGent_Logo_Light.png"
-                  className="btn btn-primary"
-                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
-                >
-                  <Download size={15} /> Download Transparent PNG
-                </a>
+            {/* Single Chosen Official Logo: 2nd Dark Mode Logo */}
+            <div
+              style={{
+                padding: '2.5rem 2rem',
+                background: '#071A3A',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                boxShadow: '0 12px 36px rgba(7, 26, 58, 0.35)'
+              }}
+            >
+              <div style={{ marginBottom: '2rem', padding: '1rem 0' }}>
+                <Logo variant="dark" size="xl" />
               </div>
 
-              {/* Asset 2: Dark Mode (Transparent) */}
-              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                    2. Dark Mode Transparent Logo
-                  </div>
-                  <div style={{ background: '#071A3A', padding: '1.75rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '110px', border: '1px dashed #1E293B', marginBottom: '1rem' }}>
-                    <Logo variant="dark" size="lg" />
-                  </div>
-                </div>
-                <a
-                  href="/assets/nextcoregent-logo-dark-trans-2x.png"
-                  download="NextcoreGent_Logo_Dark.png"
-                  className="btn btn-primary"
-                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
-                >
-                  <Download size={15} /> Download Dark Mode PNG
-                </a>
-              </div>
+              <a
+                href="/assets/nextcoregent-logo-dark-trans-2x.png"
+                download="NextcoreGent_Official_Logo.png"
+                className="btn btn-primary"
+                style={{
+                  padding: '0.85rem 2rem',
+                  fontSize: '0.98rem',
+                  fontWeight: 700,
+                  boxShadow: '0 4px 20px rgba(23, 105, 224, 0.45)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.6rem'
+                }}
+              >
+                <Download size={18} /> Download Official Logo (Transparent PNG)
+              </a>
 
-              {/* Asset 3: Square Ribbon App Icon */}
-              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                    3. Stylized 'N' App & Social Icon
-                  </div>
-                  <div style={{ background: '#FFFFFF', padding: '1.75rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '110px', border: '1px dashed #CBD5E1', marginBottom: '1rem' }}>
-                    <Logo iconOnly={true} size="xl" />
-                  </div>
-                </div>
-                <a
-                  href="/assets/nextcoregent-icon-2x.png"
-                  download="NextcoreGent_Icon.png"
-                  className="btn btn-secondary"
-                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
-                >
-                  <Download size={15} /> Download App Icon (PNG)
-                </a>
-              </div>
-
-              {/* Asset 4: 3D Office Wall Mockup */}
-              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                    4. 3D Executive Office Wall Sign
-                  </div>
-                  <div style={{ borderRadius: '12px', overflow: 'hidden', minHeight: '110px', marginBottom: '1rem', border: '1px solid #CBD5E1' }}>
-                    <img src="/assets/logo-wall-mockup.png" alt="Office Wall Mockup" style={{ width: '100%', height: 'auto', display: 'block' }} />
-                  </div>
-                </div>
-                <a
-                  href="/assets/logo-wall-mockup.png"
-                  download="NextcoreGent_Office_Wall_Mockup.png"
-                  className="btn btn-secondary"
-                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
-                >
-                  <Download size={15} /> Download 3D Mockup (PNG)
-                </a>
+              <div style={{ marginTop: '1.5rem', fontSize: '0.82rem', color: '#94A3B8', display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <span>✓ High-Resolution 2x Retina PNG</span>
+                <span>✓ Transparent Background</span>
+                <span>✓ Official NextcoreGent Brand</span>
               </div>
             </div>
           </div>

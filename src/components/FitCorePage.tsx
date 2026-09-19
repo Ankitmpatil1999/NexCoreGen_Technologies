@@ -117,8 +117,20 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
             </button>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-              <div onClick={onBackToHome} style={{ cursor: 'pointer' }}>
-                <Logo variant="light" size="sm" />
+              <div
+                onClick={onBackToHome}
+                style={{
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  background: '#071A3A',
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '10px',
+                  boxShadow: '0 2px 8px rgba(7, 26, 58, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                }}
+              >
+                <Logo variant="dark" size="sm" />
               </div>
               <div style={{ height: '24px', width: '1px', background: '#E2E8F0' }}></div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -1274,7 +1286,20 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
       <footer style={{ padding: '2.5rem 0', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', textAlign: 'center', fontSize: '0.85rem', color: '#64748B' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-            <Logo variant="light" size="sm" onClick={onBackToHome} style={{ cursor: 'pointer' }} />
+            <div
+              onClick={onBackToHome}
+              style={{
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                background: '#071A3A',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '10px',
+                border: '1px solid rgba(255, 255, 255, 0.08)'
+              }}
+            >
+              <Logo variant="dark" size="sm" />
+            </div>
             <div>
               © {new Date().getFullYear()} <strong>FitCore OS</strong> • A Proprietary Platform of <strong>NextcoreGent Technologies</strong>.
             </div>

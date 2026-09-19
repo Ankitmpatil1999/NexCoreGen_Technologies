@@ -57,8 +57,19 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
             >
               <ArrowLeft size={16} /> Back to Home
             </button>
-            <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={onBackToHome}>
-              <Logo variant="light" size="sm" />
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                background: '#071A3A',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '10px',
+                border: '1px solid rgba(255, 255, 255, 0.08)'
+              }}
+              onClick={onBackToHome}
+            >
+              <Logo variant="dark" size="sm" />
             </div>
           </div>
 
