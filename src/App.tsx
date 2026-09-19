@@ -59,26 +59,6 @@ const portfolioData: CaseStudy[] = [
     solution: 'Developed a companion fintech wallet app that securely tokenizes NFC smart rings for tap-and-pay transactions at any standard POS.',
     features: ['Tokenized NFC Contactless Pay', 'Instant Card Management & Lock', 'Real-Time Transaction Feed', 'Biometric Authentication', 'Cashback & Merchant Rewards'],
     techStack: ['React Native', 'TypeScript', 'Go Backend', 'Redis', 'PCI-DSS Tokenization']
-  },
-  {
-    id: 'wolfpay',
-    name: 'WolfPay',
-    category: 'Enterprise Payment Gateway',
-    tagline: 'High-Throughput Checkout Infrastructure for E-Commerce',
-    problem: 'High cart abandonment rates caused by slow payment checkout flows and bank OTP dropouts in high-volume stores.',
-    solution: 'Created a lightning-fast 1-click checkout engine with dynamic bank routing and 99.98% payment success rate.',
-    features: ['1-Click Fast Checkout SDK', 'Smart Dynamic Routing Engine', 'Instant Merchant Settlement', 'Automated Refund Reconciliation', 'Fraud & Risk Detection AI'],
-    techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'Docker', 'AWS ECS']
-  },
-  {
-    id: 'kisanpay',
-    name: 'Kisan Pay',
-    category: 'Agritech & Rural Digital Payments',
-    tagline: 'Direct-to-Farmer Digital Payments & Mandi Settlement',
-    problem: 'Farmers faced prolonged delays and middleman commissions when receiving payments for their agricultural produce at local Mandis.',
-    solution: 'Delivered an intuitive multilingual payment platform that enables instant direct bank/UPI transfers from grain traders to farmers.',
-    features: ['Multilingual Voice-Guided UI', 'Instant Mandi Produce Invoicing', 'Direct Bank Account Deposit (DBT)', 'Offline Receipt SMS Confirmation', 'Subsidized Micro-Loan Linkage'],
-    techStack: ['React', 'Python FastAPI', 'MongoDB', 'Twilio SMS API']
   }
 ];
 
@@ -803,14 +783,8 @@ export function App() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#0284C7' }}>
               <span>🔵</span> RingPe
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#334155' }}>
-              <span>🐺</span> WolfPay
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#15803D' }}>
-              <span>🌾</span> Kisan Pay
-            </div>
             <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-              And many more to come...
+              And upcoming platforms in development...
             </div>
           </div>
 
@@ -1064,7 +1038,7 @@ export function App() {
               {/* Direct Instant Action Buttons */}
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
                 <a 
-                  href="https://wa.me/919876543210" 
+                  href="https://wa.me/919209282289" 
                   target="_blank" 
                   rel="noreferrer" 
                   className="btn" 
@@ -1074,7 +1048,7 @@ export function App() {
                 </a>
 
                 <a 
-                  href="mailto:info@nextcoregent.com" 
+                  href="mailto:nexcoregen@ankitpatil1999.online" 
                   className="btn btn-white" 
                   style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem' }}
                 >
@@ -1095,7 +1069,7 @@ export function App() {
                       <Mail size={18} color="#38BDF8" />
                       <div>
                         <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>DROP US AN EMAIL</div>
-                        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>info@nextcoregent.com</div>
+                        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>nexcoregen@ankitpatil1999.online</div>
                       </div>
                     </div>
 
@@ -1103,7 +1077,7 @@ export function App() {
                       <Phone size={18} color="#38BDF8" />
                       <div>
                         <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>CALL OR WHATSAPP</div>
-                        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>+91 98765 43210</div>
+                        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>+91 9209282289</div>
                       </div>
                     </div>
 
@@ -1166,7 +1140,7 @@ export function App() {
                           <input 
                             type="tel" 
                             required 
-                            placeholder="+91 98765 43210" 
+                            placeholder="+91 9209282289" 
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             style={formInput} 
