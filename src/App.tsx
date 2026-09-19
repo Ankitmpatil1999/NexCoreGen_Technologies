@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
+import { FitCorePage } from './components/FitCorePage';
 
 interface CaseStudy {
   id: string;
@@ -56,7 +57,7 @@ const portfolioData: CaseStudy[] = [
 ];
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms' | 'fitcore'>('home');
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [emailModalOpen, setEmailModalOpen] = useState(false);
@@ -85,6 +86,8 @@ export function App() {
         setCurrentPage('privacy');
       } else if (hash === '#terms' || hash === '#termsconditions') {
         setCurrentPage('terms');
+      } else if (hash === '#fitcore' || hash === '#fitcore-product' || hash === '#product') {
+        setCurrentPage('fitcore');
       } else if (hash === '' || hash === '#home' || hash === '#') {
         setCurrentPage('home');
       }
@@ -95,12 +98,14 @@ export function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'privacy' | 'terms') => {
+  const navigateTo = (page: 'home' | 'privacy' | 'terms' | 'fitcore') => {
     setCurrentPage(page);
     if (page === 'privacy') {
       window.location.hash = '#privacy';
     } else if (page === 'terms') {
       window.location.hash = '#terms';
+    } else if (page === 'fitcore') {
+      window.location.hash = '#fitcore';
     } else {
       window.location.hash = '#home';
     }
@@ -126,6 +131,21 @@ export function App() {
       <TermsConditions 
         onBackToHome={() => navigateTo('home')} 
         onNavigateToPrivacy={() => navigateTo('privacy')} 
+      />
+    );
+  }
+
+  if (currentPage === 'fitcore') {
+    return (
+      <FitCorePage 
+        onBackToHome={() => navigateTo('home')} 
+        onNavigateToContact={() => {
+          navigateTo('home');
+          setTimeout(() => {
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 150);
+        }} 
       />
     );
   }
@@ -179,7 +199,7 @@ export function App() {
             <a href="#home" style={navLinkStyle}>Home</a>
             <a href="#about" style={navLinkStyle}>About</a>
             <a href="#services" style={navLinkStyle}>Services</a>
-            <a href="#fitcore" style={navLinkStyle}>Our Product</a>
+            <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={navLinkStyle}>Our Product</a>
             <a href="#portfolio" style={navLinkStyle}>Portfolio</a>
             <a href="#why-us" style={navLinkStyle}>Why Us</a>
             <a href="#contact" style={navLinkStyle}>Contact</a>
@@ -590,11 +610,11 @@ export function App() {
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <button onClick={() => setActiveCaseStudy(portfolioData[0])} className="btn btn-green">
-                Explore FitCore →
+              <button onClick={() => navigateTo('fitcore')} className="btn btn-green">
+                Explore FitCore Page →
               </button>
-              <button onClick={() => setVideoModalOpen(true)} className="btn btn-secondary">
-                <Play size={14} color="var(--color-navy)" /> View Demo
+              <button onClick={() => navigateTo('fitcore')} className="btn btn-secondary">
+                <Play size={14} color="var(--color-navy)" /> View Full Demo & Videos
               </button>
             </div>
           </div>
@@ -1293,7 +1313,7 @@ export function App() {
               <a href="#home" style={footerLink}>Home</a>
               <a href="#about" style={footerLink}>About</a>
               <a href="#services" style={footerLink}>Services</a>
-              <a href="#fitcore" style={footerLink}>Our Product</a>
+              <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={footerLink}>Our Product (FitCore)</a>
               <a href="#portfolio" style={footerLink}>Portfolio</a>
               <a href="#contact" style={footerLink}>Contact</a>
             </div>
@@ -1448,17 +1468,43 @@ export function App() {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                setActiveCaseStudy(null);
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn btn-primary"
-              style={{ width: '100%' }}
-            >
-              Build a Similar Solution with Us <ArrowRight size={16} />
-            </button>
+            {activeCaseStudy.id === 'fitcore' ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <button
+                  onClick={() => {
+                    setActiveCaseStudy(null);
+                    navigateTo('fitcore');
+                  }}
+                  className="btn"
+                  style={{ width: '100%', background: '#16A34A', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                >
+                  Open Dedicated FitCore Product Page →
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveCaseStudy(null);
+                    const el = document.getElementById('contact');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="btn btn-secondary"
+                  style={{ width: '100%' }}
+                >
+                  Discuss Custom Fitness Hardware with Us
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  setActiveCaseStudy(null);
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn btn-primary"
+                style={{ width: '100%' }}
+              >
+                Build a Similar Solution with Us <ArrowRight size={16} />
+              </button>
+            )}
           </div>
         </div>
       )}
