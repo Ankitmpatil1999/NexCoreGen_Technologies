@@ -91,8 +91,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPitchDeck, onOpenContact }
 
         {/* Desktop Nav Links */}
         <nav style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
+          <a href="#bento-features" style={navLinkStyle}>Bento Features</a>
           <a href="#flagship" style={navLinkStyle}>FitCore OS</a>
-          <a href="#simulator" style={navLinkStyle}>Live Simulator</a>
           <a href="#pipeline" style={navLinkStyle}>R&D Pipeline</a>
           <a href="#market" style={navLinkStyle}>TAM & Model</a>
           <a href="#architecture" style={navLinkStyle}>Architecture</a>
@@ -154,8 +154,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPitchDeck, onOpenContact }
             <span className="pulse-dot pulse-dot-cyan"></span>
             <span>Seed Round Open • ₹28k Cr TAM</span>
           </div>
+          <a href="#bento-features" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Bento Features Architecture</a>
           <a href="#flagship" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>FitCore OS (Flagship)</a>
-          <a href="#simulator" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Interactive Live Simulator</a>
           <a href="#pipeline" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Innovation Pipeline (Next Products)</a>
           <a href="#market" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Market Opportunity & Economics</a>
           <a href="#architecture" onClick={() => setMobileMenuOpen(false)} style={mobileNavLinkStyle}>Hardware & Cloud Architecture</a>

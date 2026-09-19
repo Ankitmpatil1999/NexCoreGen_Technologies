@@ -5,9 +5,9 @@ import {
   TrendingUp, 
   ArrowRight, 
   Download, 
-  Activity, 
   Layers 
 } from 'lucide-react';
+import { DashboardShowcase } from './DashboardShowcase';
 
 interface HeroProps {
   onOpenPitchDeck: () => void;
@@ -89,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPitchDeck, onOpenContact }) =>
               marginBottom: '3.5rem'
             }}
           >
-            <a href="#flagship" className="btn btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>
+            <a href="#bento-features" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
               Explore FitCore OS Flagship
               <ArrowRight size={18} />
             </a>
@@ -104,15 +104,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPitchDeck, onOpenContact }) =>
             <button
               onClick={onOpenContact}
               className="btn btn-secondary"
-              style={{ padding: '0.9rem 1.5rem', fontSize: '1rem' }}
+              style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}
             >
               Schedule Founder Briefing
             </button>
-            <a href="#simulator" className="btn btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '1rem' }}>
-              <Activity size={18} color="#10b981" />
-              Live Gate Simulator
-            </a>
           </div>
+        </div>
+
+        {/* 3D Visual Centerpiece: Dashboard Showcase */}
+        <div style={{ marginBottom: '5rem' }}>
+          <DashboardShowcase />
         </div>
 
         {/* Key Investor Metrics Ticker Bar */}
@@ -226,107 +227,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPitchDeck, onOpenContact }) =>
                 SaaS + 10% Take
               </div>
               <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Dual High-Margin Revenue Engine</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Hero Interactive Terminal Cockpit Preview */}
-        <div 
-          className="glass-panel"
-          style={{
-            maxWidth: '1060px',
-            margin: '0 auto',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            overflow: 'hidden',
-            boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 242, 254, 0.1)'
-          }}
-        >
-          {/* Top Window Bar */}
-          <div 
-            style={{
-              padding: '0.75rem 1.25rem',
-              background: 'rgba(11, 17, 30, 0.95)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
-              <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
-              <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#10b981' }} />
-              <span style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: '0.75rem', fontFamily: 'var(--font-mono)' }}>
-                nexcoregen://telemetry-mesh/fitcore-gateway.live
-              </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span className="pill-badge pill-emerald" style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem' }}>
-                <span className="pulse-dot pulse-dot-green"></span>
-                CORE CLUSTER ONLINE
-              </span>
-            </div>
-          </div>
-
-          {/* Cockpit HUD Content */}
-          <div style={{ padding: '1.5rem', background: 'rgba(8, 12, 22, 0.95)' }}>
-            <div 
-              style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-                gap: '1.25rem' 
-              }}
-            >
-              {/* Telemetry Node 1 */}
-              <div className="telemetry-box">
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#94a3b8', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                  <span>FLAGSHIP TELEMETRY</span>
-                  <span style={{ color: '#00f2fe' }}>NODE #01</span>
-                </div>
-                <div style={{ fontSize: '1.1rem', color: '#fff', fontWeight: 700, marginBottom: '0.25rem' }}>
-                  FitCore OS • Franchise Hub
-                </div>
-                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                  Active Clubs: 42 across Mumbai, Delhi, BLR
-                </div>
-                <div style={{ marginTop: '0.75rem', height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px', overflow: 'hidden' }}>
-                  <div style={{ width: '92%', height: '100%', background: 'linear-gradient(90deg, #00f2fe, #3b82f6)' }} />
-                </div>
-              </div>
-
-              {/* Telemetry Node 2 */}
-              <div className="telemetry-box">
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#94a3b8', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                  <span>TURNSTILE IOT SYNC</span>
-                  <span style={{ color: '#10b981' }}>SUB-200MS</span>
-                </div>
-                <div style={{ fontSize: '1.1rem', color: '#fff', fontWeight: 700, marginBottom: '0.25rem' }}>
-                  164ms Gate Verification
-                </div>
-                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                  Protocol: MQTT / ESP32 Secure Biometric Token
-                </div>
-                <div style={{ marginTop: '0.75rem', height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px', overflow: 'hidden' }}>
-                  <div style={{ width: '99%', height: '100%', background: 'linear-gradient(90deg, #10b981, #00f2fe)' }} />
-                </div>
-              </div>
-
-              {/* Telemetry Node 3 */}
-              <div className="telemetry-box">
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#94a3b8', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                  <span>COMMERCE ENGINE</span>
-                  <span style={{ color: '#fbbf24' }}>10% TAKE RATE</span>
-                </div>
-                <div style={{ fontSize: '1.1rem', color: '#fff', fontWeight: 700, marginBottom: '0.25rem' }}>
-                  Integrated Nutrition POS
-                </div>
-                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                  Automated Franchise Royalty & Vendor Settlement
-                </div>
-                <div style={{ marginTop: '0.75rem', height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px', overflow: 'hidden' }}>
-                  <div style={{ width: '85%', height: '100%', background: 'linear-gradient(90deg, #fbbf24, #f43f5e)' }} />
-                </div>
-              </div>
             </div>
           </div>
         </div>

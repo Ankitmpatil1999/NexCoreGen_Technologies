@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProblemSolution } from './components/ProblemSolution';
+import { BentoFeatures } from './components/BentoFeatures';
 import { FitCoreSpotlight } from './components/FitCoreSpotlight';
-import { InteractiveSimulator } from './components/InteractiveSimulator';
 import { ProductPipeline } from './components/ProductPipeline';
 import { MarketOpportunity } from './components/MarketOpportunity';
 import { TechArchitecture } from './components/TechArchitecture';
@@ -42,13 +42,13 @@ export function App() {
         {/* 2. Problem & Solution Comparison */}
         <ProblemSolution />
 
-        {/* 3. Flagship Product Spotlight: FitCore OS */}
+        {/* 3. Bento Grid Visual Feature Architecture */}
+        <BentoFeatures />
+
+        {/* 4. Flagship Product Spotlight: FitCore OS & Pricing */}
         <FitCoreSpotlight 
           onOpenContact={scrollToContact}
         />
-
-        {/* 4. Live Interactive Product Simulator */}
-        <InteractiveSimulator />
 
         {/* 5. Innovation Pipeline: "Many More Products to Come" */}
         <ProductPipeline 
