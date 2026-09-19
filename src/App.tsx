@@ -16,11 +16,13 @@ import {
   Check,
   ExternalLink,
   MessageCircle,
-  Copy
+  Copy,
+  Download
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
 import { FitCorePage } from './components/FitCorePage';
+import { Logo } from './components/Logo';
 
 interface CaseStudy {
   id: string;
@@ -63,6 +65,7 @@ export function App() {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [logoModalOpen, setLogoModalOpen] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('nexcoregen@ankitpatil1999.online');
@@ -119,33 +122,33 @@ export function App() {
 
   if (currentPage === 'privacy') {
     return (
-      <PrivacyPolicy 
-        onBackToHome={() => navigateTo('home')} 
-        onNavigateToTerms={() => navigateTo('terms')} 
+      <PrivacyPolicy
+        onBackToHome={() => navigateTo('home')}
+        onNavigateToTerms={() => navigateTo('terms')}
       />
     );
   }
 
   if (currentPage === 'terms') {
     return (
-      <TermsConditions 
-        onBackToHome={() => navigateTo('home')} 
-        onNavigateToPrivacy={() => navigateTo('privacy')} 
+      <TermsConditions
+        onBackToHome={() => navigateTo('home')}
+        onNavigateToPrivacy={() => navigateTo('privacy')}
       />
     );
   }
 
   if (currentPage === 'fitcore') {
     return (
-      <FitCorePage 
-        onBackToHome={() => navigateTo('home')} 
+      <FitCorePage
+        onBackToHome={() => navigateTo('home')}
         onNavigateToContact={() => {
           navigateTo('home');
           setTimeout(() => {
             const el = document.getElementById('contact');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }, 150);
-        }} 
+        }}
       />
     );
   }
@@ -165,33 +168,17 @@ export function App() {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #1769E0, #38BDF8)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-                fontWeight: 900,
-                fontSize: '1.25rem',
-                boxShadow: '0 4px 12px rgba(23, 105, 224, 0.3)'
-              }}
-            >
-              N
-            </div>
-            <div>
-              <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--color-navy)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-                NextcoreGent
-              </div>
-              <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                Technologies
-              </div>
-            </div>
+          {/* Official Logo */}
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+          >
+            <Logo variant="light" size="md" />
           </a>
 
           {/* Nav Links */}
@@ -428,37 +415,73 @@ export function App() {
               </a>
             </div>
 
-            {/* Right Column: Authentic Team Image */}
-            <div style={{ position: 'relative' }}>
-              <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
-                <img
-                  src="/assets/team-collab.jpg"
-                  alt="NextcoreGent Team"
-                  style={{ width: '100%', height: 'auto', display: 'block' }}
-                />
-              </div>
-
-              {/* Quote Card on Image */}
+            {/* Right Column: 3D Corporate Wall Mockup & Authentic Team */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {/* 3D Illuminated Office Wall Sign Mockup */}
               <div
                 style={{
-                  position: 'absolute',
-                  bottom: '-20px',
-                  right: '20px',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  backdropFilter: 'blur(10px)',
-                  padding: '1.25rem',
-                  borderRadius: '16px',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  boxShadow: 'var(--shadow-md)',
                   border: '1px solid var(--border-color)',
-                  boxShadow: 'var(--shadow-card)',
-                  maxWidth: '300px'
+                  position: 'relative'
                 }}
               >
-                <div style={{ fontSize: '1.2rem', color: 'var(--color-primary)', marginBottom: '0.35rem' }}>“</div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-navy)', lineHeight: 1.4 }}>
-                  Great products are built by great people.
+                <img
+                  src="/assets/logo-wall-mockup.png"
+                  alt="NextcoreGent Technologies Office Brand Mockup"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '12px',
+                    left: '12px',
+                    background: 'rgba(7, 26, 58, 0.88)',
+                    backdropFilter: 'blur(8px)',
+                    color: '#fff',
+                    padding: '0.3rem 0.75rem',
+                    borderRadius: '20px',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  EXECUTIVE IDENTITY
                 </div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                  Let's build something amazing together.
+              </div>
+
+              {/* Authentic Team Image */}
+              <div style={{ position: 'relative' }}>
+                <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-color)' }}>
+                  <img
+                    src="/assets/team-collab.jpg"
+                    alt="NextcoreGent Team"
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
+                </div>
+
+                {/* Quote Card on Image */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '-15px',
+                    right: '15px',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(10px)',
+                    padding: '1rem 1.25rem',
+                    borderRadius: '14px',
+                    border: '1px solid var(--border-color)',
+                    boxShadow: 'var(--shadow-card)',
+                    maxWidth: '280px'
+                  }}
+                >
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-navy)', lineHeight: 1.4 }}>
+                    “Great products are built by great people.”
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
+                    Ideas Today. A Better Tomorrow.
+                  </div>
                 </div>
               </div>
             </div>
@@ -1285,27 +1308,42 @@ export function App() {
       <footer style={{ padding: '3.5rem 0 2rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {/* Logo */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {/* Official Logo & Brand Kit Download Button */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <div
-                style={{
-                  width: '34px',
-                  height: '34px',
-                  borderRadius: '8px',
-                  background: 'linear-gradient(135deg, #1769E0, #38BDF8)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontWeight: 900,
-                  fontSize: '1.1rem'
+                style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+                onClick={() => {
+                  navigateTo('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >
-                N
+                <Logo variant="light" size="lg" />
               </div>
-              <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--color-navy)' }}>
-                NextcoreGent Technologies
-              </span>
+              <button
+                onClick={() => setLogoModalOpen(true)}
+                style={{
+                  background: '#EFF6FF',
+                  border: '1px solid #BFDBFE',
+                  color: 'var(--color-primary)',
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: '8px',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#DBEAFE';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#EFF6FF';
+                }}
+              >
+                <Download size={13} /> Official Brand Kit
+              </button>
             </div>
 
             {/* Links */}
@@ -1324,23 +1362,23 @@ export function App() {
               © {new Date().getFullYear()} NextcoreGent Technologies. All rights reserved.
             </div>
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-              <button 
-                onClick={() => navigateTo('privacy')} 
+              <button
+                onClick={() => navigateTo('privacy')}
                 style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.82rem', padding: 0 }}
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
               >
                 Privacy Policy
               </button>
-              <button 
-                onClick={() => navigateTo('terms')} 
+              <button
+                onClick={() => navigateTo('terms')}
                 style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.82rem', padding: 0 }}
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
               >
                 Terms & Conditions
               </button>
-              <span 
+              <span
                 style={{ cursor: 'pointer', color: 'var(--text-muted)', fontSize: '0.82rem' }}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
@@ -1776,6 +1814,141 @@ export function App() {
               >
                 Or fill the Project Enquiry form below ↓
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* BRAND ASSETS & LOGO DOWNLOAD MODAL */}
+      {logoModalOpen && (
+        <div className="modal-overlay" onClick={() => setLogoModalOpen(false)}>
+          <div
+            style={{
+              maxWidth: '840px',
+              width: '100%',
+              background: '#FFFFFF',
+              borderRadius: '24px',
+              padding: '2.5rem',
+              boxShadow: 'var(--shadow-lg)',
+              position: 'relative',
+              maxHeight: '90vh',
+              overflowY: 'auto'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setLogoModalOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                background: '#F1F5F9',
+                border: 'none',
+                borderRadius: '50%',
+                width: '34px',
+                height: '34px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
+              }}
+            >
+              <X size={18} color="var(--color-navy)" />
+            </button>
+
+            <div style={{ marginBottom: '1.75rem' }}>
+              <div style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
+                • CORPORATE IDENTITY
+              </div>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy)', margin: '0 0 0.5rem 0' }}>
+                NextcoreGent Official Brand Kit
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', margin: 0 }}>
+                High-resolution logo formats for web, dark mode, mobile icons, and executive office branding.
+              </p>
+            </div>
+
+            {/* Grid of 4 Brand Assets */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+              {/* Asset 1: Light Mode (Transparent) */}
+              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                    1. Light Mode Transparent Logo
+                  </div>
+                  <div style={{ background: '#FFFFFF', padding: '1.75rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '110px', border: '1px dashed #CBD5E1', marginBottom: '1rem' }}>
+                    <Logo variant="light" size="lg" />
+                  </div>
+                </div>
+                <a
+                  href="/assets/nextcoregent-logo-light-trans-2x.png"
+                  download="NextcoreGent_Logo_Light.png"
+                  className="btn btn-primary"
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
+                >
+                  <Download size={15} /> Download Transparent PNG
+                </a>
+              </div>
+
+              {/* Asset 2: Dark Mode (Transparent) */}
+              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                    2. Dark Mode Transparent Logo
+                  </div>
+                  <div style={{ background: '#071A3A', padding: '1.75rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '110px', border: '1px dashed #1E293B', marginBottom: '1rem' }}>
+                    <Logo variant="dark" size="lg" />
+                  </div>
+                </div>
+                <a
+                  href="/assets/nextcoregent-logo-dark-trans-2x.png"
+                  download="NextcoreGent_Logo_Dark.png"
+                  className="btn btn-primary"
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
+                >
+                  <Download size={15} /> Download Dark Mode PNG
+                </a>
+              </div>
+
+              {/* Asset 3: Square Ribbon App Icon */}
+              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                    3. Stylized 'N' App & Social Icon
+                  </div>
+                  <div style={{ background: '#FFFFFF', padding: '1.75rem', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '110px', border: '1px dashed #CBD5E1', marginBottom: '1rem' }}>
+                    <Logo iconOnly={true} size="xl" />
+                  </div>
+                </div>
+                <a
+                  href="/assets/nextcoregent-icon-2x.png"
+                  download="NextcoreGent_Icon.png"
+                  className="btn btn-secondary"
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
+                >
+                  <Download size={15} /> Download App Icon (PNG)
+                </a>
+              </div>
+
+              {/* Asset 4: 3D Office Wall Mockup */}
+              <div style={{ padding: '1.5rem', background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                    4. 3D Executive Office Wall Sign
+                  </div>
+                  <div style={{ borderRadius: '12px', overflow: 'hidden', minHeight: '110px', marginBottom: '1rem', border: '1px solid #CBD5E1' }}>
+                    <img src="/assets/logo-wall-mockup.png" alt="Office Wall Mockup" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+                </div>
+                <a
+                  href="/assets/logo-wall-mockup.png"
+                  download="NextcoreGent_Office_Wall_Mockup.png"
+                  className="btn btn-secondary"
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem', padding: '0.6rem 1rem' }}
+                >
+                  <Download size={15} /> Download 3D Mockup (PNG)
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, Scale, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
+import { Logo } from './Logo';
 
 interface TermsConditionsProps {
   onBackToHome: () => void;
@@ -56,26 +57,8 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
             >
               <ArrowLeft size={16} /> Back to Home
             </button>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }} onClick={onBackToHome}>
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '8px',
-                  background: 'linear-gradient(135deg, #1769E0, #38BDF8)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontWeight: 900,
-                  fontSize: '1rem'
-                }}
-              >
-                N
-              </div>
-              <span style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-navy)' }}>
-                NextcoreGent <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>Technologies</span>
-              </span>
+            <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={onBackToHome}>
+              <Logo variant="light" size="sm" />
             </div>
           </div>
 

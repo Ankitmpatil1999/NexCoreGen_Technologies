@@ -15,6 +15,7 @@ import {
   Sparkles,
   Sliders
 } from 'lucide-react';
+import { Logo } from './Logo';
 
 interface FitCorePageProps {
   onBackToHome: () => void;
@@ -115,30 +116,31 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
               <ArrowLeft size={16} /> Back to NexCoreGen
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '8px',
-                  background: 'linear-gradient(135deg, #16A34A, #10B981)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontWeight: 900,
-                  fontSize: '1rem',
-                  boxShadow: '0 2px 8px rgba(22, 163, 74, 0.3)'
-                }}
-              >
-                🏋️
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+              <div onClick={onBackToHome} style={{ cursor: 'pointer' }}>
+                <Logo variant="light" size="sm" />
               </div>
-              <div>
-                <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--color-navy)' }}>
-                  FitCore <span style={{ color: '#16A34A', fontSize: '0.85rem', fontWeight: 700 }}>OS</span>
-                </span>
-                <span style={{ display: 'block', fontSize: '0.68rem', color: '#64748B', fontWeight: 600 }}>
-                  By NextcoreGent Technologies
+              <div style={{ height: '24px', width: '1px', background: '#E2E8F0' }}></div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div
+                  style={{
+                    width: '30px',
+                    height: '30px',
+                    borderRadius: '8px',
+                    background: 'linear-gradient(135deg, #16A34A, #10B981)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontWeight: 900,
+                    fontSize: '0.95rem',
+                    boxShadow: '0 2px 8px rgba(22, 163, 74, 0.3)'
+                  }}
+                >
+                  🏋️
+                </div>
+                <span style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-navy)' }}>
+                  FitCore <span style={{ color: '#16A34A', fontSize: '0.82rem', fontWeight: 700 }}>OS</span>
                 </span>
               </div>
             </div>
@@ -1271,8 +1273,11 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
       {/* 9. FOOTER */}
       <footer style={{ padding: '2.5rem 0', background: '#FFFFFF', borderTop: '1px solid #E2E8F0', textAlign: 'center', fontSize: '0.85rem', color: '#64748B' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-          <div>
-            © {new Date().getFullYear()} <strong>FitCore OS</strong> • A Proprietary Platform of <strong>NextcoreGent Technologies</strong>, Nagpur, India.
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <Logo variant="light" size="sm" onClick={onBackToHome} style={{ cursor: 'pointer' }} />
+            <div>
+              © {new Date().getFullYear()} <strong>FitCore OS</strong> • A Proprietary Platform of <strong>NextcoreGent Technologies</strong>.
+            </div>
           </div>
           <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
             <button onClick={onBackToHome} style={{ background: 'none', border: 'none', color: '#1769E0', cursor: 'pointer', fontWeight: 600 }}>
