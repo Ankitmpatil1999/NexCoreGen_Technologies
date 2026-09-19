@@ -16,8 +16,7 @@ import {
   Check,
   ExternalLink,
   MessageCircle,
-  Copy,
-  Download
+  Copy
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
@@ -65,7 +64,6 @@ export function App() {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [logoModalOpen, setLogoModalOpen] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('nexcoregen@ankitpatil1999.online');
@@ -1281,51 +1279,24 @@ export function App() {
       <footer style={{ padding: '3.5rem 0 2rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {/* Official Logo (2nd Dark Edition) & Download Button */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  background: '#071A3A',
-                  padding: '0.55rem 1.25rem',
-                  borderRadius: '14px',
-                  boxShadow: '0 4px 16px rgba(7, 26, 58, 0.25)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)'
-                }}
-                onClick={() => {
-                  navigateTo('home');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-              >
-                <Logo variant="dark" size="md" />
-              </div>
-              <button
-                onClick={() => setLogoModalOpen(true)}
-                style={{
-                  background: '#EFF6FF',
-                  border: '1px solid #BFDBFE',
-                  color: 'var(--color-primary)',
-                  padding: '0.4rem 0.85rem',
-                  borderRadius: '8px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#DBEAFE';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#EFF6FF';
-                }}
-              >
-                <Download size={13} /> Download Official Logo
-              </button>
+            {/* Official Logo (2nd Dark Edition) */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+                background: '#071A3A',
+                padding: '0.55rem 1.25rem',
+                borderRadius: '14px',
+                boxShadow: '0 4px 16px rgba(7, 26, 58, 0.25)',
+                border: '1px solid rgba(255, 255, 255, 0.08)'
+              }}
+              onClick={() => {
+                navigateTo('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            >
+              <Logo variant="dark" size="md" />
             </div>
 
             {/* Links */}
@@ -1801,100 +1772,7 @@ export function App() {
         </div>
       )}
 
-      {/* BRAND ASSETS & LOGO DOWNLOAD MODAL */}
-      {logoModalOpen && (
-        <div className="modal-overlay" onClick={() => setLogoModalOpen(false)}>
-          <div
-            style={{
-              maxWidth: '840px',
-              width: '100%',
-              background: '#FFFFFF',
-              borderRadius: '24px',
-              padding: '2.5rem',
-              boxShadow: 'var(--shadow-lg)',
-              position: 'relative',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setLogoModalOpen(false)}
-              style={{
-                position: 'absolute',
-                top: '1.5rem',
-                right: '1.5rem',
-                background: '#F1F5F9',
-                border: 'none',
-                borderRadius: '50%',
-                width: '34px',
-                height: '34px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer'
-              }}
-            >
-              <X size={18} color="var(--color-navy)" />
-            </button>
 
-            <div style={{ marginBottom: '1.75rem' }}>
-              <div style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
-                • CORPORATE IDENTITY
-              </div>
-              <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy)', margin: '0 0 0.5rem 0' }}>
-                NextcoreGent Official Brand Kit
-              </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', margin: 0 }}>
-                High-resolution logo formats for web, dark mode, mobile icons, and executive office branding.
-              </p>
-            </div>
-
-            {/* Single Chosen Official Logo: 2nd Dark Mode Logo */}
-            <div
-              style={{
-                padding: '2.5rem 2rem',
-                background: '#071A3A',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                borderRadius: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                boxShadow: '0 12px 36px rgba(7, 26, 58, 0.35)'
-              }}
-            >
-              <div style={{ marginBottom: '2rem', padding: '1rem 0' }}>
-                <Logo variant="dark" size="xl" />
-              </div>
-
-              <a
-                href="/assets/nextcoregent-logo-dark-trans-2x.png"
-                download="NextcoreGent_Official_Logo.png"
-                className="btn btn-primary"
-                style={{
-                  padding: '0.85rem 2rem',
-                  fontSize: '0.98rem',
-                  fontWeight: 700,
-                  boxShadow: '0 4px 20px rgba(23, 105, 224, 0.45)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.6rem'
-                }}
-              >
-                <Download size={18} /> Download Official Logo (Transparent PNG)
-              </a>
-
-              <div style={{ marginTop: '1.5rem', fontSize: '0.82rem', color: '#94A3B8', display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <span>✓ High-Resolution 2x Retina PNG</span>
-                <span>✓ Transparent Background</span>
-                <span>✓ Official NextcoreGent Brand</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Responsive helper */}
       <style>{`
