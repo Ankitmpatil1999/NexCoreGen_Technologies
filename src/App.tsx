@@ -338,60 +338,8 @@ export function App() {
         </div>
       </section>
 
-      {/* 3. TRUST STATS BAR */}
-      <section style={{ padding: '2.5rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
-                📦
-              </div>
-              <div>
-                <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy)' }}>10+</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>Projects Delivered</div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
-                👥
-              </div>
-              <div>
-                <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy)' }}>5+</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>Happy Clients</div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
-                📊
-              </div>
-              <div>
-                <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy)' }}>100%</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>Client Satisfaction</div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
-                🏆
-              </div>
-              <div>
-                <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--color-navy)' }}>3+</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>Years of Experience</div>
-              </div>
-            </div>
-
-            <div style={{ padding: '0.75rem 1rem', background: '#F8FAFC', borderRadius: '12px', borderLeft: '3px solid var(--color-primary)', fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-              "Technology is best when it brings people together."
-              <span style={{ display: 'block', fontStyle: 'normal', fontWeight: 700, color: 'var(--color-navy)', marginTop: '0.2rem' }}>— Matt Mullenweg</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. ABOUT US SECTION */}
-      <section id="about" style={{ padding: '6rem 0' }}>
+      {/* 3. ABOUT US SECTION */}
+      <section id="about" style={{ padding: '5.5rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
             {/* Left Column: Story */}
@@ -403,22 +351,30 @@ export function App() {
                 Who We Are
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                <strong>NextcoreGent Technologies</strong> is a team of passionate developers, designers and problem solvers founded by <strong>Ankit Patil</strong>. We help startups, businesses and enterprises turn their ideas into powerful digital products that scale reliably.
+                <strong>NextcoreGent Technologies</strong> is a software development company founded by <strong>Ankit Patil</strong>. We architect scalable web platforms, high-concurrency mobile applications, and connected IoT hardware systems built on solid engineering foundations.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
-                <div style={{ padding: '1rem', background: '#fff', borderRadius: '12px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-primary)' }}>10+</div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Projects Delivered</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
+                <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                    ⚡ Robust Architecture
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                    Clean, modular code built for high throughput, security, and long-term reliability.
+                  </div>
                 </div>
-                <div style={{ padding: '1rem', background: '#fff', borderRadius: '12px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-primary)' }}>100%</div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Client Satisfaction</div>
+                <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                    🤝 Founder-Led Delivery
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                    Direct technical leadership and personal attention across every stage of your build.
+                  </div>
                 </div>
               </div>
 
               <a href="#services" className="btn btn-primary">
-                Learn More About Us <ArrowRight size={16} />
+                Explore Our Services <ArrowRight size={16} />
               </a>
             </div>
 
