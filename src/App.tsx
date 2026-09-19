@@ -15,7 +15,8 @@ import {
   Headphones,
   Check,
   ExternalLink,
-  MessageCircle
+  MessageCircle,
+  Copy
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
@@ -68,7 +69,15 @@ export function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms'>('home');
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('nexcoregen@ankitpatil1999.online');
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 3000);
+  };
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -1097,13 +1106,15 @@ export function App() {
                   <MessageCircle size={18} /> Chat on WhatsApp
                 </a>
 
-                <a
-                  href="mailto:nexcoregen@ankitpatil1999.online"
+                <button
+                  id="btn-send-email"
+                  type="button"
+                  onClick={() => setEmailModalOpen(true)}
                   className="btn btn-white"
-                  style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem' }}
+                  style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
                 >
                   <Mail size={18} color="var(--color-navy)" /> Send an Email
-                </a>
+                </button>
               </div>
 
               {/* Quick Contact & Interactive Form */}
@@ -1115,11 +1126,26 @@ export function App() {
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div
+                      id="quick-contact-email"
+                      onClick={() => setEmailModalOpen(true)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        cursor: 'pointer',
+                        padding: '0.4rem 0.5rem',
+                        borderRadius: '8px',
+                        transition: 'background 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                      title="Click to send an email or copy address"
+                    >
                       <Mail size={18} color="#38BDF8" />
                       <div>
                         <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>DROP US AN EMAIL</div>
-                        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>nexcoregen@ankitpatil1999.online</div>
+                        <div style={{ fontWeight: 600, fontSize: '0.95rem', textDecoration: 'underline', textUnderlineOffset: '3px' }}>nexcoregen@ankitpatil1999.online</div>
                       </div>
                     </div>
 
@@ -1142,21 +1168,32 @@ export function App() {
                 </div>
 
                 {/* Form */}
-                <div style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: '2rem', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                <div id="contact-form" style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: '2rem', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
                   {formSubmitted ? (
                     <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
                       <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>✅</div>
                       <div style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>Thank You!</div>
-                      <p style={{ color: '#CBD5E1', fontSize: '0.95rem' }}>
+                      <p style={{ color: '#CBD5E1', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
                         Your project inquiry has been received. Our team will contact you within 24 hours.
                       </p>
-                      <button
-                        onClick={() => setFormSubmitted(false)}
-                        className="btn btn-white"
-                        style={{ marginTop: '1.5rem', padding: '0.6rem 1.4rem', fontSize: '0.85rem' }}
-                      >
-                        Submit Another Inquiry
-                      </button>
+                      <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <a
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=${encodeURIComponent(`Project Enquiry from ${formData.name || 'Client'}`)}&body=${encodeURIComponent(`Hi NextcoreGent Team,\n\nName: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService: ${formData.service}\nBudget: ${formData.budget}\n\nProject Details:\n${formData.details}\n`)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn-primary"
+                          style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                        >
+                          <Mail size={15} /> Also Open in Gmail
+                        </a>
+                        <button
+                          onClick={() => setFormSubmitted(false)}
+                          className="btn btn-white"
+                          style={{ padding: '0.6rem 1.2rem', fontSize: '0.85rem' }}
+                        >
+                          Submit Another Inquiry
+                        </button>
+                      </div>
                     </div>
                   ) : (
                     <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -1435,6 +1472,278 @@ export function App() {
             >
               Build a Similar Solution with Us <ArrowRight size={16} />
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* SMART EMAIL LAUNCH MODAL */}
+      {emailModalOpen && (
+        <div className="modal-overlay" onClick={() => setEmailModalOpen(false)}>
+          <div
+            style={{
+              maxWidth: '520px',
+              width: '100%',
+              background: '#FFFFFF',
+              borderRadius: '24px',
+              padding: '2rem',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35)',
+              position: 'relative'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              id="email-modal-close"
+              onClick={() => setEmailModalOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '1.25rem',
+                right: '1.25rem',
+                background: '#F1F5F9',
+                border: 'none',
+                borderRadius: '50%',
+                width: '32px',
+                height: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer'
+              }}
+            >
+              <X size={18} color="var(--color-navy)" />
+            </button>
+
+            {/* Header */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
+              <div
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #1769E0, #38BDF8)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#fff',
+                  boxShadow: '0 4px 14px rgba(23, 105, 224, 0.3)'
+                }}
+              >
+                <Mail size={22} />
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-navy)', margin: 0 }}>
+                  Send an Email
+                </h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', margin: '0.15rem 0 0 0' }}>
+                  Choose your email client or copy the address below
+                </p>
+              </div>
+            </div>
+
+            {/* Email Address + Copy Bar */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '0.75rem 1rem',
+                background: '#F8FAFC',
+                border: '1px solid #E2E8F0',
+                borderRadius: '12px',
+                marginBottom: '1.25rem',
+                gap: '0.5rem'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', overflow: 'hidden' }}>
+                <Mail size={15} color="var(--color-primary)" />
+                <span style={{ fontWeight: 700, fontSize: '0.88rem', color: 'var(--color-navy)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                  nexcoregen@ankitpatil1999.online
+                </span>
+              </div>
+              <button
+                id="btn-copy-email"
+                onClick={handleCopyEmail}
+                style={{
+                  background: copiedEmail ? '#DCFCE7' : '#FFFFFF',
+                  border: `1px solid ${copiedEmail ? '#86EFAC' : '#CBD5E1'}`,
+                  color: copiedEmail ? '#15803D' : 'var(--color-navy)',
+                  padding: '0.4rem 0.8rem',
+                  borderRadius: '6px',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  flexShrink: 0
+                }}
+              >
+                {copiedEmail ? (
+                  <>
+                    <Check size={14} color="#15803D" /> Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy size={14} /> Copy Address
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Options List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', marginBottom: '1.25rem' }}>
+              {/* Option 1: Google Gmail */}
+              <a
+                id="link-open-gmail"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=Project%20Enquiry%20%7C%20NextcoreGent%20Technologies&body=Hello%20Ankit%20%26%20NexCoreGen%20Team,%0A%0AI%20would%20like%20to%20discuss%20a%20project.%0A%0AService%20Needed:%20%0ABudget:%20%0A%0AThanks!"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0.9rem 1rem',
+                  background: '#FFFFFF',
+                  border: '2px solid #BFDBFE',
+                  borderRadius: '12px',
+                  textDecoration: 'none',
+                  boxShadow: '0 2px 8px rgba(23, 105, 224, 0.08)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#1769E0';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#BFDBFE';
+                  e.currentTarget.style.transform = 'none';
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.15rem' }}>
+                    ✉️
+                  </div>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                      <span style={{ fontWeight: 800, fontSize: '0.92rem', color: 'var(--color-navy)' }}>
+                        Google Gmail (Browser)
+                      </span>
+                      <span style={{ background: '#EFF6FF', color: 'var(--color-primary)', fontSize: '0.65rem', fontWeight: 800, padding: '0.15rem 0.45rem', borderRadius: '999px', border: '1px solid #BFDBFE' }}>
+                        RECOMMENDED
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      Opens Gmail compose directly in browser — 100% reliable
+                    </div>
+                  </div>
+                </div>
+                <ArrowRight size={16} color="var(--color-primary)" />
+              </a>
+
+              {/* Option 2: Outlook Web */}
+              <a
+                id="link-open-outlook"
+                href="https://outlook.live.com/mail/0/deeplink/compose?to=nexcoregen@ankitpatil1999.online&subject=Project%20Enquiry%20%7C%20NextcoreGent%20Technologies"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0.9rem 1rem',
+                  background: '#FFFFFF',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '12px',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#94A3B8';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#E2E8F0';
+                  e.currentTarget.style.transform = 'none';
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#E0F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.15rem' }}>
+                    📬
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-navy)' }}>
+                      Microsoft Outlook Web
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      Opens Outlook.com webmail in a new tab
+                    </div>
+                  </div>
+                </div>
+                <ExternalLink size={15} color="var(--text-muted)" />
+              </a>
+
+              {/* Option 3: Default Desktop Mail App */}
+              <a
+                id="link-open-mailto"
+                href="mailto:nexcoregen@ankitpatil1999.online?subject=Project%20Enquiry%20%7C%20NextcoreGent%20Technologies"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0.9rem 1rem',
+                  background: '#FFFFFF',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '12px',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#94A3B8';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#E2E8F0';
+                  e.currentTarget.style.transform = 'none';
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.15rem' }}>
+                    💻
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-navy)' }}>
+                      Default Desktop App (Mailto)
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      Opens Windows Mail, Mac Mail or Outlook Desktop
+                    </div>
+                  </div>
+                </div>
+                <ExternalLink size={15} color="var(--text-muted)" />
+              </a>
+            </div>
+
+            {/* Footer Form Shortcut */}
+            <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '0.9rem', textAlign: 'center' }}>
+              <button
+                id="btn-scroll-to-form"
+                onClick={() => {
+                  setEmailModalOpen(false);
+                  const el = document.getElementById('contact-form');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--color-primary)',
+                  fontWeight: 700,
+                  fontSize: '0.82rem',
+                  cursor: 'pointer'
+                }}
+              >
+                Or fill the Project Enquiry form below ↓
+              </button>
+            </div>
           </div>
         </div>
       )}
