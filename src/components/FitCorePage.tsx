@@ -805,7 +805,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
                 <strong>The Problem:</strong> Software companies blame the biometric vendor; biometric vendors blame the turnstile fabricator. Gym owners are stuck in the middle.
               </p>
               <div style={{ background: '#FAF5FF', padding: '0.85rem', borderRadius: '10px', fontSize: '0.85rem', color: '#6B21A8', borderLeft: '3px solid #9333EA' }}>
-                <strong>FitCore Fix:</strong> NextcoreGent Technologies engineers both the turnstile IoT controllers and the cloud software in-house. Single trusted support team across India.
+                <strong>FitCore Fix:</strong> Nexcoregen Technologies engineers both the turnstile IoT controllers and the cloud software in-house. Single trusted support team across India.
               </div>
             </div>
           </div>
@@ -1301,7 +1301,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
               <Logo variant="dark" size="sm" />
             </div>
             <div>
-              © {new Date().getFullYear()} <strong>FitCore OS</strong> • A Proprietary Platform of <strong>NextcoreGent Technologies</strong>.
+              © {new Date().getFullYear()} <strong>FitCore OS</strong> • A Proprietary Platform of <strong>Nexcoregen Technologies</strong>.
             </div>
           </div>
           <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>

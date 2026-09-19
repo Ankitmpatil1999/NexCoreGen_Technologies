@@ -107,7 +107,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome, onNa
               Privacy Policy
             </h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.6, maxWidth: '680px', margin: '0 auto 1.5rem auto' }}>
-              How <strong>NextcoreGent Technologies</strong> collects, protects, uses, and respects your personal and corporate information across our software, websites, and SaaS products.
+              How <strong>Nexcoregen Technologies</strong> collects, protects, uses, and respects your personal and corporate information across our software, websites, and SaaS products.
             </p>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.85rem', color: 'var(--text-muted)', background: '#FFFFFF', padding: '0.5rem 1.25rem', borderRadius: '9999px', border: '1px solid var(--border-color)' }}>
               <span>Effective Date: <strong>September 19, 2026</strong></span>
@@ -187,7 +187,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome, onNa
                 1. Introduction & Overview
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
-                Welcome to <strong>NextcoreGent Technologies</strong> ("NextcoreGent", "we", "our", or "us"), founded by <strong>Ankit Patil</strong> and headquartered in Nagpur, Maharashtra, India. We specialize in designing and engineering high-impact digital solutions, custom web and mobile applications, backend microservices, and specialized SaaS operating systems such as <strong>FitCore OS</strong> (Gym Management & Turnstile Access) and <strong>BhishiPe</strong>.
+                Welcome to <strong>Nexcoregen Technologies</strong> ("Nexcoregen", "we", "our", or "us"), founded by <strong>Ankit Patil</strong> and headquartered in Nagpur, Maharashtra, India. We specialize in designing and engineering high-impact digital solutions, custom web and mobile applications, backend microservices, and specialized SaaS operating systems such as <strong>FitCore OS</strong> (Gym Management & Turnstile Access) and <strong>BhishiPe</strong>.
               </p>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
                 This Privacy Policy explains how we collect, store, process, and safeguard the information you provide when you interact with our website, utilize our SaaS platforms, or partner with us for bespoke development services. We adhere strictly to the applicable laws of India, including the <strong>Digital Personal Data Protection Act, 2023 (DPDPA)</strong> and the <strong>Information Technology Act, 2000</strong>.
@@ -375,7 +375,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome, onNa
 
               <div style={{ background: '#071A3A', color: '#fff', borderRadius: '16px', padding: '2rem' }}>
                 <div style={{ fontWeight: 800, fontSize: '1.25rem', marginBottom: '0.25rem' }}>
-                  NextcoreGent Technologies
+                  Nexcoregen Technologies
                 </div>
                 <div style={{ color: '#38BDF8', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
                   ATTN: Data Protection & Grievance Cell (Ankit Patil)
@@ -414,7 +414,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome, onNa
       <footer style={{ padding: '2.5rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            © {new Date().getFullYear()} NextcoreGent Technologies. All rights reserved.
+            © {new Date().getFullYear()} Nexcoregen Technologies. All rights reserved.
           </div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <span style={{ color: 'var(--color-primary)', fontWeight: 700 }}>Privacy Policy</span>

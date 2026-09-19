@@ -109,7 +109,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
               Terms & Conditions
             </h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.6, maxWidth: '680px', margin: '0 auto 1.5rem auto' }}>
-              Terms of Service and Master Services Agreement governing the access and usage of <strong>NextcoreGent Technologies</strong> software, SaaS products, and custom engineering services.
+              Terms of Service and Master Services Agreement governing the access and usage of <strong>Nexcoregen Technologies</strong> software, SaaS products, and custom engineering services.
             </p>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.85rem', color: 'var(--text-muted)', background: '#FFFFFF', padding: '0.5rem 1.25rem', borderRadius: '9999px', border: '1px solid var(--border-color)' }}>
               <span>Effective Date: <strong>September 19, 2026</strong></span>
@@ -189,7 +189,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                 1. Acceptance of Terms
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
-                By accessing or browsing the website of <strong>NextcoreGent Technologies</strong>, subscribing to our SaaS applications (including <strong>FitCore OS</strong>), or signing a custom software development contract with us, you ("Client", "User", or "Customer") agree to be bound by these Terms & Conditions. If you are entering into this agreement on behalf of a company, gym franchise, or legal entity, you represent that you possess the full legal authority to bind that organization.
+                By accessing or browsing the website of <strong>Nexcoregen Technologies</strong>, subscribing to our SaaS applications (including <strong>FitCore OS</strong>), or signing a custom software development contract with us, you ("Client", "User", or "Customer") agree to be bound by these Terms & Conditions. If you are entering into this agreement on behalf of a company, gym franchise, or legal entity, you represent that you possess the full legal authority to bind that organization.
               </p>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
                 If you do not agree with any part of these Terms, you must immediately discontinue use of our website, applications, and services.
@@ -202,7 +202,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                 2. Scope of Services & SaaS Licenses
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-                NextcoreGent Technologies delivers digital products and bespoke technology engineering services across three main models:
+                Nexcoregen Technologies delivers digital products and bespoke technology engineering services across three main models:
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -247,7 +247,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                 {[
                   'Provide accurate, current, and verifiable company contact and billing details.',
                   'Maintain confidentiality of administrative passwords, 2FA tokens, and turnstile IoT secret keys.',
-                  'Notify NextcoreGent immediately at nexcoregen@ankitpatil1999.online in the event of any unauthorized credential breach or suspicious access.',
+                  'Notify Nexcoregen immediately at nexcoregen@ankitpatil1999.online in the event of any unauthorized credential breach or suspicious access.',
                   'Ensure that your authorized staff members do not share individual login accounts.'
                 ].map((item, i) => (
                   <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
@@ -272,7 +272,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                     <strong>Custom Client Deliverables:</strong> Upon full and final settlement of all milestone invoices specified in a development contract, full ownership of client-specific custom source code and UI assets transfers to the client.
                   </li>
                   <li>
-                    <strong>NextcoreGent Core Platforms:</strong> All rights, title, trademarks, and copyright in NextcoreGent Technologies' proprietary software, including the FitCore OS platform, turnstile firmware, BhishiPe, algorithms, and backend architectures remain the exclusive property of NextcoreGent Technologies.
+                    <strong>Nexcoregen Core Platforms:</strong> All rights, title, trademarks, and copyright in Nexcoregen Technologies' proprietary software, including the FitCore OS platform, turnstile firmware, BhishiPe, algorithms, and backend architectures remain the exclusive property of Nexcoregen Technologies.
                   </li>
                   <li>
                     <strong>Client Data Ownership:</strong> All business records, member lists, revenue metrics, and proprietary assets uploaded by the client remain 100% the property of the client.
@@ -310,7 +310,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                   <strong>Local Network Requirements:</strong> The client is responsible for providing a stable local internet connection (Wi-Fi or Ethernet LAN) and uninterrupted electrical supply at turnstile gates to ensure sub-200ms cloud gate authorization.
                 </p>
                 <p>
-                  <strong>Hardware Warranty:</strong> NextcoreGent controllers deployed directly by our team include standard hardware warranty against manufacturing defects for 12 months. Physical tampering, water damage, or unauthorized electrical modifications void this warranty.
+                  <strong>Hardware Warranty:</strong> Nexcoregen controllers deployed directly by our team include standard hardware warranty against manufacturing defects for 12 months. Physical tampering, water damage, or unauthorized electrical modifications void this warranty.
                 </p>
               </div>
             </section>
@@ -321,7 +321,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                 7. Service Availability & Support SLA
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
-                NextcoreGent Technologies targets a <strong>99.9% uptime</strong> for our cloud APIs and SaaS platforms, excluding scheduled maintenance windows announced at least 48 hours in advance. Emergency support is accessible via dedicated hotline and WhatsApp priority support for production-critical outages.
+                Nexcoregen Technologies targets a <strong>99.9% uptime</strong> for our cloud APIs and SaaS platforms, excluding scheduled maintenance windows announced at least 48 hours in advance. Emergency support is accessible via dedicated hotline and WhatsApp priority support for production-critical outages.
               </p>
             </section>
 
@@ -347,7 +347,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                 9. Warranties & Limitation of Liability
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
-                Except as explicitly guaranteed in written enterprise agreements, our services and software are provided on an "AS IS" and "AS AVAILABLE" basis. To the maximum extent permitted under Indian law, NextcoreGent Technologies and founder Ankit Patil shall not be liable for indirect, punitive, or consequential damages (including lost profits, gym revenue loss, or data downtime) resulting from third-party ISP outages or client hardware failure.
+                Except as explicitly guaranteed in written enterprise agreements, our services and software are provided on an "AS IS" and "AS AVAILABLE" basis. To the maximum extent permitted under Indian law, Nexcoregen Technologies and founder Ankit Patil shall not be liable for indirect, punitive, or consequential damages (including lost profits, gym revenue loss, or data downtime) resulting from third-party ISP outages or client hardware failure.
               </p>
             </section>
 
@@ -385,7 +385,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
 
               <div style={{ background: '#071A3A', color: '#fff', borderRadius: '16px', padding: '2rem' }}>
                 <div style={{ fontWeight: 800, fontSize: '1.25rem', marginBottom: '0.25rem' }}>
-                  NextcoreGent Technologies
+                  Nexcoregen Technologies
                 </div>
                 <div style={{ color: '#38BDF8', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
                   ATTN: Legal & Commercial Contracts (Ankit Patil)
@@ -424,7 +424,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
       <footer style={{ padding: '2.5rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            © {new Date().getFullYear()} NextcoreGent Technologies. All rights reserved.
+            © {new Date().getFullYear()} Nexcoregen Technologies. All rights reserved.
           </div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <button onClick={onNavigateToPrivacy} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.85rem' }}>Privacy Policy</button>

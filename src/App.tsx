@@ -243,7 +243,7 @@ export function App() {
 
               {/* Subheading */}
               <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '520px', marginBottom: '2rem' }}>
-                <strong>NextcoreGent Technologies</strong> is a technology company focused on building modern, scalable and user-friendly digital products for businesses and a better tomorrow.
+                <strong>Nexcoregen Technologies</strong> is a technology company focused on building modern, scalable and user-friendly digital products for businesses and a better tomorrow.
               </p>
 
               {/* Action Buttons */}
@@ -283,7 +283,7 @@ export function App() {
               >
                 <img
                   src="/assets/hero-workspace.jpg"
-                  alt="NextcoreGent Tech Workspace"
+                  alt="Nexcoregen Tech Workspace"
                   style={{ width: '100%', height: '100%', maxHeight: '490px', objectFit: 'cover', display: 'block' }}
                 />
 
@@ -351,7 +351,7 @@ export function App() {
                 Who We Are
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                <strong>NextcoreGent Technologies</strong> is a software development company founded by <strong>Ankit Patil</strong>. We architect scalable web platforms, high-concurrency mobile applications, and connected IoT hardware systems built on solid engineering foundations.
+                <strong>Nexcoregen Technologies</strong> is a software development company founded by <strong>Ankit Patil</strong>. We architect scalable web platforms, high-concurrency mobile applications, and connected IoT hardware systems built on solid engineering foundations.
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
@@ -383,7 +383,7 @@ export function App() {
               <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
                 <img
                   src="/assets/team-collab.jpg"
-                  alt="NextcoreGent Team"
+                  alt="Nexcoregen Team"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </div>
@@ -841,14 +841,14 @@ export function App() {
         </div>
       </section>
 
-      {/* 8. WHY NEXTCOREGENT SECTION (2-COLUMN LAYOUT MATCHING IMAGE 4) */}
+      {/* 8. WHY NEXCOREGEN SECTION (2-COLUMN LAYOUT MATCHING IMAGE 4) */}
       <section id="why-us" style={{ padding: '6rem 0' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
             {/* Left side: Heading & CTA */}
             <div>
               <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                • WHY NEXTCOREGENT
+                • WHY NEXCOREGEN
               </div>
               <h2 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3rem)', color: 'var(--color-navy)', marginBottom: '1rem', lineHeight: 1.15 }}>
                 More Than a Development Company
@@ -1135,7 +1135,7 @@ export function App() {
                       </p>
                       <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <a
-                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=${encodeURIComponent(`Project Enquiry from ${formData.name || 'Client'}`)}&body=${encodeURIComponent(`Hi NextcoreGent Team,\n\nName: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService: ${formData.service}\nBudget: ${formData.budget}\n\nProject Details:\n${formData.details}\n`)}`}
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=${encodeURIComponent(`Project Enquiry from ${formData.name || 'Client'}`)}&body=${encodeURIComponent(`Hi Nexcoregen Team,\n\nName: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService: ${formData.service}\nBudget: ${formData.budget}\n\nProject Details:\n${formData.details}\n`)}`}
                           target="_blank"
                           rel="noreferrer"
                           className="btn btn-primary"
@@ -1268,7 +1268,7 @@ export function App() {
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-light)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
             <div>
-              © {new Date().getFullYear()} NextcoreGent Technologies. All rights reserved.
+              © {new Date().getFullYear()} Nexcoregen Technologies. All rights reserved.
             </div>
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
               <button
@@ -1382,7 +1382,7 @@ export function App() {
 
             <div style={{ marginBottom: '1.5rem' }}>
               <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-green)', textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-                The NextcoreGent Solution
+                The Nexcoregen Solution
               </div>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 {activeCaseStudy.solution}
@@ -1575,7 +1575,7 @@ export function App() {
               {/* Option 1: Google Gmail */}
               <a
                 id="link-open-gmail"
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=Project%20Enquiry%20%7C%20NextcoreGent%20Technologies&body=Hello%20Ankit%20%26%20NexCoreGen%20Team,%0A%0AI%20would%20like%20to%20discuss%20a%20project.%0A%0AService%20Needed:%20%0ABudget:%20%0A%0AThanks!"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=Project%20Enquiry%20%7C%20Nexcoregen%20Technologies&body=Hello%20Ankit%20%26%20Nexcoregen%20Team,%0A%0AI%20would%20like%20to%20discuss%20a%20project.%0A%0AService%20Needed:%20%0ABudget:%20%0A%0AThanks!"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -1623,7 +1623,7 @@ export function App() {
               {/* Option 2: Outlook Web */}
               <a
                 id="link-open-outlook"
-                href="https://outlook.live.com/mail/0/deeplink/compose?to=nexcoregen@ankitpatil1999.online&subject=Project%20Enquiry%20%7C%20NextcoreGent%20Technologies"
+                href="https://outlook.live.com/mail/0/deeplink/compose?to=nexcoregen@ankitpatil1999.online&subject=Project%20Enquiry%20%7C%20Nexcoregen%20Technologies"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -1665,7 +1665,7 @@ export function App() {
               {/* Option 3: Default Desktop Mail App */}
               <a
                 id="link-open-mailto"
-                href="mailto:nexcoregen@ankitpatil1999.online?subject=Project%20Enquiry%20%7C%20NextcoreGent%20Technologies"
+                href="mailto:nexcoregen@ankitpatil1999.online?subject=Project%20Enquiry%20%7C%20Nexcoregen%20Technologies"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
