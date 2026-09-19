@@ -52,16 +52,6 @@ const portfolioData: CaseStudy[] = [
     solution: 'Engineered a transparent digital ledger with real-time bidding, automated installment tracking, and secure UPI payment settlements.',
     features: ['Transparent Digital Auction Bidding', 'Automated Installment Ledger', 'Instant UPI Payouts & Escrow', 'SMS & WhatsApp Due Alerts', 'KYC & Member Verification'],
     techStack: ['React Native', 'Node.js', 'PostgreSQL', 'Prisma', 'Razorpay UPI API']
-  },
-  {
-    id: 'ringpe',
-    name: 'RingPe',
-    category: 'Fintech & Wearable Payments',
-    tagline: 'Next-Generation Contactless Smart Ring & Merchant Payments',
-    problem: 'Users need faster, hands-free payment methods at POS terminals without taking out phones or physical plastic cards.',
-    solution: 'Developed a companion fintech wallet app that securely tokenizes NFC smart rings for tap-and-pay transactions at any standard POS.',
-    features: ['Tokenized NFC Contactless Pay', 'Instant Card Management & Lock', 'Real-Time Transaction Feed', 'Biometric Authentication', 'Cashback & Merchant Rewards'],
-    techStack: ['React Native', 'TypeScript', 'Go Backend', 'Redis', 'PCI-DSS Tokenization']
   }
 ];
 
@@ -838,9 +828,6 @@ export function App() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#8B5CF6' }}>
               <span>🟣</span> BhishiPe
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#0284C7' }}>
-              <span>🔵</span> RingPe
             </div>
             <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
               And upcoming platforms in development...

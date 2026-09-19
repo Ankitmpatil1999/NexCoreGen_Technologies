@@ -278,7 +278,7 @@ export const TermsConditions: React.FC<TermsConditionsProps> = ({ onBackToHome, 
                     <strong>Custom Client Deliverables:</strong> Upon full and final settlement of all milestone invoices specified in a development contract, full ownership of client-specific custom source code and UI assets transfers to the client.
                   </li>
                   <li>
-                    <strong>NextcoreGent Core Platforms:</strong> All rights, title, trademarks, and copyright in NextcoreGent Technologies' proprietary software, including the FitCore OS platform, turnstile firmware, BhishiPe, RingPe, algorithms, and backend architectures remain the exclusive property of NextcoreGent Technologies.
+                    <strong>NextcoreGent Core Platforms:</strong> All rights, title, trademarks, and copyright in NextcoreGent Technologies' proprietary software, including the FitCore OS platform, turnstile firmware, BhishiPe, algorithms, and backend architectures remain the exclusive property of NextcoreGent Technologies.
                   </li>
                   <li>
                     <strong>Client Data Ownership:</strong> All business records, member lists, revenue metrics, and proprietary assets uploaded by the client remain 100% the property of the client.

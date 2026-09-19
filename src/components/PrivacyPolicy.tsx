@@ -193,7 +193,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBackToHome, onNa
                 1. Introduction & Overview
               </h2>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>
-                Welcome to <strong>NextcoreGent Technologies</strong> ("NextcoreGent", "we", "our", or "us"), founded by <strong>Ankit Patil</strong> and headquartered in Nagpur, Maharashtra, India. We specialize in designing and engineering high-impact digital solutions, custom web and mobile applications, backend microservices, and specialized SaaS operating systems such as <strong>FitCore OS</strong> (Gym Management & Turnstile Access), <strong>BhishiPe</strong>, and <strong>RingPe</strong>.
+                Welcome to <strong>NextcoreGent Technologies</strong> ("NextcoreGent", "we", "our", or "us"), founded by <strong>Ankit Patil</strong> and headquartered in Nagpur, Maharashtra, India. We specialize in designing and engineering high-impact digital solutions, custom web and mobile applications, backend microservices, and specialized SaaS operating systems such as <strong>FitCore OS</strong> (Gym Management & Turnstile Access) and <strong>BhishiPe</strong>.
               </p>
               <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
                 This Privacy Policy explains how we collect, store, process, and safeguard the information you provide when you interact with our website, utilize our SaaS platforms, or partner with us for bespoke development services. We adhere strictly to the applicable laws of India, including the <strong>Digital Personal Data Protection Act, 2023 (DPDPA)</strong> and the <strong>Information Technology Act, 2000</strong>.
