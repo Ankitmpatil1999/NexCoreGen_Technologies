@@ -79,12 +79,14 @@ h1, h2, h3, h4, h5, h6 {
 .gradient-title-blue {
   background: linear-gradient(135deg, #1769E0 0%, #38BDF8 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-title-purple {
   background: linear-gradient(135deg, #1769E0 0%, #818CF8 50%, #C084FC 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
