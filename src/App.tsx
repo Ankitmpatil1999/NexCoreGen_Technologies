@@ -16,7 +16,9 @@ import {
   Check,
   ExternalLink,
   MessageCircle,
-  Copy
+  Copy,
+  Menu,
+  Sparkles
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
@@ -64,6 +66,18 @@ export function App() {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('nexcoregen@ankitpatil1999.online');
@@ -159,37 +173,46 @@ export function App() {
           position: 'sticky',
           top: 0,
           zIndex: 50,
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
+          background: 'rgba(255, 255, 255, 0.96)',
+          backdropFilter: 'blur(12px)',
           borderBottom: '1px solid var(--border-color)',
-          padding: '0.9rem 0'
+          padding: '0.85rem 0'
         }}
       >
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Official Logo (2nd Dark Edition) */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateTo('home');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              textDecoration: 'none',
-              background: '#071A3A',
-              padding: '0.4rem 0.95rem',
-              borderRadius: '12px',
-              boxShadow: '0 4px 14px rgba(7, 26, 58, 0.2)',
-              border: '1px solid rgba(255, 255, 255, 0.08)'
-            }}
-          >
-            <Logo variant="dark" size="sm" />
-          </a>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+          {/* Brand Logo & Sabado-Inspired Live Availability Dot */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                textDecoration: 'none',
+                background: '#071A3A',
+                padding: '0.4rem 0.95rem',
+                borderRadius: '12px',
+                boxShadow: '0 4px 14px rgba(7, 26, 58, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                flexShrink: 0
+              }}
+            >
+              <Logo variant="dark" size="sm" />
+            </a>
 
-          {/* Nav Links */}
-          <nav style={{ display: 'none', alignItems: 'center', gap: '1.75rem' }} className="desktop-menu">
+            {/* Sabado-Inspired Status Badge (Desktop) */}
+            <div className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '0.45rem', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.75rem', color: '#15803D', fontWeight: 600 }}>
+              <span className="status-dot"></span>
+              <span>Available for Projects</span>
+            </div>
+          </div>
+
+          {/* Desktop Nav Links */}
+          <nav className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '1.65rem' }}>
             <a href="#home" style={navLinkStyle}>Home</a>
             <a href="#about" style={navLinkStyle}>About</a>
             <a href="#services" style={navLinkStyle}>Services</a>
@@ -199,19 +222,180 @@ export function App() {
             <a href="#contact" style={navLinkStyle}>Contact</a>
           </nav>
 
-          {/* CTA Button */}
-          <div>
-            <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.4rem', fontSize: '0.88rem' }}>
+          {/* Right Action: CTA & Mobile Hamburger Trigger */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <a href="#contact" className="btn btn-primary desktop-nav-links" style={{ display: 'none', padding: '0.6rem 1.4rem', fontSize: '0.88rem' }}>
               Let's Talk <ArrowRight size={14} />
             </a>
+
+            {/* Mobile Hamburger Toggle */}
+            <button
+              className="mobile-menu-trigger"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+              style={{
+                display: 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                background: mobileMenuOpen ? '#EFF6FF' : '#F8FAFC',
+                border: '1px solid var(--border-color)',
+                color: 'var(--color-navy)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
       </header>
 
+      {/* MOBILE NAVIGATION DRAWER */}
+      {mobileMenuOpen && (
+        <div className="mobile-drawer-overlay" onClick={() => setMobileMenuOpen(false)}>
+          <div className="mobile-drawer" onClick={(e) => e.stopPropagation()}>
+            {/* Drawer Header */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1.25rem', borderBottom: '1px solid #E2E8F0', marginBottom: '1.25rem' }}>
+              <div style={{ background: '#071A3A', padding: '0.35rem 0.8rem', borderRadius: '10px' }}>
+                <Logo variant="dark" size="sm" />
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: '#F1F5F9',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: 'var(--color-navy)'
+                }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Status Pill */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '0.4rem 0.85rem', borderRadius: '9999px', fontSize: '0.78rem', color: '#15803D', fontWeight: 600, marginBottom: '1.5rem', alignSelf: 'flex-start' }}>
+              <span className="status-dot"></span>
+              <span>Available for New Projects</span>
+            </div>
+
+            {/* Nav Links */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }}>
+              {[
+                { label: 'Home', action: () => { navigateTo('home'); setMobileMenuOpen(false); } },
+                { label: 'About Us', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                { label: 'Services', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                { label: 'Our Product (FitCore OS)', action: () => { navigateTo('fitcore'); setMobileMenuOpen(false); } },
+                { label: 'Portfolio & Case Studies', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                { label: 'Why Nexcoregen', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                { label: 'Contact', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+              ].map((link, idx) => (
+                <button
+                  key={idx}
+                  onClick={link.action}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0.85rem 1rem',
+                    borderRadius: '12px',
+                    color: 'var(--color-navy)',
+                    background: '#F8FAFC',
+                    border: '1px solid #E2E8F0',
+                    fontWeight: 700,
+                    fontSize: '0.95rem',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    transition: 'all 0.2s ease',
+                    width: '100%'
+                  }}
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight size={16} color="var(--color-primary)" />
+                </button>
+              ))}
+            </div>
+
+            {/* Quick Contact & Action CTA */}
+            <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid #E2E8F0' }}>
+              <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>
+                Instant Connect
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <a
+                  href="https://wa.me/919209282289"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.65rem',
+                    padding: '0.7rem 0.9rem',
+                    background: '#F0FDF4',
+                    border: '1px solid #BBF7D0',
+                    borderRadius: '10px',
+                    color: '#15803D',
+                    textDecoration: 'none',
+                    fontSize: '0.88rem',
+                    fontWeight: 600
+                  }}
+                >
+                  <MessageCircle size={18} /> Chat on WhatsApp
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setEmailModalOpen(true);
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.65rem',
+                    padding: '0.7rem 0.9rem',
+                    background: '#EFF6FF',
+                    border: '1px solid #BFDBFE',
+                    borderRadius: '10px',
+                    color: 'var(--color-primary)',
+                    fontSize: '0.88rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    width: '100%',
+                    textAlign: 'left'
+                  }}
+                >
+                  <Mail size={18} /> Send an Email
+                </button>
+              </div>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                }}
+                className="btn btn-primary"
+                style={{ width: '100%', padding: '0.85rem', borderRadius: '12px' }}
+              >
+                Let's Talk <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 2. HERO SECTION */}
       <section id="home" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', position: 'relative', overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 'clamp(2rem, 4vw, 3rem)', alignItems: 'center' }}>
             {/* Left Column: Headline & Action CTAs */}
             <div>
               {/* Pill Tag */}
@@ -234,7 +418,7 @@ export function App() {
               </div>
 
               {/* Main Headline */}
-              <h1 style={{ fontSize: 'clamp(2.5rem, 4.2vw, 3.8rem)', fontWeight: 800, lineHeight: 1.15, color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
+              <h1 style={{ fontSize: 'clamp(2.3rem, 4.2vw, 3.8rem)', fontWeight: 800, lineHeight: 1.15, color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
                 We Build Digital{' '}
                 <span className="gradient-title-purple">
                   Solutions That Matter.
@@ -242,7 +426,7 @@ export function App() {
               </h1>
 
               {/* Subheading */}
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '520px', marginBottom: '2rem' }}>
+              <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.1rem)', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '520px', marginBottom: '2rem' }}>
                 <strong>Nexcoregen Technologies</strong> is a technology company focused on building modern, scalable and user-friendly digital products for businesses and a better tomorrow.
               </p>
 
@@ -257,7 +441,7 @@ export function App() {
               </div>
 
               {/* 3 Micro-Trust Badges */}
-              <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '0.86rem', fontWeight: 600 }}>
+              <div style={{ display: 'flex', gap: 'clamp(1rem, 2.5vw, 1.5rem)', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '0.86rem', fontWeight: 600 }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   ⚡ Modern Technology
                 </span>
@@ -291,14 +475,14 @@ export function App() {
                 <div
                   style={{
                     position: 'absolute',
-                    top: '1.25rem',
-                    left: '1.25rem',
+                    top: '1rem',
+                    left: '1rem',
                     background: 'rgba(7, 26, 58, 0.88)',
                     backdropFilter: 'blur(8px)',
                     color: '#fff',
-                    padding: '0.55rem 1.1rem',
+                    padding: '0.45rem 0.95rem',
                     borderRadius: '12px',
-                    fontSize: '0.82rem',
+                    fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)',
                     fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
@@ -313,14 +497,14 @@ export function App() {
                 <div
                   style={{
                     position: 'absolute',
-                    bottom: '1.25rem',
-                    right: '1.25rem',
+                    bottom: '1rem',
+                    right: '1rem',
                     background: 'rgba(255, 255, 255, 0.95)',
                     backdropFilter: 'blur(8px)',
                     color: 'var(--color-navy)',
-                    padding: '0.55rem 1rem',
+                    padding: '0.45rem 0.9rem',
                     borderRadius: '12px',
-                    fontSize: '0.8rem',
+                    fontSize: 'clamp(0.72rem, 1.8vw, 0.8rem)',
                     fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
@@ -341,7 +525,7 @@ export function App() {
       {/* 3. ABOUT US SECTION */}
       <section id="about" style={{ padding: '5.5rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
             {/* Left Column: Story */}
             <div>
               <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
@@ -354,7 +538,7 @@ export function App() {
                 <strong>Nexcoregen Technologies</strong> is a software development company founded by <strong>Ankit Patil</strong>. We architect scalable web platforms, high-concurrency mobile applications, and connected IoT hardware systems built on solid engineering foundations.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
                 <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
                     ⚡ Robust Architecture
@@ -378,37 +562,68 @@ export function App() {
               </a>
             </div>
 
-            {/* Right Column: Authentic Team Image */}
-            <div style={{ position: 'relative' }}>
-              <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
+            {/* Right Column: Authentic Team Image & Clean Dedicated Philosophy Card */}
+            <div>
+              <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', boxShadow: 'var(--shadow-card)', border: '1px solid var(--border-color)' }}>
                 <img
                   src="/assets/team-collab.jpg"
-                  alt="Nexcoregen Team"
-                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  alt="Nexcoregen Team Collaboration"
+                  style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
                 />
+                
+                {/* Developer Culture Tag on Image (Clean, sleek, unobtrusive top-left) */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '14px',
+                    left: '14px',
+                    background: 'rgba(7, 26, 58, 0.85)',
+                    backdropFilter: 'blur(8px)',
+                    color: '#FFFFFF',
+                    padding: '0.35rem 0.85rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    border: '1px solid rgba(255, 255, 255, 0.15)'
+                  }}
+                >
+                  <Sparkles size={14} color="#38BDF8" /> Engineering Culture
+                </div>
               </div>
 
-              {/* Quote Card on Image */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '-20px',
-                  right: '20px',
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  backdropFilter: 'blur(10px)',
-                  padding: '1.25rem',
-                  borderRadius: '16px',
-                  border: '1px solid var(--border-color)',
-                  boxShadow: 'var(--shadow-card)',
-                  maxWidth: '300px'
-                }}
-              >
-                <div style={{ fontSize: '1.2rem', color: 'var(--color-primary)', marginBottom: '0.35rem' }}>“</div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-navy)', lineHeight: 1.4 }}>
-                  Great products are built by great people.
+              {/* Dedicated Philosophy & Quote Card Placed Cleanly BELOW Image (NO OVERLAP) */}
+              <div className="quote-box-modern">
+                <div
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '12px',
+                    background: 'var(--color-primary-light)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--color-primary)',
+                    fontSize: '1.4rem',
+                    fontWeight: 800,
+                    flexShrink: 0
+                  }}
+                >
+                  “
                 </div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-                  Ideas Today. A Better Tomorrow.
+                <div style={{ flexGrow: 1 }}>
+                  <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-navy)', lineHeight: 1.35, marginBottom: '0.25rem' }}>
+                    Great products are built by great people.
+                  </div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>
+                    Ideas Today. A Better Tomorrow.
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                    Our team architects software with relentless dedication to craft, performance, and long-term business impact.
+                  </div>
                 </div>
               </div>
             </div>
@@ -440,88 +655,106 @@ export function App() {
           </div>
 
           {/* 6 Services Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
             {/* Service 1 */}
-            <div className="saas-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#F3E8FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                <Code size={22} color="#9333EA" />
+            <div className="tech-card-sabado">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#F3E8FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Code size={22} color="#9333EA" />
+                </div>
+                <span className="badge-tech badge-tech-blue">Full-Stack Web</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>Web Development</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
                 Modern, responsive and high-converting business websites, custom web applications, and customer portals.
               </p>
-              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                Discuss Your Project →
+              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Discuss Your Project <ArrowRight size={14} />
               </a>
             </div>
 
             {/* Service 2 */}
-            <div className="saas-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#E0F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                <Smartphone size={22} color="#0284C7" />
+            <div className="tech-card-sabado">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#E0F2FE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Smartphone size={22} color="#0284C7" />
+                </div>
+                <span className="badge-tech badge-tech-blue">iOS & Android</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>Mobile App Development</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
                 High-performance Android and iOS native & cross-platform applications with intuitive user experience.
               </p>
-              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                Discuss Your Project →
+              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Discuss Your Project <ArrowRight size={14} />
               </a>
             </div>
 
             {/* Service 3 */}
-            <div className="saas-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                <Cloud size={22} color="#16A34A" />
+            <div className="tech-card-sabado">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Cloud size={22} color="#16A34A" />
+                </div>
+                <span className="badge-tech badge-tech-green">Multi-Tenant</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>SaaS Development</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
                 Scalable cloud-based SaaS software with multi-tenant architecture, automated subscription billing, and dashboards.
               </p>
-              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                Discuss Your Project →
+              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Discuss Your Project <ArrowRight size={14} />
               </a>
             </div>
 
             {/* Service 4 */}
-            <div className="saas-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FEF3C7', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                <Palette size={22} color="#D97706" />
+            <div className="tech-card-sabado">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FEF3C7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Palette size={22} color="#D97706" />
+                </div>
+                <span className="badge-tech badge-tech-amber">Design System</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>UI/UX Product Design</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
                 Clean, world-class user interfaces and wireframes that delight users and maximize conversion rates.
               </p>
-              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                Discuss Your Project →
+              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Discuss Your Project <ArrowRight size={14} />
               </a>
             </div>
 
             {/* Service 5 */}
-            <div className="saas-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FCE7F3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                <Server size={22} color="#DB2777" />
+            <div className="tech-card-sabado">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FCE7F3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Server size={22} color="#DB2777" />
+                </div>
+                <span className="badge-tech badge-tech-blue">High Concurrency</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>API & Backend Solutions</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
                 Secure, high-concurrency microservices, REST APIs, and database architectures using Node.js & Python.
               </p>
-              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                Discuss Your Project →
+              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Discuss Your Project <ArrowRight size={14} />
               </a>
             </div>
 
             {/* Service 6 */}
-            <div className="saas-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EDE9FE', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                <Headphones size={22} color="#7C3AED" />
+            <div className="tech-card-sabado">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EDE9FE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Headphones size={22} color="#7C3AED" />
+                </div>
+                <span className="badge-tech badge-tech-green">24/7 SLA</span>
               </div>
               <h3 style={{ fontSize: '1.25rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>Maintenance & Support</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem', flexGrow: 1 }}>
                 24/7 server monitoring, performance tuning, security patches, and ongoing continuous feature updates.
               </p>
-              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                Discuss Your Project →
+              <a href="#contact" style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.88rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Discuss Your Project <ArrowRight size={14} />
               </a>
             </div>
           </div>
@@ -574,14 +807,15 @@ export function App() {
             style={{
               background: '#FFFFFF',
               borderRadius: '24px',
-              padding: '2.5rem',
+              padding: 'clamp(1.2rem, 3.5vw, 2.5rem)',
               border: '1px solid var(--border-color)',
               boxShadow: 'var(--shadow-lg)',
               marginBottom: '3.5rem',
-              position: 'relative'
+              position: 'relative',
+              overflow: 'hidden'
             }}
           >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2.5rem', alignItems: 'center' }}>
               {/* Realistic Laptop Device Mockup */}
               <div style={{ position: 'relative', width: '100%', maxWidth: '580px', margin: '0 auto' }}>
                 {/* Screen frame */}
@@ -601,7 +835,7 @@ export function App() {
                   {/* Dashboard Interior Screen */}
                   <div style={{ background: '#0F172A', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
                     {/* Top Bar */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.65rem 1rem', background: '#1E293B', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.65rem 1rem', background: '#1E293B', borderBottom: '1px solid rgba(255,255,255,0.08)', flexWrap: 'wrap', gap: '0.5rem' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <span style={{ fontWeight: 800, color: '#22C55E', fontSize: '0.95rem' }}>FitCore</span>
                         <span style={{ fontSize: '0.7rem', color: '#94A3B8', padding: '0.15rem 0.45rem', borderRadius: '4px', background: 'rgba(255,255,255,0.06)' }}>Admin Pro</span>
@@ -609,17 +843,17 @@ export function App() {
                       <div style={{ display: 'flex', gap: '0.75rem', fontSize: '0.72rem', color: '#94A3B8' }}>
                         <span>Total: <strong style={{ color: '#fff' }}>248</strong></span>
                         <span>Active: <strong style={{ color: '#22C55E' }}>186</strong></span>
-                        <span>Revenue: <strong style={{ color: '#FBBF24' }}>₹48,250</strong></span>
+                        <span>Rev: <strong style={{ color: '#FBBF24' }}>₹48k</strong></span>
                       </div>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', minHeight: '190px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(80px, 120px) 1fr', minHeight: '190px' }}>
                       {/* Sidebar */}
                       <div style={{ background: '#090E1A', padding: '0.75rem 0.5rem', borderRight: '1px solid rgba(255,255,255,0.05)', fontSize: '0.68rem', color: '#94A3B8', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                         <div style={{ color: '#22C55E', fontWeight: 700, padding: '0.25rem 0.4rem', borderRadius: '4px', background: 'rgba(34,197,94,0.1)' }}>📊 Dashboard</div>
                         <div style={{ padding: '0.25rem 0.4rem' }}>👥 Members</div>
                         <div style={{ padding: '0.25rem 0.4rem' }}>📱 Check-in</div>
-                        <div style={{ padding: '0.25rem 0.4rem' }}>💳 Subscriptions</div>
+                        <div style={{ padding: '0.25rem 0.4rem' }}>💳 Plans</div>
                         <div style={{ padding: '0.25rem 0.4rem' }}>🏋️ Trainers</div>
                         <div style={{ padding: '0.25rem 0.4rem' }}>⚙️ Settings</div>
                       </div>
@@ -629,10 +863,10 @@ export function App() {
                         {/* 7 Days Bar Chart */}
                         <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '0.65rem', marginBottom: '0.75rem' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#94A3B8', marginBottom: '0.4rem' }}>
-                            <span>Member Activity (Past 7 Days)</span>
-                            <span style={{ color: '#22C55E', fontWeight: 700 }}>+28% this week</span>
+                            <span>Member Activity (7 Days)</span>
+                            <span style={{ color: '#22C55E', fontWeight: 700 }}>+28%</span>
                           </div>
-                          <div style={{ display: 'flex', alignItems: 'flex-end', height: '55px', gap: '8px', justifyContent: 'space-between' }}>
+                          <div style={{ display: 'flex', alignItems: 'flex-end', height: '55px', gap: '6px', justifyContent: 'space-between' }}>
                             {[40, 65, 52, 85, 70, 96, 88].map((h, i) => (
                               <div key={i} style={{ width: '100%', height: `${h}%`, background: '#22C55E', borderRadius: '3px', opacity: 0.9 }} />
                             ))}
@@ -643,11 +877,11 @@ export function App() {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', background: 'rgba(255,255,255,0.04)', padding: '0.35rem 0.5rem', borderRadius: '5px', color: '#fff' }}>
                             <span>Rahul Sharma (VIP Gold)</span>
-                            <span style={{ color: '#22C55E' }}>Checked in 07:15 AM</span>
+                            <span style={{ color: '#22C55E' }}>07:15 AM</span>
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', background: 'rgba(255,255,255,0.04)', padding: '0.35rem 0.5rem', borderRadius: '5px', color: '#fff' }}>
-                            <span>Priya Verma (Pro Member)</span>
-                            <span style={{ color: '#22C55E' }}>Checked in 07:42 AM</span>
+                            <span>Priya Verma (Pro)</span>
+                            <span style={{ color: '#22C55E' }}>07:42 AM</span>
                           </div>
                         </div>
                       </div>
@@ -658,8 +892,7 @@ export function App() {
                 {/* Metallic Laptop Base Chassis */}
                 <div
                   style={{
-                    width: '106%',
-                    margin: '0 -3%',
+                    width: '100%',
                     height: '14px',
                     background: 'linear-gradient(180deg, #94A3B8 0%, #475569 100%)',
                     borderRadius: '0 0 14px 14px',
@@ -730,7 +963,7 @@ export function App() {
           </div>
 
           {/* 6 Clean Feature Badges Bar */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '0.85rem' }}>
             {[
               { icon: '👥', label: 'Member Management' },
               { icon: '📱', label: 'QR Check-in / Check-out' },
@@ -925,6 +1158,7 @@ export function App() {
           <div style={{ position: 'relative' }}>
             {/* Horizontal Timeline Connector Bar (Desktop) */}
             <div
+              className="desktop-timeline-line"
               style={{
                 position: 'absolute',
                 top: '24px',
@@ -1256,7 +1490,7 @@ export function App() {
             </div>
 
             {/* Links */}
-            <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.88rem' }}>
+            <div style={{ display: 'flex', gap: 'clamp(0.75rem, 2vw, 1.5rem)', fontSize: '0.88rem', flexWrap: 'wrap' }}>
               <a href="#home" style={footerLink}>Home</a>
               <a href="#about" style={footerLink}>About</a>
               <a href="#services" style={footerLink}>Services</a>
@@ -1270,7 +1504,7 @@ export function App() {
             <div>
               © {new Date().getFullYear()} Nexcoregen Technologies. All rights reserved.
             </div>
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: 'clamp(0.75rem, 2vw, 1.5rem)', alignItems: 'center', flexWrap: 'wrap' }}>
               <button
                 onClick={() => navigateTo('privacy')}
                 style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.82rem', padding: 0 }}
@@ -1733,7 +1967,15 @@ export function App() {
       {/* Responsive helper */}
       <style>{`
         @media (min-width: 900px) {
-          .desktop-menu { display: flex !important; }
+          .desktop-nav-links { display: flex !important; }
+          .mobile-menu-trigger { display: none !important; }
+        }
+        @media (max-width: 899px) {
+          .desktop-nav-links { display: none !important; }
+          .mobile-menu-trigger { display: inline-flex !important; }
+        }
+        @media (max-width: 768px) {
+          .desktop-timeline-line { display: none !important; }
         }
       `}</style>
     </div>

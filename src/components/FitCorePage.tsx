@@ -158,8 +158,8 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
             </div>
           </div>
 
-          {/* Quick Page Links */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', fontSize: '0.88rem', fontWeight: 600 }}>
+          {/* Quick Page Links (Desktop) */}
+          <nav className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '1.25rem', fontSize: '0.88rem', fontWeight: 600 }}>
             <a href="#showcase" style={navLink}>Product Demos</a>
             <a href="#why-fitcore" style={navLink}>Why Gyms Buy</a>
             <a href="#comparison" style={navLink}>Old vs FitCore</a>
@@ -173,6 +173,17 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
               Book Live Demo →
             </a>
           </nav>
+
+          {/* Quick Demo CTA (Mobile) */}
+          <div className="mobile-menu-trigger" style={{ display: 'none' }}>
+            <a
+              href="#book-demo"
+              className="btn"
+              style={{ background: '#16A34A', color: '#fff', padding: '0.45rem 0.95rem', fontSize: '0.78rem', borderRadius: '8px' }}
+            >
+              Demo →
+            </a>
+          </div>
         </div>
       </header>
 
