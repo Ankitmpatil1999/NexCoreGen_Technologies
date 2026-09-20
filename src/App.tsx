@@ -1252,7 +1252,7 @@ export function App() {
             style={{
               background: 'linear-gradient(135deg, #071A3A 0%, #0F2D6B 100%)',
               borderRadius: '24px',
-              padding: 'clamp(2rem, 5vw, 4rem)',
+              padding: 'clamp(1.35rem, 4vw, 3.5rem)',
               color: '#FFFFFF',
               boxShadow: 'var(--shadow-lg)',
               position: 'relative',
@@ -1277,22 +1277,22 @@ export function App() {
                 <div style={{ color: '#38BDF8', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                   LET'S BUILD SOMETHING GREAT TOGETHER
                 </div>
-                <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', color: '#FFFFFF', marginBottom: '1rem' }}>
+                <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#FFFFFF', marginBottom: '1rem' }}>
                   Have a Project in Mind?
                 </h2>
-                <p style={{ color: '#CBD5E1', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                <p style={{ color: '#CBD5E1', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', lineHeight: 1.6 }}>
                   Let's discuss your ideas. Get in touch with us via WhatsApp or Email — We'd love to hear from you!
                 </p>
               </div>
 
               {/* Direct Instant Action Buttons */}
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                 <a
                   href="https://wa.me/919209282289"
                   target="_blank"
                   rel="noreferrer"
                   className="btn"
-                  style={{ background: '#16A34A', color: '#fff', padding: '0.85rem 1.8rem', fontSize: '0.95rem' }}
+                  style={{ background: '#16A34A', color: '#fff', padding: '0.85rem 1.6rem', fontSize: '0.95rem' }}
                 >
                   <MessageCircle size={18} /> Chat on WhatsApp
                 </a>
@@ -1302,16 +1302,16 @@ export function App() {
                   type="button"
                   onClick={() => setEmailModalOpen(true)}
                   className="btn btn-white"
-                  style={{ padding: '0.85rem 1.8rem', fontSize: '0.95rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                  style={{ padding: '0.85rem 1.6rem', fontSize: '0.95rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
                 >
                   <Mail size={18} color="var(--color-navy)" /> Send an Email
                 </button>
               </div>
 
               {/* Quick Contact & Interactive Form */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', alignItems: 'flex-start' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem', alignItems: 'flex-start' }}>
                 {/* Contact Details Card */}
-                <div style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: '2rem', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                <div style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: 'clamp(1.2rem, 3.5vw, 2rem)', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
                   <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.25rem', color: '#fff' }}>
                     Quick Contact
                   </div>
@@ -1333,25 +1333,27 @@ export function App() {
                       onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                       title="Click to send an email or copy address"
                     >
-                      <Mail size={18} color="#38BDF8" />
-                      <div>
-                        <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>DROP US AN EMAIL</div>
-                        <div style={{ fontWeight: 600, fontSize: '0.95rem', textDecoration: 'underline', textUnderlineOffset: '3px' }}>nexcoregen@ankitpatil1999.online</div>
+                      <Mail size={18} color="#38BDF8" style={{ flexShrink: 0 }} />
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>DROP US AN EMAIL</div>
+                        <div style={{ fontWeight: 600, fontSize: 'clamp(0.82rem, 2.2vw, 0.95rem)', textDecoration: 'underline', textUnderlineOffset: '3px', wordBreak: 'break-all' }}>
+                          nexcoregen@ankitpatil1999.online
+                        </div>
                       </div>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <Phone size={18} color="#38BDF8" />
+                      <Phone size={18} color="#38BDF8" style={{ flexShrink: 0 }} />
                       <div>
-                        <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>CALL OR WHATSAPP</div>
+                        <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>CALL OR WHATSAPP</div>
                         <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>+91 9209282289</div>
                       </div>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <MapPin size={18} color="#38BDF8" />
+                      <MapPin size={18} color="#38BDF8" style={{ flexShrink: 0 }} />
                       <div>
-                        <div style={{ fontSize: '0.75rem', color: '#94A3B8' }}>HEADQUARTERS</div>
+                        <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>HEADQUARTERS</div>
                         <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>Nagpur, Maharashtra, India</div>
                       </div>
                     </div>
@@ -1359,9 +1361,9 @@ export function App() {
                 </div>
 
                 {/* Form */}
-                <div id="contact-form" style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: '2rem', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                <div id="contact-form" style={{ background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: 'clamp(1.2rem, 3.5vw, 2rem)', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
                   {formSubmitted ? (
-                    <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+                    <div style={{ textAlign: 'center', padding: '1.5rem 0.5rem' }}>
                       <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>✅</div>
                       <div style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>Thank You!</div>
                       <p style={{ color: '#CBD5E1', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
@@ -1388,7 +1390,7 @@ export function App() {
                     </div>
                   ) : (
                     <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                      <div className="contact-form-grid">
                         <div>
                           <label style={formLabel}>YOUR NAME *</label>
                           <input
@@ -1412,7 +1414,7 @@ export function App() {
                         </div>
                       </div>
 
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                      <div className="contact-form-grid">
                         <div>
                           <label style={formLabel}>PHONE NUMBER *</label>
                           <input
@@ -1468,39 +1470,45 @@ export function App() {
       {/* 12. FOOTER */}
       <footer style={{ padding: '3.5rem 0 2rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {/* Official Logo (2nd Dark Edition) */}
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                cursor: 'pointer',
-                background: '#071A3A',
-                padding: '0.55rem 1.25rem',
-                borderRadius: '14px',
-                boxShadow: '0 4px 16px rgba(7, 26, 58, 0.25)',
-                border: '1px solid rgba(255, 255, 255, 0.08)'
-              }}
-              onClick={() => {
-                navigateTo('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            >
-              <Logo variant="dark" size="md" />
+          <div className="footer-main-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2.5rem' }}>
+            {/* Official Logo */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  background: '#071A3A',
+                  padding: '0.55rem 1.25rem',
+                  borderRadius: '14px',
+                  boxShadow: '0 4px 16px rgba(7, 26, 58, 0.25)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  alignSelf: 'flex-start'
+                }}
+                onClick={() => {
+                  navigateTo('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                <Logo variant="dark" size="md" />
+              </div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                Ideas Today. A Better Tomorrow.
+              </div>
             </div>
 
             {/* Links */}
-            <div style={{ display: 'flex', gap: 'clamp(0.75rem, 2vw, 1.5rem)', fontSize: '0.88rem', flexWrap: 'wrap' }}>
+            <div className="footer-links-container">
               <a href="#home" style={footerLink}>Home</a>
               <a href="#about" style={footerLink}>About</a>
               <a href="#services" style={footerLink}>Services</a>
-              <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={footerLink}>Our Product (FitCore)</a>
+              <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={footerLink}>Our Product</a>
               <a href="#portfolio" style={footerLink}>Portfolio</a>
               <a href="#contact" style={footerLink}>Contact</a>
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-light)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+          <div className="footer-bottom-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-light)', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
             <div>
               © {new Date().getFullYear()} Nexcoregen Technologies. All rights reserved.
             </div>
@@ -1522,10 +1530,8 @@ export function App() {
                 Terms & Conditions
               </button>
               <span
-                style={{ cursor: 'pointer', color: 'var(--text-muted)', fontSize: '0.82rem' }}
+                style={{ cursor: 'pointer', color: 'var(--color-primary)', fontWeight: 600, fontSize: '0.82rem' }}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
               >
                 Back to Top ↑
               </span>

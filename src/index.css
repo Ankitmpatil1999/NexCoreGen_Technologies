@@ -451,3 +451,47 @@ input, select, textarea {
     display: none !important;
   }
 }
+
+/* Contact Form Responsive Grid */
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .contact-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+}
+
+/* Footer Responsive Layout */
+.footer-links-container {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .footer-links-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+  }
+  
+  .footer-main-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.75rem !important;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+}
+
