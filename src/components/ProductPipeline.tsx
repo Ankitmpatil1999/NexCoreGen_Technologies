@@ -13,6 +13,24 @@ interface ProductPipelineProps {
 
 const pipelineItems: ProductPipelineItem[] = [
   {
+    id: 'campusone',
+    name: 'CampusOne Enterprise',
+    category: 'Higher Education & Accreditation',
+    tagline: 'Unified Smart Campus OS for Engineering Colleges & Universities',
+    description: 'Central multi-tenant OS unifying dual-DB schema isolation, 64-bit Paise double-entry financial ledger, automated NBA/NAAC accreditation, and sub-200ms IoT turnstiles.',
+    status: 'Flagship Live',
+    statusColor: 'emerald',
+    targetMarket: '₹42,000 Cr Higher Technical Education',
+    metrics: 'Dual-DB • 64-bit Paise • 99.9% Uptime',
+    iconName: 'GraduationCap',
+    features: [
+      'Dual-DB physical schema isolation',
+      '64-bit unsigned integer Paise financial ledger',
+      'Automated NBA CO-PO & NAAC SSR auto-compiler',
+      'Sub-200ms RFID & biometric turnstile gateway'
+    ]
+  },
+  {
     id: 'fitcore',
     name: 'FitCore OS',
     category: 'Fitness & Franchise Telemetry',
@@ -28,6 +46,24 @@ const pipelineItems: ProductPipelineItem[] = [
       'Pan-India franchise Super Admin HUD',
       '10% take-rate nutrition store',
       'NFC mobile digital pass'
+    ]
+  },
+  {
+    id: 'admissionzen',
+    name: 'AdmissionZen',
+    category: 'High-Velocity Admissions',
+    tagline: 'Client Commissioned CRM with 80 msgs/s Meta WhatsApp Engine',
+    description: 'High-velocity educational admission CRM featuring 5,000+ lead bulk Excel streaming parser, BullMQ rate-limited WhatsApp dispatch, and backend IDOR Shield privacy.',
+    status: 'Private Alpha',
+    statusColor: 'cyan',
+    targetMarket: 'Schools, Colleges & Coaching Chains',
+    metrics: '5,000+ Records / 3s • 80 msgs/s',
+    iconName: 'MessageCircle',
+    features: [
+      '5,000+ streaming bulk Excel parser in 3s',
+      'BullMQ Meta Cloud WhatsApp queue at 80 msgs/s',
+      'Strict counselor IDOR Shield isolation',
+      'NutriZen mobile bottom nav with circular FAB'
     ]
   },
   {

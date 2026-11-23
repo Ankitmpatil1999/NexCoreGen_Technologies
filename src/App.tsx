@@ -18,11 +18,19 @@ import {
   MessageCircle,
   Copy,
   Menu,
-  Sparkles
+  Sparkles,
+  GraduationCap,
+  Clock,
+  CheckCircle2,
+  Calculator,
+  Shield,
+  Award
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
 import { FitCorePage } from './components/FitCorePage';
+import { CampusOnePage } from './components/CampusOnePage';
+import { AdmissionZenPage } from './components/AdmissionZenPage';
 import { Logo } from './components/Logo';
 
 interface CaseStudy {
@@ -34,18 +42,69 @@ interface CaseStudy {
   solution: string;
   features: string[];
   techStack: string[];
+  status?: string;
+  statusBadgeColor?: string;
+  isClientProject?: boolean;
 }
 
 const portfolioData: CaseStudy[] = [
   {
+    id: 'campusone',
+    name: 'CampusOne Enterprise',
+    category: 'Higher Education ERP & Smart Campus OS',
+    tagline: 'Unified Smart Campus Operating System for Indian Engineering Colleges & Universities',
+    problem: 'Indian engineering colleges and universities struggle with fragmented student ERPs, manual NBA/NAAC accreditation audits, fee leakages in floating-point financial ledgers, and disconnected biometric turnstile hardware.',
+    solution: 'Architected a dual-database multi-tenant cloud platform with an immutable 64-bit integer Paise financial ledger, automated CO-PO-PSO direct/indirect attainment matrices, sub-200ms RFID/biometric IoT turnstiles, and 20+ production modules.',
+    features: [
+      'Dual-Database Multi-Tenant Isolation (Control Plane vs Institutional Schema)',
+      'Immutable 64-bit Integer Paise Double-Entry Financial Ledger (Zero Leakage)',
+      'Automated Outcome-Based Education (OBE CO-PO-PSO) for NBA Tier-I/II',
+      'One-Click NAAC RAF & IQAC Auto-Compilation (SSR & AQAR Reports)',
+      'Sub-200ms RFID & Biometric Turnstile IoT Gateway Integration',
+      'Dynamic No-Code Approvals & Workflow Engine with Multi-Stage Escalation'
+    ],
+    techStack: ['Node.js 24 LTS', 'Express 5', 'TypeScript 6', 'Kysely', 'Angular 22', 'Tauri Desktop', 'React Native', 'DPDP Act 2023'],
+    status: 'Flagship Live • Higher Education OS',
+    statusBadgeColor: '#1D4ED8'
+  },
+  {
     id: 'fitcore',
-    name: 'FitCore',
-    category: 'Gym Management SaaS & Smart IoT',
-    tagline: 'Complete Operating System for Pan-India Gyms & Clubs',
-    problem: 'Fitness clubs were struggling with manual registers, unauthorized entries, lost fee payments, and disconnected turnstile hardware.',
-    solution: 'Built an end-to-end multi-tenant platform with member mobile app, QR/NFC gate access under 200ms, and automated fee collections.',
-    features: ['Sub-200ms Turnstile IoT Gateway', 'Member Mobile Pass & Attendance', 'Automated Fees & WhatsApp Reminders', 'Multi-Branch Franchise Telemetry', 'POS Supplement Store'],
-    techStack: ['React 19', 'TypeScript', 'Node.js', 'MongoDB', 'ESP32 MQTT', 'Tailored REST API']
+    name: 'FitCore OS',
+    category: 'Gym Management SaaS & Turnstile IoT OS',
+    tagline: 'Pan-India Gym Management, Turnstile IoT & Commerce Operating System',
+    problem: 'Gym franchises and fitness clubs were losing up to 18% of their annual revenue due to manual paper registers, unauthorized proxy entries, expired memberships slipping past staff, and disconnected turnstile hardware.',
+    solution: 'Built an end-to-end multi-tenant platform featuring custom ESP32 MQTT turnstile hardware controllers, sub-200ms QR/NFC gate sync, Pan-India franchise Super Admin HUD, automated WhatsApp fee billing, and in-gym POS nutrition store.',
+    features: [
+      'Sub-200ms ESP32 Turnstile IoT Gateway (Wiegand & OSDP protocols)',
+      'Member Mobile Pass with NFC & Dynamic Anti-Screenshot QR Code',
+      'Automated WhatsApp Fee Billing & Payment Links via Razorpay',
+      'Pan-India Franchise Multi-Branch Telemetry & Live Heatmaps',
+      'In-Gym POS Supplement Store with 10% Margin Tracking',
+      'Trainer Workspaces with Custom Workout & Nutrition Macro Planners'
+    ],
+    techStack: ['React 19', 'TypeScript', 'Node.js', 'MongoDB', 'Prisma', 'ESP32 MQTT', 'Tailored REST API'],
+    status: 'Flagship Live • Smart Gym & IoT OS',
+    statusBadgeColor: '#16A34A'
+  },
+  {
+    id: 'admissionzen',
+    name: 'AdmissionZen',
+    category: 'Student Admission CRM & WhatsApp Outreach',
+    tagline: 'Client Commissioned High-Velocity Admission CRM with Automated 80 msgs/s WhatsApp Outreach',
+    problem: 'An educational client was losing valuable student admissions due to delayed caller follow-ups, slow spreadsheet ingestion of 5,000+ leads, and data leakage where counselors could view or reassign other team members\' high-intent leads.',
+    solution: 'Engineered a streaming bulk Excel ingestion engine parsing 5,000+ leads in under 3 seconds, Meta Cloud WhatsApp API broadcast engine with BullMQ rate limiting at 80 msgs/sec, backend IDOR Shield counselor privacy, and active conversational AI development.',
+    features: [
+      'Streaming 5,000+ Bulk Excel & CSV Ingestion Engine (Under 3 seconds)',
+      'Meta Cloud WhatsApp API Engine with BullMQ Rate Limiting (80 msgs/sec)',
+      'Backend-Enforced Counselor Data Isolation (IDOR Shield Privacy)',
+      'NutriZen Forest Green Mobile App with Bottom Nav & Circular Action FAB',
+      'Public 1-Tap Student Admission Inquiry Portal with Mobile OTP',
+      'Active Ongoing Sprint: 24/7 AI WhatsApp Chatbot & Application Fee Gateway'
+    ],
+    techStack: ['React 19', 'Node.js', 'Express', 'MongoDB', 'BullMQ', 'Meta WhatsApp Cloud API', 'HMAC SHA-256'],
+    status: 'Client Project • Active Ongoing Sprint',
+    statusBadgeColor: '#D97706',
+    isClientProject: true
   },
   {
     id: 'bhishipe',
@@ -54,13 +113,21 @@ const portfolioData: CaseStudy[] = [
     tagline: 'Modernizing Traditional Community Savings with Trust & Transparency',
     problem: 'Traditional Bhishi (Chit Fund) groups in India rely on paper ledgers, causing disputes, trust deficits, and payment delays.',
     solution: 'Engineered a transparent digital ledger with real-time bidding, automated installment tracking, and secure UPI payment settlements.',
-    features: ['Transparent Digital Auction Bidding', 'Automated Installment Ledger', 'Instant UPI Payouts & Escrow', 'SMS & WhatsApp Due Alerts', 'KYC & Member Verification'],
-    techStack: ['React Native', 'Node.js', 'PostgreSQL', 'Prisma', 'Razorpay UPI API']
+    features: [
+      'Transparent Digital Auction Bidding Engine',
+      'Automated Double-Entry Installment Ledger',
+      'Instant UPI Payouts & Escrow Settlement',
+      'SMS & WhatsApp Due Alerts with Deep Links',
+      'Automated KYC & Member Identity Verification'
+    ],
+    techStack: ['React Native', 'Node.js', 'PostgreSQL', 'Prisma', 'Razorpay UPI API'],
+    status: 'Production Live • FinTech',
+    statusBadgeColor: '#7C3AED'
   }
 ];
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms' | 'fitcore'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms' | 'fitcore' | 'campusone' | 'admissionzen'>('home');
   const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudy | null>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [emailModalOpen, setEmailModalOpen] = useState(false);
@@ -103,6 +170,10 @@ export function App() {
         setCurrentPage('terms');
       } else if (hash === '#fitcore' || hash === '#fitcore-product' || hash === '#product') {
         setCurrentPage('fitcore');
+      } else if (hash === '#campusone' || hash === '#campus-one' || hash === '#erp') {
+        setCurrentPage('campusone');
+      } else if (hash === '#admissionzen' || hash === '#admission-zen' || hash === '#crm') {
+        setCurrentPage('admissionzen');
       } else if (hash === '' || hash === '#home' || hash === '#') {
         setCurrentPage('home');
       }
@@ -113,7 +184,7 @@ export function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'privacy' | 'terms' | 'fitcore') => {
+  const navigateTo = (page: 'home' | 'privacy' | 'terms' | 'fitcore' | 'campusone' | 'admissionzen') => {
     setCurrentPage(page);
     if (page === 'privacy') {
       window.location.hash = '#privacy';
@@ -121,6 +192,10 @@ export function App() {
       window.location.hash = '#terms';
     } else if (page === 'fitcore') {
       window.location.hash = '#fitcore';
+    } else if (page === 'campusone') {
+      window.location.hash = '#campusone';
+    } else if (page === 'admissionzen') {
+      window.location.hash = '#admissionzen';
     } else {
       window.location.hash = '#home';
     }
@@ -165,6 +240,36 @@ export function App() {
     );
   }
 
+  if (currentPage === 'campusone') {
+    return (
+      <CampusOnePage
+        onBackToHome={() => navigateTo('home')}
+        onNavigateToContact={() => {
+          navigateTo('home');
+          setTimeout(() => {
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 150);
+        }}
+      />
+    );
+  }
+
+  if (currentPage === 'admissionzen') {
+    return (
+      <AdmissionZenPage
+        onBackToHome={() => navigateTo('home')}
+        onNavigateToContact={() => {
+          navigateTo('home');
+          setTimeout(() => {
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 150);
+        }}
+      />
+    );
+  }
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-page)', color: 'var(--text-dark)' }}>
       {/* 1. NAVBAR */}
@@ -180,7 +285,7 @@ export function App() {
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-          {/* Brand Logo & Sabado-Inspired Live Availability Dot */}
+          {/* Brand Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <a
               href="#"
@@ -203,20 +308,16 @@ export function App() {
             >
               <Logo variant="dark" size="sm" />
             </a>
-
-            {/* Sabado-Inspired Status Badge (Desktop) */}
-            <div className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '0.45rem', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.75rem', color: '#15803D', fontWeight: 600 }}>
-              <span className="status-dot"></span>
-              <span>Available for Projects</span>
-            </div>
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '1.65rem' }}>
+          <nav className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '1.4rem' }}>
             <a href="#home" style={navLinkStyle}>Home</a>
             <a href="#about" style={navLinkStyle}>About</a>
             <a href="#services" style={navLinkStyle}>Services</a>
-            <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={navLinkStyle}>Our Product</a>
+            <a href="#campusone" onClick={(e) => { e.preventDefault(); navigateTo('campusone'); }} style={{ ...navLinkStyle, color: '#1D4ED8', fontWeight: 700 }}>CampusOne OS</a>
+            <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={{ ...navLinkStyle, color: '#16A34A', fontWeight: 700 }}>FitCore OS</a>
+            <a href="#admissionzen" onClick={(e) => { e.preventDefault(); navigateTo('admissionzen'); }} style={{ ...navLinkStyle, color: '#D97706', fontWeight: 700 }}>AdmissionZen</a>
             <a href="#portfolio" style={navLinkStyle}>Portfolio</a>
             <a href="#why-us" style={navLinkStyle}>Why Us</a>
             <a href="#contact" style={navLinkStyle}>Contact</a>
@@ -282,19 +383,15 @@ export function App() {
               </button>
             </div>
 
-            {/* Status Pill */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '0.4rem 0.85rem', borderRadius: '9999px', fontSize: '0.78rem', color: '#15803D', fontWeight: 600, marginBottom: '1.5rem', alignSelf: 'flex-start' }}>
-              <span className="status-dot"></span>
-              <span>Available for New Projects</span>
-            </div>
-
             {/* Nav Links */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }}>
               {[
                 { label: 'Home', action: () => { navigateTo('home'); setMobileMenuOpen(false); } },
                 { label: 'About Us', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
                 { label: 'Services', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
-                { label: 'Our Product (FitCore OS)', action: () => { navigateTo('fitcore'); setMobileMenuOpen(false); } },
+                { label: 'CampusOne Enterprise OS 🎓', action: () => { navigateTo('campusone'); setMobileMenuOpen(false); } },
+                { label: 'FitCore Gym & Turnstile OS 🏋️', action: () => { navigateTo('fitcore'); setMobileMenuOpen(false); } },
+                { label: 'AdmissionZen Client Project 📱', action: () => { navigateTo('admissionzen'); setMobileMenuOpen(false); } },
                 { label: 'Portfolio & Case Studies', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
                 { label: 'Why Nexcoregen', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
                 { label: 'Contact', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
@@ -414,20 +511,20 @@ export function App() {
                   letterSpacing: '0.04em'
                 }}
               >
-                • IDEAS › PRODUCTS › IMPACT
+                • 10+ YEARS ENTERPRISE ARCHITECTURE • IDEAS › PRODUCTS › IMPACT
               </div>
 
               {/* Main Headline */}
               <h1 style={{ fontSize: 'clamp(2.3rem, 4.2vw, 3.8rem)', fontWeight: 800, lineHeight: 1.15, color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
-                We Build Digital{' '}
+                We Build Scalable Digital{' '}
                 <span className="gradient-title-purple">
                   Solutions That Matter.
                 </span>
               </h1>
 
               {/* Subheading */}
-              <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.1rem)', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '520px', marginBottom: '2rem' }}>
-                <strong>Nexcoregen Technologies</strong> is a technology company focused on building modern, scalable and user-friendly digital products for businesses and a better tomorrow.
+              <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.1rem)', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '540px', marginBottom: '2rem' }}>
+                <strong>Nexcoregen Technologies</strong> brings 10+ years of senior software engineering, cloud multi-tenancy, and hardware IoT architecture to build scalable, mission-critical digital products for enterprises, institutions, and high-growth businesses.
               </p>
 
               {/* Action Buttons */}
@@ -440,16 +537,19 @@ export function App() {
                 </button>
               </div>
 
-              {/* 3 Micro-Trust Badges */}
-              <div style={{ display: 'flex', gap: 'clamp(1rem, 2.5vw, 1.5rem)', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '0.86rem', fontWeight: 600 }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  ⚡ Modern Technology
+              {/* 4 Micro-Trust Badges */}
+              <div style={{ display: 'flex', gap: 'clamp(0.85rem, 2vw, 1.4rem)', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '0.84rem', fontWeight: 600 }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  ⚡ 10+ Years Senior Engineering
                 </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  👥 Client Focused
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  🏛️ Enterprise Multi-Tenancy & IoT
                 </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  💙 Long-Term Partnership
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  👥 Founder-Led Direct Delivery
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  💙 99.9% Production SLA
                 </span>
               </div>
             </div>
@@ -532,27 +632,43 @@ export function App() {
                 • ABOUT US
               </div>
               <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
-                Who We Are
+                Who We Are & Our 10+ Years Track Record
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                <strong>Nexcoregen Technologies</strong> is a software development company founded by <strong>Ankit Patil</strong>. We architect scalable web platforms, high-concurrency mobile applications, and connected IoT hardware systems built on solid engineering foundations.
+                <strong>Nexcoregen Technologies</strong> is a software development and enterprise systems engineering company founded by <strong>Ankit Patil</strong>. Backed by <strong>10+ years of full-stack engineering and systems architecture experience</strong>, we architect scalable web platforms, high-concurrency mobile applications, zero-leakage financial ledgers, and connected IoT hardware systems built on uncompromising engineering foundations.
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
                 <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                    ⚡ Robust Architecture
+                    ⚡ 10+ Years Architecture
                   </div>
                   <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                    Clean, modular code built for high throughput, security, and long-term reliability.
+                    Clean, modular code built for high throughput, sub-200ms latency, and 99.9% production SLA.
                   </div>
                 </div>
                 <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                    🤝 Founder-Led Delivery
+                    🤝 Founder-Led Direct Delivery
                   </div>
                   <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                    Direct technical leadership and personal attention across every stage of your build.
+                    Direct technical leadership and personal architectural attention across every stage of your build.
+                  </div>
+                </div>
+                <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                    🛡️ Multi-Tenant Sovereignty
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                    Strict physical dual-database schemas and IDOR shields guaranteeing zero data leakage.
+                  </div>
+                </div>
+                <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
+                    🔌 Hardware & IoT Telemetry
+                  </div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                    Custom microcontroller integration (ESP32 MQTT, RFID, biometric turnstiles, Wiegand & OSDP).
                   </div>
                 </div>
               </div>
@@ -761,7 +877,147 @@ export function App() {
         </div>
       </section>
 
-      {/* 6. FITCORE OS FLAGSHIP SPOTLIGHT (MATCHING IMAGE 4 & 5) */}
+      {/* 6A. CAMPUSONE ENTERPRISE OS FLAGSHIP SPOTLIGHT */}
+      <section id="campusone" style={{ padding: '6rem 0', background: 'radial-gradient(circle at 50% 0%, #EFF6FF 0%, #F8FAFC 85%)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container">
+          {/* Header */}
+          <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 3.5rem auto' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.35rem 0.95rem',
+                borderRadius: '9999px',
+                background: '#DBEAFE',
+                color: '#1D4ED8',
+                fontSize: '0.82rem',
+                fontWeight: 800,
+                marginBottom: '1rem',
+                letterSpacing: '0.04em'
+              }}
+            >
+              • FLAGSHIP HIGHER EDUCATION OS
+            </div>
+
+            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', color: 'var(--color-navy)', marginBottom: '0.75rem', fontWeight: 900 }}>
+              CampusOne <span style={{ color: '#1D4ED8' }}>— Unified Smart Campus Operating System</span>
+            </h2>
+
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+              Engineered by NexCoreGen for Indian Engineering Colleges & Universities. Unifies <strong>Academic ERP</strong>, <strong>Dual-DB Multi-Tenancy</strong>, an <strong>Immutable 64-bit Paise Financial Ledger</strong>, <strong>Biometric/RFID IoT Turnstiles</strong>, and <strong>Automated NBA/NAAC Outcome-Based Accreditation</strong> into one resilient platform.
+            </p>
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                onClick={() => navigateTo('campusone')}
+                className="btn"
+                style={{ background: '#1D4ED8', color: '#fff', padding: '0.85rem 1.8rem', borderRadius: '10px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 6px 20px rgba(29, 78, 216, 0.25)' }}
+              >
+                Explore CampusOne Enterprise Page →
+              </button>
+              <button
+                type="button"
+                onClick={() => navigateTo('campusone')}
+                className="btn btn-secondary"
+                style={{ padding: '0.85rem 1.8rem', borderRadius: '10px', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+              >
+                <Calculator size={16} color="#1D4ED8" /> Test 64-bit Paise Ledger Simulator
+              </button>
+            </div>
+          </div>
+
+          {/* Central Architectural Showcase Box */}
+          <div
+            style={{
+              background: '#0B132B',
+              borderRadius: '24px',
+              padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+              border: '1px solid #1E293B',
+              boxShadow: '0 25px 50px -12px rgba(7, 26, 58, 0.35)',
+              color: '#F8FAFC',
+              marginBottom: '3rem'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', marginBottom: '1.75rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <GraduationCap size={22} color="#38BDF8" />
+                <span style={{ fontSize: '1rem', fontWeight: 800, color: '#FFFFFF' }}>CampusOne Enterprise Platform Architecture</span>
+                <span style={{ fontSize: '0.7rem', padding: '0.2rem 0.5rem', borderRadius: '6px', background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', fontWeight: 700 }}>v4.0.0 Unified Release</span>
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', fontSize: '0.78rem', color: '#94A3B8' }}>
+                <span>DB: <strong style={{ color: '#6EE7B7' }}>Dual Physical Schemas</strong></span>
+                <span>Ledger: <strong style={{ color: '#FDE047' }}>Paise Zero-Leakage</strong></span>
+                <span>Gate: <strong style={{ color: '#38BDF8' }}>&lt; 200ms Turnstile IoT</strong></span>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.04)', padding: '1.25rem', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#93C5FD', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Shield size={16} /> Dual-DB Physical Tenant Isolation
+                </div>
+                <div style={{ fontSize: '0.8rem', color: '#94A3B8', lineHeight: 1.6 }}>
+                  Strict physical database boundary between <code>campusone</code> control plane and institutional <code>campusone_cug</code> schema. Complies with DPDP Act 2023.
+                </div>
+              </div>
+
+              <div style={{ background: 'rgba(255,255,255,0.04)', padding: '1.25rem', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#86EFAC', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Calculator size={16} /> Double-Entry Ledger in Paise
+                </div>
+                <div style={{ fontSize: '0.8rem', color: '#94A3B8', lineHeight: 1.6 }}>
+                  All fees, concessions, hostel mess dues, and fines handled in <code>BIGINT UNSIGNED</code> Paise. Zero micro-rounding losses across institutional audits.
+                </div>
+              </div>
+
+              <div style={{ background: 'rgba(255,255,255,0.04)', padding: '1.25rem', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#FDE047', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Award size={16} /> NBA & NAAC Automation
+                </div>
+                <div style={{ fontSize: '0.8rem', color: '#94A3B8', lineHeight: 1.6 }}>
+                  Automated CO-PO-PSO direct/indirect attainment matrices conforming to Washington Accord Tier-I/II and one-click NAAC SSR/AQAR report compilation.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 6 Clean Feature Badges Bar */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: '0.85rem' }}>
+            {[
+              { icon: '🏛️', label: 'Dual-DB Isolation' },
+              { icon: '💰', label: 'Paise Integer Ledger' },
+              { icon: '📊', label: 'NBA CO-PO Matrices' },
+              { icon: '🏆', label: 'NAAC SSR Auto-Compiler' },
+              { icon: '⚡', label: 'Sub-200ms Turnstiles' },
+              { icon: '💼', label: 'TPO Placement CRM' }
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                style={{
+                  background: '#FFFFFF',
+                  padding: '0.85rem',
+                  borderRadius: '12px',
+                  border: '1px solid var(--border-color)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  color: 'var(--color-navy)',
+                  boxShadow: 'var(--shadow-sm)'
+                }}
+              >
+                <span style={{ fontSize: '1.1rem' }}>{item.icon}</span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6B. FITCORE OS FLAGSHIP SPOTLIGHT */}
       <section id="fitcore" style={{ padding: '6rem 0', background: 'linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%)' }}>
         <div className="container">
           {/* Header */}
@@ -781,20 +1037,20 @@ export function App() {
                 letterSpacing: '0.04em'
               }}
             >
-              • OUR PRODUCT
+              • FLAGSHIP GYM & IOT OS
             </div>
 
-            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', color: 'var(--color-navy)', marginBottom: '0.75rem' }}>
-              FitCore <span style={{ color: 'var(--color-green)' }}>— Gym Management Made Simple</span>
+            <h2 style={{ fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', color: 'var(--color-navy)', marginBottom: '0.75rem', fontWeight: 900 }}>
+              FitCore <span style={{ color: 'var(--color-green)' }}>— Pan-India Gym & Turnstile IoT OS</span>
             </h2>
 
             <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-              A complete gym management SaaS platform that helps gym owners manage members, subscriptions, trainer bookings, payments, attendance and more — all in one place.
+              A complete Pan-India gym management operating system unifying <strong>sub-200ms ESP32 turnstile edge controllers</strong>, <strong>multi-branch franchise telemetry</strong>, <strong>member mobile NFC passes</strong>, <strong>automated WhatsApp fee billing</strong>, and <strong>in-gym POS commerce</strong> into one cohesive platform.
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <button onClick={() => navigateTo('fitcore')} className="btn btn-green">
-                Explore FitCore Page →
+                Explore Dedicated FitCore Page →
               </button>
               <button onClick={() => navigateTo('fitcore')} className="btn btn-secondary">
                 <Play size={14} color="var(--color-navy)" /> View Full Demo & Videos
@@ -966,11 +1222,11 @@ export function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '0.85rem' }}>
             {[
               { icon: '👥', label: 'Member Management' },
-              { icon: '📱', label: 'QR Check-in / Check-out' },
-              { icon: '💳', label: 'Subscription Plans' },
-              { icon: '🏋️', label: 'Trainer Booking' },
-              { icon: '🛒', label: 'POS & Payments' },
-              { icon: '📊', label: 'Reports & Analytics' }
+              { icon: '📱', label: 'QR / NFC Check-in' },
+              { icon: '💳', label: 'WhatsApp Fee Dues' },
+              { icon: '🏋️', label: 'Trainer & Workouts' },
+              { icon: '🛒', label: 'POS Supplement Store' },
+              { icon: '📊', label: 'Franchise Telemetry' }
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -996,22 +1252,134 @@ export function App() {
         </div>
       </section>
 
-      {/* 7. PORTFOLIO SECTION ("TRUSTED BY AMAZING BUSINESSES") */}
+      {/* 6C. ADMISSIONZEN CLIENT PROJECT HIGHLIGHT BANNER */}
+      <section id="admissionzen" style={{ padding: '5.5rem 0', background: 'radial-gradient(circle at 50% 0%, #FFFBEB 0%, #FFFFFF 85%)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div
+            style={{
+              background: '#FFFFFF',
+              borderRadius: '24px',
+              padding: 'clamp(1.75rem, 4.5vw, 3rem)',
+              border: '2px solid #FDE68A',
+              boxShadow: '0 15px 40px rgba(217, 119, 6, 0.08)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '2.5rem',
+              alignItems: 'center'
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.35rem 0.9rem',
+                  borderRadius: '9999px',
+                  background: '#FEF3C7',
+                  color: '#92400E',
+                  fontSize: '0.8rem',
+                  fontWeight: 800,
+                  marginBottom: '1rem',
+                  border: '1px solid #FCD34D'
+                }}
+              >
+                <Clock size={14} color="#92400E" /> CLIENT COMMISSIONED PROJECT • ACTIVE SPRINT IN PROGRESS
+              </div>
+
+              <h2 style={{ fontSize: 'clamp(2rem, 3.8vw, 2.7rem)', color: 'var(--color-navy)', marginBottom: '0.75rem', fontWeight: 900 }}>
+                AdmissionZen <span style={{ color: '#D97706' }}>— High-Velocity CRM & WhatsApp Outreach</span>
+              </h2>
+
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '1.75rem' }}>
+                Commissioned by an educational client. Built to ingest <strong>5,000+ student records in under 3 seconds</strong>, broadcast personalized WhatsApp templates at <strong>80 messages/second with BullMQ</strong>, and protect counselor privacy with an architectural <strong>IDOR Shield</strong>.
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.85rem', marginBottom: '2rem' }}>
+                <div style={{ padding: '0.75rem', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#16A34A' }}>⚡ 5,000+ Ingest / 3s</div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>Streaming Excel/CSV parser</div>
+                </div>
+                <div style={{ padding: '0.75rem', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#0284C7' }}>📱 80 msgs/s Queue</div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>BullMQ Meta Cloud API</div>
+                </div>
+                <div style={{ padding: '0.75rem', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#9333EA' }}>🛡️ IDOR Shield</div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>Zero cross-counselor leaks</div>
+                </div>
+                <div style={{ padding: '0.75rem', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#D97706' }}>🤖 AI Sprint 2 Active</div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748B' }}>Conversational WhatsApp bot</div>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button
+                  type="button"
+                  onClick={() => navigateTo('admissionzen')}
+                  className="btn"
+                  style={{ background: '#D97706', color: '#fff', padding: '0.85rem 1.8rem', borderRadius: '10px', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', boxShadow: '0 6px 20px rgba(217, 119, 6, 0.25)' }}
+                >
+                  Inspect Client Project Specs & Simulator →
+                </button>
+                <a
+                  href="#contact"
+                  className="btn btn-secondary"
+                  style={{ padding: '0.85rem 1.6rem', borderRadius: '10px' }}
+                >
+                  Discuss Custom CRM Build
+                </a>
+              </div>
+            </div>
+
+            {/* Visual preview card */}
+            <div style={{ background: '#0F172A', borderRadius: '18px', padding: '1.75rem', color: '#F8FAFC', border: '1px solid #1E293B', boxShadow: '0 20px 40px rgba(0,0,0,0.18)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                  <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#22C55E' }} />
+                  <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#38BDF8' }}>Meta Cloud WhatsApp Dispatcher</span>
+                </div>
+                <span style={{ fontSize: '0.72rem', color: '#FBBF24', background: 'rgba(251,191,36,0.15)', padding: '0.15rem 0.5rem', borderRadius: '4px' }}>Sprint 2 In Progress</span>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.82rem' }}>
+                <div style={{ background: 'rgba(255,255,255,0.04)', padding: '0.85rem', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ color: '#4ADE80', fontWeight: 700, marginBottom: '0.25rem' }}>✓ Bulk CSV Parser Streamed</div>
+                  <div style={{ color: '#94A3B8', fontSize: '0.74rem' }}>5,000 records normalized & deduplicated in 2.8 seconds.</div>
+                </div>
+
+                <div style={{ background: 'rgba(255,255,255,0.04)', padding: '0.85rem', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ color: '#38BDF8', fontWeight: 700, marginBottom: '0.25rem' }}>✓ BullMQ Queue Active (80/sec)</div>
+                  <div style={{ color: '#94A3B8', fontSize: '0.74rem' }}>Zero Meta rate-limit drops. Dynamic template variables verified.</div>
+                </div>
+
+                <div style={{ background: 'rgba(255,255,255,0.04)', padding: '0.85rem', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ color: '#FDE047', fontWeight: 700, marginBottom: '0.25rem' }}>⚙️ Active Sprint: WhatsApp AI Bot</div>
+                  <div style={{ color: '#94A3B8', fontSize: '0.74rem' }}>Automating campus visit booking & course eligibility verification.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. PORTFOLIO SECTION ("PROVEN PRODUCTION PLATFORMS & CLIENT ENGAGEMENTS") */}
       <section id="portfolio" style={{ padding: '6rem 0', background: '#FFFFFF', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.5rem auto' }}>
             <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
               • OUR CLIENTS & PORTFOLIO
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: 'var(--color-navy)', marginBottom: '0.75rem' }}>
-              Trusted by Amazing Businesses
+            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: 'var(--color-navy)', marginBottom: '0.75rem', fontWeight: 800 }}>
+              Proven Production Platforms & Active Client Engagements
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
-              Explore our core production deployments and platforms built for high-growth businesses.
+              Explore our core production deployments and active client-commissioned platforms built for high-scale enterprise impact.
             </p>
           </div>
 
-          {/* Branded Client Logo Bar matching Mockup Image 4 */}
+          {/* Branded Client Logo Bar */}
           <div
             style={{
               display: 'flex',
@@ -1026,50 +1394,132 @@ export function App() {
               marginBottom: '3.5rem'
             }}
           >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#1D4ED8' }}>
+              <span>🎓</span> CampusOne Enterprise
+            </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#16A34A' }}>
-              <span>🏋️</span> FitCore
+              <span>🏋️</span> FitCore OS
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#D97706' }}>
+              <span>📱</span> AdmissionZen
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.15rem', color: '#8B5CF6' }}>
               <span>🟣</span> BhishiPe
             </div>
-            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-              And upcoming platforms in development...
-            </div>
           </div>
 
-          {/* 5 Project Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.75rem', marginBottom: '2.5rem' }}>
+          {/* 4 Rich Project Cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.75rem', marginBottom: '2.5rem' }}>
             {portfolioData.map((proj) => (
               <div
                 key={proj.id}
-                onClick={() => setActiveCaseStudy(proj)}
                 className="saas-card"
-                style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  borderRadius: '16px',
+                  border: '1px solid var(--border-color)',
+                  padding: '1.75rem',
+                  background: '#FFFFFF',
+                  boxShadow: 'var(--shadow-sm)'
+                }}
               >
                 <div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.4rem' }}>
-                    {proj.category}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    <span style={{ fontSize: '0.74rem', color: 'var(--color-primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      {proj.category}
+                    </span>
+                    {proj.status && (
+                      <span
+                        style={{
+                          fontSize: '0.68rem',
+                          fontWeight: 800,
+                          padding: '0.2rem 0.55rem',
+                          borderRadius: '999px',
+                          background: `${proj.statusBadgeColor || '#1769E0'}15`,
+                          color: proj.statusBadgeColor || '#1769E0',
+                          border: `1px solid ${proj.statusBadgeColor || '#1769E0'}30`
+                        }}
+                      >
+                        {proj.status}
+                      </span>
+                    )}
                   </div>
-                  <h3 style={{ fontSize: '1.4rem', color: 'var(--color-navy)', marginBottom: '0.5rem' }}>
+
+                  <h3 style={{ fontSize: '1.45rem', color: 'var(--color-navy)', marginBottom: '0.45rem', fontWeight: 800 }}>
                     {proj.name}
                   </h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
                     {proj.tagline}
                   </p>
+
+                  {/* Top 3 Features */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1.25rem', paddingTop: '0.75rem', borderTop: '1px solid #F1F5F9' }}>
+                    {proj.features.slice(0, 3).map((feat, idx) => (
+                      <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.8rem', color: '#334155' }}>
+                        <CheckCircle2 size={14} color="#16A34A" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech stack chips */}
+                  <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                    {proj.techStack.slice(0, 4).map((tech, idx) => (
+                      <span key={idx} style={{ padding: '0.2rem 0.55rem', background: '#F1F5F9', color: '#475569', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 600 }}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1rem', borderTop: '1px solid var(--border-light)' }}>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--color-primary)', fontWeight: 700 }}>
-                    View Case Study
-                  </span>
-                  <ExternalLink size={15} color="var(--color-primary)" />
+                <div style={{ display: 'flex', gap: '0.65rem', paddingTop: '1rem', borderTop: '1px solid var(--border-light)', flexWrap: 'wrap' }}>
+                  {proj.id === 'campusone' ? (
+                    <button
+                      type="button"
+                      onClick={() => navigateTo('campusone')}
+                      className="btn"
+                      style={{ flexGrow: 1, background: '#1D4ED8', color: '#fff', fontSize: '0.82rem', padding: '0.55rem 0.95rem', borderRadius: '8px', fontWeight: 700 }}
+                    >
+                      Explore CampusOne OS →
+                    </button>
+                  ) : proj.id === 'fitcore' ? (
+                    <button
+                      type="button"
+                      onClick={() => navigateTo('fitcore')}
+                      className="btn"
+                      style={{ flexGrow: 1, background: '#16A34A', color: '#fff', fontSize: '0.82rem', padding: '0.55rem 0.95rem', borderRadius: '8px', fontWeight: 700 }}
+                    >
+                      Explore FitCore OS →
+                    </button>
+                  ) : proj.id === 'admissionzen' ? (
+                    <button
+                      type="button"
+                      onClick={() => navigateTo('admissionzen')}
+                      className="btn"
+                      style={{ flexGrow: 1, background: '#D97706', color: '#fff', fontSize: '0.82rem', padding: '0.55rem 0.95rem', borderRadius: '8px', fontWeight: 700 }}
+                    >
+                      Inspect Client Specs →
+                    </button>
+                  ) : null}
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveCaseStudy(proj)}
+                    className="btn btn-secondary"
+                    style={{ fontSize: '0.82rem', padding: '0.55rem 0.95rem', borderRadius: '8px', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                  >
+                    <span>Case Study</span>
+                    <ExternalLink size={13} />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
 
           <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600 }}>
-            Click any project card to view comprehensive problem, solution, features, and technology stack.
+            Click any project to explore live product interactive pages, architecture specifications, and client deliverables.
           </div>
         </div>
       </section>
@@ -1081,16 +1531,16 @@ export function App() {
             {/* Left side: Heading & CTA */}
             <div>
               <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                • WHY NEXCOREGEN
+                • 10+ YEARS OF ENGINEERING EXCELLENCE
               </div>
-              <h2 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3rem)', color: 'var(--color-navy)', marginBottom: '1rem', lineHeight: 1.15 }}>
-                More Than a Development Company
+              <h2 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3rem)', color: 'var(--color-navy)', marginBottom: '1rem', lineHeight: 1.15, fontWeight: 800 }}>
+                A Decade of Architectural Leadership
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-                We are passionate developers, designers and problem solvers. Our mission is to help businesses and enterprises turn their ideas into powerful digital products.
+                We are seasoned systems architects, full-stack engineers, and IoT specialists. Over the past 10+ years, our founder-led team has engineered multi-tenant institutional operating systems, turnstile hardware gateways, and high-velocity outreach engines built to withstand massive scale.
               </p>
               <a href="#about" className="btn btn-primary">
-                Learn More About Us <ArrowRight size={16} />
+                Learn More About Our Track Record <ArrowRight size={16} />
               </a>
             </div>
 
@@ -1098,31 +1548,31 @@ export function App() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
               <div className="saas-card" style={{ padding: '1.75rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                  🌐
+                  ⚡
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Innovation Driven</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800 }}>10+ Years Experience</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  We love solving real world problems with forward-thinking tech.
+                  A decade of building multi-tenant SaaS, hardware IoT firmware, and distributed queues.
                 </p>
               </div>
 
               <div className="saas-card" style={{ padding: '1.75rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FDF2F8', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                  ⚙️
+                  🛡️
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Quality First</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800 }}>Zero-Leakage Precision</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  Clean code, scalable architecture & engineering best practices.
+                  64-bit integer money ledgers, IDOR security shields, and DPDP 2023 compliance.
                 </p>
               </div>
 
               <div className="saas-card" style={{ padding: '1.75rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#F0FDF4', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                  🛡️
+                  ⚙️
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Transparent Process</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800 }}>High-Throughput Speed</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  Regular updates and clear, honest communication at every step.
+                  Sub-200ms turnstile gate sync and 80 msgs/second BullMQ streaming dispatchers.
                 </p>
               </div>
 
@@ -1130,9 +1580,9 @@ export function App() {
                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FAF5FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', fontSize: '1.3rem' }}>
                   💜
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem' }}>Long-Term Support</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800 }}>Founder-Led SLA Support</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  We grow with your business and provide continuous reliability.
+                  Direct technical ownership from Lead Architect Ankit Patil with continuous 24/7 reliability.
                 </p>
               </div>
             </div>
@@ -1220,20 +1670,35 @@ export function App() {
       <section style={{ padding: '4rem 0', background: '#F8FAFC' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1.5rem' }}>
-            TECHNOLOGY STACK WE USE
+            ENTERPRISE TECHNOLOGY STACK WE ARCHITECT WITH
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            {['React', 'React Native', 'Angular', 'Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB', 'Prisma', 'Cloud & AWS'].map((tech, i) => (
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', maxWidth: '920px', margin: '0 auto' }}>
+            {[
+              'Node.js 24 LTS',
+              'Express 5',
+              'TypeScript 6',
+              'React 19',
+              'Angular 22',
+              'React Native',
+              'Tauri Desktop',
+              'Kysely Query Builder',
+              'MongoDB',
+              'PostgreSQL & Prisma',
+              'ESP32 MQTT (IoT)',
+              'BullMQ Queues',
+              'Meta WhatsApp Cloud API',
+              'Docker & Cloud VPS'
+            ].map((tech, i) => (
               <span
                 key={i}
                 style={{
                   background: '#FFFFFF',
-                  padding: '0.6rem 1.2rem',
+                  padding: '0.55rem 1.15rem',
                   borderRadius: '9999px',
                   border: '1px solid var(--border-color)',
-                  fontSize: '0.85rem',
-                  fontWeight: 600,
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
                   color: 'var(--color-navy)',
                   boxShadow: 'var(--shadow-sm)'
                 }}
@@ -1655,19 +2120,50 @@ export function App() {
               </div>
             </div>
 
-            {activeCaseStudy.id === 'fitcore' ? (
+            {activeCaseStudy.id === 'campusone' ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCaseStudy(null);
+                    navigateTo('campusone');
+                  }}
+                  className="btn"
+                  style={{ width: '100%', background: '#1D4ED8', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontWeight: 700 }}
+                >
+                  Open Dedicated CampusOne Enterprise Page →
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCaseStudy(null);
+                    navigateTo('campusone');
+                    setTimeout(() => {
+                      const el = document.getElementById('demo-request');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 150);
+                  }}
+                  className="btn btn-secondary"
+                  style={{ width: '100%' }}
+                >
+                  Schedule Institutional Presentation
+                </button>
+              </div>
+            ) : activeCaseStudy.id === 'fitcore' ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <button
+                  type="button"
                   onClick={() => {
                     setActiveCaseStudy(null);
                     navigateTo('fitcore');
                   }}
                   className="btn"
-                  style={{ width: '100%', background: '#16A34A', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                  style={{ width: '100%', background: '#16A34A', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontWeight: 700 }}
                 >
                   Open Dedicated FitCore Product Page →
                 </button>
                 <button
+                  type="button"
                   onClick={() => {
                     setActiveCaseStudy(null);
                     const el = document.getElementById('contact');
@@ -1679,8 +2175,35 @@ export function App() {
                   Discuss Custom Fitness Hardware with Us
                 </button>
               </div>
+            ) : activeCaseStudy.id === 'admissionzen' ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCaseStudy(null);
+                    navigateTo('admissionzen');
+                  }}
+                  className="btn"
+                  style={{ width: '100%', background: '#D97706', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontWeight: 700 }}
+                >
+                  Open Dedicated AdmissionZen Client Page & Simulator →
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCaseStudy(null);
+                    const el = document.getElementById('contact');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="btn btn-secondary"
+                  style={{ width: '100%' }}
+                >
+                  Discuss Custom CRM & WhatsApp Outreach Engine
+                </button>
+              </div>
             ) : (
               <button
+                type="button"
                 onClick={() => {
                   setActiveCaseStudy(null);
                   const el = document.getElementById('contact');
