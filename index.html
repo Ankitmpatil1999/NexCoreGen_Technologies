@@ -56,7 +56,27 @@
   </head>
   <body>
     <div id="root">
-      <!-- Pre-rendered semantic SEO shell for Googlebot & Search Engine Indexers before React hydrates -->
+      <!-- Branded Minimal Preloader to eliminate Flash of Unstyled Content (FOUC) while React bundle loads -->
+      <div id="app-preloader" style="position: fixed; inset: 0; background: #F8FAFC; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
+        <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem; background: #071A3A; padding: 0.5rem 1.1rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(7, 26, 58, 0.12);">
+          <img src="/assets/nexcoregen-icon.png" alt="Nexcoregen" style="width: 26px; height: 26px; border-radius: 6px; display: block;" />
+          <span style="color: #FFFFFF; font-size: 1rem; font-weight: 800; letter-spacing: -0.02em;">Nexcoregen</span>
+        </div>
+        <div style="width: 72px; height: 3px; background: #E2E8F0; border-radius: 99px; overflow: hidden; position: relative;">
+          <div style="position: absolute; top: 0; left: 0; width: 45%; height: 100%; background: linear-gradient(90deg, #1769E0, #38BDF8); border-radius: 99px; animation: preloader-slide 1.2s infinite ease-in-out;"></div>
+        </div>
+        <style>
+          @keyframes preloader-slide {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(120%); }
+            100% { transform: translateX(250%); }
+          }
+        </style>
+      </div>
+    </div>
+
+    <!-- Semantic SEO shell for Search Engine Crawlers & No-JS scrapers -->
+    <noscript>
       <div style="padding: 2rem; max-width: 800px; margin: 0 auto; font-family: sans-serif; color: #1e293b;">
         <h1>Nexcoregen Technologies</h1>
         <p><strong>Enterprise Architecture & Digital Systems Excellence.</strong></p>
@@ -70,7 +90,7 @@
         </ul>
         <p>Founder & Lead Architect: Ankit Patil | Contact: nexcoregen@ankitpatil1999.online | Official Portal: https://ankitpatil1999.online/</p>
       </div>
-    </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
