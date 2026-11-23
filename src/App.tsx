@@ -798,7 +798,7 @@ export function App() {
                   letterSpacing: '0.04em'
                 }}
               >
-                • 10+ YEARS ENTERPRISE ARCHITECTURE • IDEAS › PRODUCTS › IMPACT
+                • IDEAS › PRODUCTS › IMPACT
               </div>
 
               {/* Main Headline */}
@@ -811,7 +811,7 @@ export function App() {
 
               {/* Subheading */}
               <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.1rem)', color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '540px', marginBottom: '2rem' }}>
-                <strong>Nexcoregen Technologies</strong> brings 10+ years of senior software engineering, cloud multi-tenancy, and hardware IoT architecture to build scalable, mission-critical digital products for enterprises, institutions, and high-growth businesses.
+                <strong>Nexcoregen Technologies</strong> brings senior software engineering, cloud multi-tenancy, and hardware IoT architecture to build scalable, mission-critical digital products for enterprises, institutions, and high-growth businesses.
               </p>
 
               {/* Action Buttons */}
@@ -827,7 +827,7 @@ export function App() {
               {/* 4 Micro-Trust Badges */}
               <div style={{ display: 'flex', gap: 'clamp(0.85rem, 2vw, 1.4rem)', flexWrap: 'wrap', color: 'var(--text-muted)', fontSize: '0.84rem', fontWeight: 600 }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                  ⚡ 10+ Years Senior Engineering
+                  ⚡ Senior Systems Engineering
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                   🏛️ Enterprise Multi-Tenancy & IoT
@@ -919,16 +919,16 @@ export function App() {
                 • ABOUT US
               </div>
               <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: 'var(--color-navy)', marginBottom: '1.25rem' }}>
-                Who We Are & Our 10+ Years Track Record
+                Who We Are & Our Engineering Track Record
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.08rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                <strong>Nexcoregen Technologies</strong> is a software development and enterprise systems engineering company founded by <strong>Ankit Patil</strong>. Backed by <strong>10+ years of full-stack engineering and systems architecture experience</strong>, we architect scalable web platforms, high-concurrency mobile applications, zero-leakage financial ledgers, and connected IoT hardware systems built on uncompromising engineering foundations.
+                <strong>Nexcoregen Technologies</strong> is a software development and enterprise systems engineering company founded by <strong>Ankit Patil</strong>. Backed by <strong>full-stack engineering and systems architecture experience</strong>, we architect scalable web platforms, high-concurrency mobile applications, zero-leakage financial ledgers, and connected IoT hardware systems built on uncompromising engineering foundations.
               </p>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
                 <div style={{ padding: '1.1rem 1.25rem', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
                   <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                    ⚡ 10+ Years Architecture
+                    ⚡ Systems Architecture
                   </div>
                   <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
                     Clean, modular code built for high throughput, sub-200ms latency, and 99.9% production SLA.
@@ -1818,13 +1818,13 @@ export function App() {
             {/* Left side: Heading & CTA */}
             <div>
               <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                • 10+ YEARS OF ENGINEERING EXCELLENCE
+                • ENGINEERING EXCELLENCE
               </div>
               <h2 style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3rem)', color: 'var(--color-navy)', marginBottom: '1rem', lineHeight: 1.15, fontWeight: 800 }}>
-                A Decade of Architectural Leadership
+                Architectural Leadership & Execution
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-                We are seasoned systems architects, full-stack engineers, and IoT specialists. Over the past 10+ years, our founder-led team has engineered multi-tenant institutional operating systems, turnstile hardware gateways, and high-velocity outreach engines built to withstand massive scale.
+                We are seasoned systems architects, full-stack engineers, and IoT specialists. Our founder-led team engineers multi-tenant institutional operating systems, turnstile hardware gateways, and high-velocity outreach engines built to withstand massive scale.
               </p>
               <a href="#about" className="btn btn-primary">
                 Learn More About Our Track Record <ArrowRight size={16} />
@@ -1837,9 +1837,9 @@ export function App() {
                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', fontSize: '1.3rem' }}>
                   ⚡
                 </div>
-                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800 }}>10+ Years Experience</h3>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800 }}>Systems Architecture</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  A decade of building multi-tenant SaaS, hardware IoT firmware, and distributed queues.
+                  Proven track record of building multi-tenant SaaS, hardware IoT firmware, and distributed queues.
                 </p>
               </div>
 
