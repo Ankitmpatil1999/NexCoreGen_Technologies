@@ -24,7 +24,9 @@ import {
   CheckCircle2,
   Calculator,
   Shield,
-  Award
+  Award,
+  ChevronDown,
+  Activity
 } from 'lucide-react';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsConditions } from './components/TermsConditions';
@@ -134,6 +136,18 @@ export function App() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && !target.closest('.products-dropdown-container')) {
+        setProductsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -311,16 +325,195 @@ export function App() {
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '1.4rem' }}>
-            <a href="#home" style={navLinkStyle}>Home</a>
-            <a href="#about" style={navLinkStyle}>About</a>
-            <a href="#services" style={navLinkStyle}>Services</a>
-            <a href="#campusone" onClick={(e) => { e.preventDefault(); navigateTo('campusone'); }} style={{ ...navLinkStyle, color: '#1D4ED8', fontWeight: 700 }}>CampusOne OS</a>
-            <a href="#fitcore" onClick={(e) => { e.preventDefault(); navigateTo('fitcore'); }} style={{ ...navLinkStyle, color: '#16A34A', fontWeight: 700 }}>FitCore OS</a>
-            <a href="#admissionzen" onClick={(e) => { e.preventDefault(); navigateTo('admissionzen'); }} style={{ ...navLinkStyle, color: '#D97706', fontWeight: 700 }}>AdmissionZen</a>
-            <a href="#portfolio" style={navLinkStyle}>Portfolio</a>
-            <a href="#why-us" style={navLinkStyle}>Why Us</a>
-            <a href="#contact" style={navLinkStyle}>Contact</a>
+          <nav className="desktop-nav-links" style={{ display: 'none', alignItems: 'center', gap: '0.35rem' }}>
+            <a href="#home" className="nav-link-item">Home</a>
+            <a href="#about" className="nav-link-item">About</a>
+            <a href="#services" className="nav-link-item">Services</a>
+
+            {/* Products Dropdown */}
+            <div
+              className="products-dropdown-container"
+              onMouseEnter={() => setProductsDropdownOpen(true)}
+              onMouseLeave={() => setProductsDropdownOpen(false)}
+              style={{ position: 'relative' }}
+            >
+              <button
+                type="button"
+                onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
+                className="nav-link-item"
+                style={{
+                  background: productsDropdownOpen ? '#F1F5F9' : 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  gap: '0.35rem'
+                }}
+                aria-expanded={productsDropdownOpen}
+              >
+                <span>Products</span>
+                <ChevronDown
+                  size={14}
+                  style={{
+                    transition: 'transform 0.2s ease',
+                    transform: productsDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                    color: '#64748B'
+                  }}
+                />
+              </button>
+
+              {/* Floating Dropdown Card */}
+              {productsDropdownOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 'calc(100% + 8px)',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '390px',
+                    background: '#FFFFFF',
+                    borderRadius: '16px',
+                    boxShadow: '0 20px 45px -10px rgba(7, 26, 58, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.08)',
+                    padding: '0.85rem',
+                    zIndex: 100,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.45rem'
+                  }}
+                >
+                  {/* Item 1: CampusOne */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigateTo('campusone');
+                      setProductsDropdownOpen(false);
+                    }}
+                    className="dropdown-item-hover"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '0.85rem',
+                      padding: '0.75rem',
+                      borderRadius: '12px',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      width: '100%',
+                      transition: 'background 0.15s ease',
+                      fontFamily: 'inherit'
+                    }}
+                  >
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#EFF6FF', color: '#1D4ED8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <GraduationCap size={22} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
+                        <span style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--color-navy)' }}>CampusOne Enterprise</span>
+                        <span style={{ background: '#DBEAFE', color: '#1E40AF', fontSize: '0.65rem', fontWeight: 700, padding: '0.15rem 0.5rem', borderRadius: '9999px' }}>Flagship</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: '0.77rem', color: '#64748B', lineHeight: 1.35 }}>
+                        Dual-DB Higher Education ERP, NBA/NAAC Attainment & Smart Turnstiles
+                      </p>
+                    </div>
+                  </button>
+
+                  {/* Item 2: FitCore OS */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigateTo('fitcore');
+                      setProductsDropdownOpen(false);
+                    }}
+                    className="dropdown-item-hover"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '0.85rem',
+                      padding: '0.75rem',
+                      borderRadius: '12px',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      width: '100%',
+                      transition: 'background 0.15s ease',
+                      fontFamily: 'inherit'
+                    }}
+                  >
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#F0FDF4', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Activity size={22} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
+                        <span style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--color-navy)' }}>FitCore OS</span>
+                        <span style={{ background: '#DCFCE7', color: '#15803D', fontSize: '0.65rem', fontWeight: 700, padding: '0.15rem 0.5rem', borderRadius: '9999px' }}>Live IoT</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: '0.77rem', color: '#64748B', lineHeight: 1.35 }}>
+                        Sub-200ms ESP32 Turnstile Gateway, Member NFC & Franchise Telemetry
+                      </p>
+                    </div>
+                  </button>
+
+                  {/* Item 3: AdmissionZen */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigateTo('admissionzen');
+                      setProductsDropdownOpen(false);
+                    }}
+                    className="dropdown-item-hover"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '0.85rem',
+                      padding: '0.75rem',
+                      borderRadius: '12px',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      width: '100%',
+                      transition: 'background 0.15s ease',
+                      fontFamily: 'inherit'
+                    }}
+                  >
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: '#FEF3C7', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Smartphone size={22} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
+                        <span style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--color-navy)' }}>AdmissionZen</span>
+                        <span style={{ background: '#FEF3C7', color: '#B45309', fontSize: '0.65rem', fontWeight: 700, padding: '0.15rem 0.5rem', borderRadius: '9999px' }}>Client Sprint</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: '0.77rem', color: '#64748B', lineHeight: 1.35 }}>
+                        Streaming 5k+ Lead Ingestion, 80 msgs/s WhatsApp Outreach & IDOR Privacy
+                      </p>
+                    </div>
+                  </button>
+
+                  {/* Bottom Bar */}
+                  <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '0.65rem', marginTop: '0.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '0.5rem', paddingRight: '0.5rem' }}>
+                    <span style={{ fontSize: '0.73rem', color: '#94A3B8' }}>3 Production Architectures</span>
+                    <a
+                      href="#portfolio"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateTo('home');
+                        setProductsDropdownOpen(false);
+                        setTimeout(() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                      }}
+                      style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                    >
+                      View All Portfolio →
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <a href="#portfolio" className="nav-link-item">Portfolio</a>
+            <a href="#why-us" className="nav-link-item">Why Us</a>
+            <a href="#contact" className="nav-link-item">Contact</a>
           </nav>
 
           {/* Right Action: CTA & Mobile Hamburger Trigger */}
@@ -383,43 +576,137 @@ export function App() {
               </button>
             </div>
 
-            {/* Nav Links */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }}>
-              {[
-                { label: 'Home', action: () => { navigateTo('home'); setMobileMenuOpen(false); } },
-                { label: 'About Us', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
-                { label: 'Services', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
-                { label: 'CampusOne Enterprise OS 🎓', action: () => { navigateTo('campusone'); setMobileMenuOpen(false); } },
-                { label: 'FitCore Gym & Turnstile OS 🏋️', action: () => { navigateTo('fitcore'); setMobileMenuOpen(false); } },
-                { label: 'AdmissionZen Client Project 📱', action: () => { navigateTo('admissionzen'); setMobileMenuOpen(false); } },
-                { label: 'Portfolio & Case Studies', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
-                { label: 'Why Nexcoregen', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
-                { label: 'Contact', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
-              ].map((link, idx) => (
+            {/* Products Group */}
+            <div style={{ marginBottom: '1.25rem' }}>
+              <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94A3B8', fontWeight: 700, marginBottom: '0.5rem', paddingLeft: '0.25rem' }}>
+                Flagship Systems & Products
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <button
-                  key={idx}
-                  onClick={link.action}
+                  type="button"
+                  onClick={() => { navigateTo('campusone'); setMobileMenuOpen(false); }}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '0.85rem 1rem',
+                    padding: '0.75rem 0.95rem',
                     borderRadius: '12px',
-                    color: 'var(--color-navy)',
-                    background: '#F8FAFC',
-                    border: '1px solid #E2E8F0',
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
+                    background: '#EFF6FF',
+                    border: '1px solid #BFDBFE',
                     cursor: 'pointer',
                     textAlign: 'left',
-                    transition: 'all 0.2s ease',
                     width: '100%'
                   }}
                 >
-                  <span>{link.label}</span>
-                  <ArrowRight size={16} color="var(--color-primary)" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: '#DBEAFE', color: '#1D4ED8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <GraduationCap size={18} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#1E3A8A' }}>CampusOne Enterprise</div>
+                      <div style={{ fontSize: '0.72rem', color: '#3B82F6' }}>Higher Ed ERP & Smart Campus OS</div>
+                    </div>
+                  </div>
+                  <ArrowRight size={16} color="#1D4ED8" />
                 </button>
-              ))}
+
+                <button
+                  type="button"
+                  onClick={() => { navigateTo('fitcore'); setMobileMenuOpen(false); }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0.75rem 0.95rem',
+                    borderRadius: '12px',
+                    background: '#F0FDF4',
+                    border: '1px solid #BBF7D0',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Activity size={18} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#14532D' }}>FitCore OS</div>
+                      <div style={{ fontSize: '0.72rem', color: '#16A34A' }}>Gym Turnstile IoT & Commerce</div>
+                    </div>
+                  </div>
+                  <ArrowRight size={16} color="#16A34A" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => { navigateTo('admissionzen'); setMobileMenuOpen(false); }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0.75rem 0.95rem',
+                    borderRadius: '12px',
+                    background: '#FFFBEB',
+                    border: '1px solid #FDE68A',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: '#FEF3C7', color: '#D97706', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Smartphone size={18} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#78350F' }}>AdmissionZen CRM</div>
+                      <div style={{ fontSize: '0.72rem', color: '#D97706' }}>WhatsApp Outreach (Ongoing Sprint)</div>
+                    </div>
+                  </div>
+                  <ArrowRight size={16} color="#D97706" />
+                </button>
+              </div>
+            </div>
+
+            {/* General Navigation Group */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94A3B8', fontWeight: 700, marginBottom: '0.5rem', paddingLeft: '0.25rem' }}>
+                Navigation
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                {[
+                  { label: 'Home', action: () => { navigateTo('home'); setMobileMenuOpen(false); } },
+                  { label: 'About Us', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                  { label: 'Services', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                  { label: 'Portfolio & Case Studies', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                  { label: 'Why Nexcoregen', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                  { label: 'Contact', action: () => { navigateTo('home'); setMobileMenuOpen(false); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); } },
+                ].map((link, idx) => (
+                  <button
+                    key={idx}
+                    onClick={link.action}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '0.75rem 0.95rem',
+                      borderRadius: '10px',
+                      color: 'var(--color-navy)',
+                      background: '#F8FAFC',
+                      border: '1px solid #E2E8F0',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'all 0.15s ease',
+                      width: '100%'
+                    }}
+                  >
+                    <span>{link.label}</span>
+                    <ArrowRight size={15} color="#94A3B8" />
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Quick Contact & Action CTA */}
@@ -2493,31 +2780,42 @@ export function App() {
 
 
 
-      {/* Responsive helper */}
+      {/* Responsive helper & Modern Header Nav Styles */}
       <style>{`
-        @media (min-width: 900px) {
+        @media (min-width: 980px) {
           .desktop-nav-links { display: flex !important; }
           .mobile-menu-trigger { display: none !important; }
         }
-        @media (max-width: 899px) {
+        @media (max-width: 979px) {
           .desktop-nav-links { display: none !important; }
           .mobile-menu-trigger { display: inline-flex !important; }
         }
         @media (max-width: 768px) {
           .desktop-timeline-line { display: none !important; }
         }
+        .nav-link-item {
+          color: #475569;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          padding: 0.45rem 0.75rem;
+          border-radius: 8px;
+          white-space: nowrap;
+          transition: all 0.15s ease;
+          display: inline-flex;
+          align-items: center;
+        }
+        .nav-link-item:hover {
+          color: #071A3A !important;
+          background-color: #F1F5F9;
+        }
+        .dropdown-item-hover:hover {
+          background-color: #F8FAFC !important;
+        }
       `}</style>
     </div>
   );
 }
-
-const navLinkStyle: React.CSSProperties = {
-  color: '#475569',
-  textDecoration: 'none',
-  fontSize: '0.92rem',
-  fontWeight: 600,
-  transition: 'color 0.2s ease'
-};
 
 const footerLink: React.CSSProperties = {
   color: '#64748B',
