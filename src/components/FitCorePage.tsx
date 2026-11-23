@@ -61,9 +61,47 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
     hasTurnstile: 'no'
   });
 
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setDemoSubmitted(true);
+    const whatsappMessage = encodeURIComponent(
+      `*New FitCore Gym Demo Request* 🏋️\n\n` +
+      `🏢 *Gym Name:* ${demoData.gymName}\n` +
+      `👤 *Owner:* ${demoData.ownerName}\n` +
+      `📱 *Phone:* ${demoData.phone}\n` +
+      `📍 *City:* ${demoData.city}\n` +
+      `🚪 *Has Turnstiles:* ${demoData.hasTurnstile}\n`
+    );
+    const waUrl = `https://wa.me/919209282289?text=${whatsappMessage}`;
+
+    try {
+      await fetch('https://formsubmit.co/ajax/Ankitmpatil1999@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `🏋️ New FitCore Gym Lead: ${demoData.gymName}`,
+          _cc: 'nexcoregen@ankitpatil1999.online',
+          _template: 'table',
+          GymName: demoData.gymName,
+          OwnerName: demoData.ownerName,
+          Phone: demoData.phone,
+          City: demoData.city,
+          HasTurnstile: demoData.hasTurnstile,
+          SubmissionTime: new Date().toLocaleString()
+        })
+      });
+    } catch (err) {
+      console.warn('FormSubmit notification error:', err);
+    } finally {
+      setDemoSubmitted(true);
+      try {
+        window.open(waUrl, '_blank');
+      } catch (err) {
+        // popup fallback
+      }
+    }
   };
 
   const togglePlay = () => {

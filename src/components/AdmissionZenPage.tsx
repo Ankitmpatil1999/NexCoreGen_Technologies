@@ -62,7 +62,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#F8FAFC', color: '#0F172A', fontFamily: 'inherit' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#F8FAFC', color: '#0F172A', fontFamily: 'inherit', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
       {/* 1. TOP STICKY HEADER */}
       <header
         style={{
@@ -72,86 +72,90 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           background: 'rgba(255, 255, 255, 0.97)',
           backdropFilter: 'blur(16px)',
           borderBottom: '1px solid #E2E8F0',
-          padding: '0.85rem 0'
+          padding: '0.65rem 0'
         }}
       >
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
             <button
               type="button"
               onClick={onBackToHome}
               className="btn btn-secondary"
               style={{
-                padding: '0.5rem 0.95rem',
-                fontSize: '0.84rem',
+                padding: '0.42rem 0.75rem',
+                fontSize: '0.82rem',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
-                borderRadius: '8px'
+                gap: '0.35rem',
+                borderRadius: '8px',
+                whiteSpace: 'nowrap'
               }}
             >
-              <ArrowLeft size={16} /> Back to NexCoreGen
+              <ArrowLeft size={15} /> <span>Back</span>
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <div
                 style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
                   background: 'linear-gradient(135deg, #15803D, #22C55E)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF'
+                  color: '#FFFFFF',
+                  flexShrink: 0
                 }}
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={18} />
               </div>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0F172A', letterSpacing: '-0.02em' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontWeight: 800, fontSize: '0.95rem', color: '#0F172A', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
                     AdmissionZen
                   </span>
                   <span
                     style={{
-                      fontSize: '0.65rem',
+                      fontSize: '0.62rem',
                       fontWeight: 800,
-                      padding: '0.15rem 0.5rem',
+                      padding: '0.12rem 0.45rem',
                       borderRadius: '6px',
                       background: '#FEF3C7',
                       color: '#B45309',
                       border: '1px solid #FCD34D',
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      whiteSpace: 'nowrap'
                     }}
                   >
-                    Client Project • Ongoing
+                    Client Project
                   </span>
                 </div>
-                <div style={{ fontSize: '0.68rem', color: '#64748B', fontWeight: 600 }}>
+                <div className="az-hide-mobile" style={{ fontSize: '0.68rem', color: '#64748B', fontWeight: 600 }}>
                   Commissioned Educational Client Engagement
                 </div>
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <a
               href="#contact-lead"
               className="btn"
               style={{
                 background: '#16A34A',
                 color: '#FFFFFF',
-                padding: '0.55rem 1.15rem',
-                fontSize: '0.85rem',
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.8rem',
                 borderRadius: '8px',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                fontWeight: 700
+                gap: '0.35rem',
+                fontWeight: 700,
+                whiteSpace: 'nowrap'
               }}
             >
-              Build a Custom CRM <ChevronRight size={15} />
+              <span>Custom CRM</span> <ChevronRight size={14} />
             </a>
           </div>
         </div>
@@ -249,45 +253,47 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '1rem',
-              padding: '1.5rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+              gap: '0.85rem',
+              padding: 'clamp(0.85rem, 2.5vw, 1.5rem)',
               background: '#FFFFFF',
-              borderRadius: '20px',
+              borderRadius: '16px',
               border: '1px solid #E2E8F0',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.04)'
+              boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
+              width: '100%',
+              boxSizing: 'border-box'
             }}
           >
-            <div style={{ textAlign: 'left', padding: '0.5rem 0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16A34A', fontWeight: 800, fontSize: '1.25rem' }}>
-                <FileSpreadsheet size={20} /> 5,000+ Ingestion
+            <div style={{ textAlign: 'left', padding: '0.5rem 0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16A34A', fontWeight: 800, fontSize: '1.15rem' }}>
+                <FileSpreadsheet size={18} /> 5,000+ Ingestion
               </div>
               <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '0.25rem' }}>
                 Sub-3 second streaming Excel & CSV bulk ingestion engine
               </div>
             </div>
 
-            <div style={{ textAlign: 'left', padding: '0.5rem 0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#0284C7', fontWeight: 800, fontSize: '1.25rem' }}>
-                <Zap size={20} /> 80 msgs / sec
+            <div style={{ textAlign: 'left', padding: '0.5rem 0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#0284C7', fontWeight: 800, fontSize: '1.15rem' }}>
+                <Zap size={18} /> 80 msgs / sec
               </div>
               <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '0.25rem' }}>
                 BullMQ rate-limited Meta Cloud WhatsApp API queue
               </div>
             </div>
 
-            <div style={{ textAlign: 'left', padding: '0.5rem 0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#9333EA', fontWeight: 800, fontSize: '1.25rem' }}>
-                <ShieldCheck size={20} /> IDOR Shield
+            <div style={{ textAlign: 'left', padding: '0.5rem 0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#9333EA', fontWeight: 800, fontSize: '1.15rem' }}>
+                <ShieldCheck size={18} /> IDOR Shield
               </div>
               <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '0.25rem' }}>
                 Backend-enforced isolation ensuring zero counselor data leaks
               </div>
             </div>
 
-            <div style={{ textAlign: 'left', padding: '0.5rem 0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D97706', fontWeight: 800, fontSize: '1.25rem' }}>
-                <Clock size={20} /> Active Sprint
+            <div style={{ textAlign: 'left', padding: '0.5rem 0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D97706', fontWeight: 800, fontSize: '1.15rem' }}>
+                <Clock size={18} /> Active Sprint
               </div>
               <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '0.25rem' }}>
                 Core architecture delivered • AI expansion ongoing
@@ -298,16 +304,16 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
       </section>
 
       {/* 3. TABS: WORK COMPLETED vs ONGOING SPRINT ROADMAP */}
-      <section style={{ padding: '4.5rem 0', background: '#FFFFFF', borderBottom: '1px solid #E2E8F0' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.5rem auto' }}>
+      <section style={{ padding: 'clamp(2.5rem, 5vw, 4.5rem) 0', background: '#FFFFFF', borderBottom: '1px solid #E2E8F0' }}>
+        <div className="container" style={{ width: '100%', maxWidth: '1000px', boxSizing: 'border-box' }}>
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2rem auto' }}>
             <div style={{ color: '#16A34A', fontWeight: 800, fontSize: '0.82rem', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
               • SPRINT PROGRESS & CLIENT DELIVERABLES
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.6rem)', color: '#071A3A', fontWeight: 800 }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#071A3A', fontWeight: 800 }}>
               Work Completed & Ongoing Development
             </h2>
-            <p style={{ color: '#64748B', fontSize: '1rem', marginTop: '0.4rem' }}>
+            <p style={{ color: '#64748B', fontSize: '0.95rem', marginTop: '0.4rem' }}>
               Transparent breakdown of the modules delivered to the client and active roadmap features currently under engineering.
             </p>
           </div>
@@ -316,21 +322,25 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           <div
             style={{
               display: 'flex',
-              gap: '0.5rem',
+              gap: '0.4rem',
               overflowX: 'auto',
               paddingBottom: '0.5rem',
               borderBottom: '2px solid #E2E8F0',
-              marginBottom: '2.5rem',
-              scrollbarWidth: 'thin'
+              marginBottom: '2rem',
+              scrollbarWidth: 'thin',
+              WebkitOverflowScrolling: 'touch',
+              width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box'
             }}
             role="tablist"
             aria-label="AdmissionZen Progress Sprints"
           >
             {[
-              { id: 'delivered', label: '1. Delivered Work (Milestone 1)', icon: CheckCircle2 },
-              { id: 'ongoing', label: '2. Active Ongoing Sprint (Milestone 2)', icon: Clock },
-              { id: 'simulator', label: '3. WhatsApp Dispatch Simulator', icon: Zap },
-              { id: 'security', label: '4. IDOR Shield & Data Isolation', icon: ShieldCheck },
+              { id: 'delivered', label: '1. Delivered Work', icon: CheckCircle2 },
+              { id: 'ongoing', label: '2. Ongoing Sprint', icon: Clock },
+              { id: 'simulator', label: '3. WhatsApp Simulator', icon: Zap },
+              { id: 'security', label: '4. IDOR Privacy Shield', icon: ShieldCheck },
               { id: 'architecture', label: '5. Technical Architecture', icon: Database }
             ].map((tab) => {
               const Icon = tab.icon;
@@ -346,22 +356,23 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   onClick={() => setActiveTab(tab.id as any)}
                   style={{
                     position: 'relative',
-                    padding: '0.8rem 1.4rem',
+                    padding: '0.65rem 1rem',
                     background: isSelected ? '#F0FDF4' : 'transparent',
                     border: 'none',
                     borderRadius: '8px 8px 0 0',
                     color: isSelected ? '#15803D' : '#64748B',
                     fontWeight: isSelected ? 800 : 600,
-                    fontSize: '0.92rem',
+                    fontSize: '0.86rem',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    gap: '0.45rem',
                     whiteSpace: 'nowrap',
+                    flexShrink: 0,
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  <Icon size={17} color={isSelected ? '#15803D' : '#94A3B8'} />
+                  <Icon size={16} color={isSelected ? '#15803D' : '#94A3B8'} />
                   <span>{tab.label}</span>
                   {isSelected && (
                     <div
@@ -384,12 +395,12 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           {/* TAB 1: DELIVERED WORK */}
           {activeTab === 'delivered' && (
             <div role="tabpanel" id="panel-delivered" aria-labelledby="tab-delivered">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '1.5rem' }}>
-                <div style={{ background: '#F8FAFC', padding: '1.75rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.25rem' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '16px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16A34A', fontWeight: 800, fontSize: '0.82rem', marginBottom: '0.75rem' }}>
                     <CheckCircle2 size={18} /> COMPLETED & DELIVERED
                   </div>
-                  <h4 style={{ fontSize: '1.2rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
+                  <h4 style={{ fontSize: '1.15rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     Streaming 5,000+ Bulk Excel Ingestion
                   </h4>
                   <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.6, marginBottom: '1rem' }}>
@@ -400,11 +411,11 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </div>
                 </div>
 
-                <div style={{ background: '#F8FAFC', padding: '1.75rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '16px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16A34A', fontWeight: 800, fontSize: '0.82rem', marginBottom: '0.75rem' }}>
                     <CheckCircle2 size={18} /> COMPLETED & DELIVERED
                   </div>
-                  <h4 style={{ fontSize: '1.2rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
+                  <h4 style={{ fontSize: '1.15rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     Meta Cloud WhatsApp Broadcast Engine
                   </h4>
                   <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.6, marginBottom: '1rem' }}>
@@ -415,11 +426,11 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </div>
                 </div>
 
-                <div style={{ background: '#F8FAFC', padding: '1.75rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '16px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16A34A', fontWeight: 800, fontSize: '0.82rem', marginBottom: '0.75rem' }}>
                     <CheckCircle2 size={18} /> COMPLETED & DELIVERED
                   </div>
-                  <h4 style={{ fontSize: '1.2rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
+                  <h4 style={{ fontSize: '1.15rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     Strict Counselor Isolation (IDOR Shield)
                   </h4>
                   <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.6, marginBottom: '1rem' }}>
@@ -430,11 +441,11 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </div>
                 </div>
 
-                <div style={{ background: '#F8FAFC', padding: '1.75rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '16px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16A34A', fontWeight: 800, fontSize: '0.82rem', marginBottom: '0.75rem' }}>
                     <CheckCircle2 size={18} /> COMPLETED & DELIVERED
                   </div>
-                  <h4 style={{ fontSize: '1.2rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
+                  <h4 style={{ fontSize: '1.15rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     NutriZen Forest Green Mobile UI
                   </h4>
                   <p style={{ fontSize: '0.88rem', color: '#64748B', lineHeight: 1.6, marginBottom: '1rem' }}>
@@ -451,20 +462,20 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           {/* TAB 2: ONGOING SPRINT ROADMAP */}
           {activeTab === 'ongoing' && (
             <div role="tabpanel" id="panel-ongoing" aria-labelledby="tab-ongoing">
-              <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: '2rem', border: '1px solid #FDE68A', marginBottom: '2rem' }}>
+              <div style={{ background: '#FFFBEB', borderRadius: '16px', padding: 'clamp(1.25rem, 3vw, 2rem)', border: '1px solid #FDE68A', marginBottom: '1.5rem', boxSizing: 'border-box' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#92400E', fontWeight: 800, fontSize: '0.92rem', marginBottom: '0.5rem' }}>
                   <AlertCircle size={20} /> ACTIVE CLIENT SPRINT IN PROGRESS
                 </div>
-                <h3 style={{ fontSize: '1.4rem', color: '#78350F', fontWeight: 800, marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.35rem', color: '#78350F', fontWeight: 800, marginBottom: '0.5rem' }}>
                   Phase 2: Conversational AI & Multi-Channel Drip Pipelines
                 </h3>
-                <p style={{ color: '#92400E', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                <p style={{ color: '#92400E', fontSize: '0.9rem', lineHeight: 1.6 }}>
                   NexCoreGen is actively implementing Milestone 2 client specifications. Here is the engineering roadmap currently in execution:
                 </p>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.25rem' }}>
+                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706', boxSizing: 'border-box' }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#D97706', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
                     Sprint Item 2.1 • In Progress
                   </div>
@@ -476,7 +487,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </p>
                 </div>
 
-                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706' }}>
+                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706', boxSizing: 'border-box' }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#D97706', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
                     Sprint Item 2.2 • In Progress
                   </div>
@@ -488,7 +499,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </p>
                 </div>
 
-                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706' }}>
+                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706', boxSizing: 'border-box' }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#D97706', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
                     Sprint Item 2.3 • In Progress
                   </div>
@@ -500,7 +511,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </p>
                 </div>
 
-                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706' }}>
+                <div style={{ background: '#FFFFFF', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', borderTop: '4px solid #D97706', boxSizing: 'border-box' }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#D97706', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
                     Sprint Item 2.4 • In Progress
                   </div>
@@ -518,19 +529,19 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           {/* TAB 3: WHATSAPP DISPATCH SIMULATOR */}
           {activeTab === 'simulator' && (
             <div role="tabpanel" id="panel-simulator" aria-labelledby="tab-simulator">
-              <div id="interactive-simulator" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+              <div id="interactive-simulator" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', alignItems: 'center' }}>
                 <div>
                   <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: '#DCFCE7', color: '#15803D', borderRadius: '6px', fontSize: '0.78rem', fontWeight: 800, marginBottom: '0.75rem' }}>
                     INTERACTIVE QUEUE SIMULATOR
                   </div>
-                  <h3 style={{ fontSize: '1.75rem', color: '#071A3A', fontWeight: 800, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 1.75rem)', color: '#071A3A', fontWeight: 800, marginBottom: '0.75rem' }}>
                     Test Bulk Ingestion & WhatsApp Rate-Limiting
                   </h3>
-                  <p style={{ color: '#475569', lineHeight: 1.65, fontSize: '0.94rem', marginBottom: '1.5rem' }}>
+                  <p style={{ color: '#475569', lineHeight: 1.65, fontSize: '0.9rem', marginBottom: '1.25rem' }}>
                     Meta enforces strict rate limits to prevent WhatsApp business number bans. Test our <strong>BullMQ Queue Dispatcher</strong> configured at a safe <strong>80 msgs/second</strong> with dynamic student parameter interpolation.
                   </p>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', background: '#F8FAFC', padding: 'clamp(1rem, 3vw, 1.5rem)', borderRadius: '14px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
                         <span>Student Lead Batch Size</span>
@@ -572,15 +583,16 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                       style={{
                         background: isSimulating ? '#94A3B8' : '#16A34A',
                         color: '#fff',
-                        padding: '0.85rem 1.5rem',
-                        fontSize: '0.95rem',
+                        padding: '0.85rem 1.25rem',
+                        fontSize: '0.92rem',
                         fontWeight: 700,
                         borderRadius: '8px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: '0.5rem',
-                        cursor: isSimulating ? 'not-allowed' : 'pointer'
+                        cursor: isSimulating ? 'not-allowed' : 'pointer',
+                        width: '100%'
                       }}
                     >
                       <Send size={16} /> {isSimulating ? `Broadcasting (${simProgress}%)...` : `Simulate ${simLeadCount.toLocaleString()} WhatsApp Dispatch`}
@@ -589,8 +601,8 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                 </div>
 
                 {/* Simulation Terminal Output */}
-                <div style={{ background: '#0F172A', borderRadius: '18px', padding: '1.75rem', border: '1px solid #1E293B', color: '#F8FAFC', boxShadow: '0 15px 35px rgba(0,0,0,0.18)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
+                <div style={{ background: '#0F172A', borderRadius: '18px', padding: 'clamp(1rem, 3vw, 1.75rem)', border: '1px solid #1E293B', color: '#F8FAFC', boxShadow: '0 15px 35px rgba(0,0,0,0.18)', width: '100%', boxSizing: 'border-box' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.4rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                       <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: isSimulating ? '#FBBF24' : '#22C55E' }} />
                       <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#38BDF8' }}>BullMQ Dispatcher HUD</span>
@@ -610,17 +622,17 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </div>
 
                   {/* WhatsApp Message Preview Card */}
-                  <div style={{ background: '#075E54', padding: '1rem', borderRadius: '10px', marginBottom: '1.25rem', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div style={{ background: '#075E54', padding: '0.85rem', borderRadius: '10px', marginBottom: '1rem', border: '1px solid rgba(255,255,255,0.12)', wordBreak: 'break-word' }}>
                     <div style={{ fontSize: '0.72rem', color: '#25D366', fontWeight: 800, marginBottom: '0.35rem' }}>
                       OUTGOING TEMPLATE PREVIEW:
                     </div>
-                    <div style={{ fontSize: '0.82rem', color: '#FFFFFF', lineHeight: 1.5 }}>
-                      "Hello <strong>Aryan Sharma</strong>, admissions are now officially open for <strong>{simTargetCourse}</strong>. Review your scholarship eligibility and apply directly: <span style={{ textDecoration: 'underline', color: '#38BDF8' }}>portal.admissioncrm.com/apply</span>"
+                    <div style={{ fontSize: '0.8rem', color: '#FFFFFF', lineHeight: 1.5 }}>
+                      "Hello <strong>Aryan Sharma</strong>, admissions are now officially open for <strong>{simTargetCourse}</strong>. Review your scholarship eligibility and apply directly: <span style={{ textDecoration: 'underline', color: '#38BDF8', wordBreak: 'break-all' }}>portal.admissioncrm.com/apply</span>"
                     </div>
                   </div>
 
                   {/* Terminal Log Output */}
-                  <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '8px', padding: '0.85rem', maxHeight: '140px', overflowY: 'auto', fontFamily: 'monospace', fontSize: '0.72rem', color: '#A5B4FC', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                  <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '8px', padding: '0.75rem', maxHeight: '140px', overflowY: 'auto', overflowX: 'hidden', fontFamily: 'monospace', fontSize: '0.72rem', color: '#A5B4FC', display: 'flex', flexDirection: 'column', gap: '0.35rem', wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                     {simLogs.length === 0 ? (
                       <div style={{ color: '#64748B' }}>// Click "Simulate WhatsApp Dispatch" to test queue execution...</div>
                     ) : (
@@ -637,20 +649,20 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           {/* TAB 4: IDOR SHIELD & SECURITY */}
           {activeTab === 'security' && (
             <div role="tabpanel" id="panel-security" aria-labelledby="tab-security">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', alignItems: 'center' }}>
                 <div>
                   <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: '#FEE2E2', color: '#991B1B', borderRadius: '6px', fontSize: '0.78rem', fontWeight: 800, marginBottom: '0.75rem' }}>
                     BACKEND ENFORCED PRIVACY
                   </div>
-                  <h3 style={{ fontSize: '1.75rem', color: '#071A3A', fontWeight: 800, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 1.75rem)', color: '#071A3A', fontWeight: 800, marginBottom: '0.75rem' }}>
                     Insecure Direct Object Reference (IDOR) Shield
                   </h3>
-                  <p style={{ color: '#475569', lineHeight: 1.65, fontSize: '0.94rem', marginBottom: '1.25rem' }}>
+                  <p style={{ color: '#475569', lineHeight: 1.65, fontSize: '0.9rem', marginBottom: '1.25rem' }}>
                     In typical admission portals, a counselor could manipulate lead IDs in the URL or payload to spy on high-value student leads assigned to other team members. AdmissionZen solves this at the database query level:
                   </p>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '1.5rem' }}>
-                    <div style={{ padding: '0.85rem 1rem', background: '#F8FAFC', borderRadius: '10px', borderLeft: '4px solid #16A34A' }}>
+                    <div style={{ padding: '0.85rem 1rem', background: '#F8FAFC', borderRadius: '10px', borderLeft: '4px solid #16A34A', boxSizing: 'border-box' }}>
                       <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '0.9rem' }}>
                         Automatic Scoped Filters
                       </div>
@@ -659,7 +671,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                       </div>
                     </div>
 
-                    <div style={{ padding: '0.85rem 1rem', background: '#F8FAFC', borderRadius: '10px', borderLeft: '4px solid #2563EB' }}>
+                    <div style={{ padding: '0.85rem 1rem', background: '#F8FAFC', borderRadius: '10px', borderLeft: '4px solid #2563EB', boxSizing: 'border-box' }}>
                       <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '0.9rem' }}>
                         Super Admin Reassignment Control
                       </div>
@@ -670,11 +682,11 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </div>
                 </div>
 
-                <div style={{ background: '#0F172A', borderRadius: '16px', padding: '1.75rem', border: '1px solid #1E293B', color: '#F8FAFC' }}>
+                <div style={{ background: '#0F172A', borderRadius: '16px', padding: 'clamp(1rem, 3vw, 1.75rem)', border: '1px solid #1E293B', color: '#F8FAFC', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
                   <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#38BDF8', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.75rem', marginBottom: '1rem' }}>
                     AUTOMATED ISOLATION TEST SUITE OUTPUT
                   </div>
-                  <pre style={{ fontSize: '0.75rem', color: '#4ADE80', fontFamily: 'monospace', lineHeight: 1.5, overflowX: 'auto', margin: 0 }}>
+                  <pre style={{ fontSize: '0.73rem', color: '#4ADE80', fontFamily: 'monospace', lineHeight: 1.5, overflowX: 'auto', margin: 0, maxWidth: '100%', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
 {`$ npm run test:isolation
 
 > admission-crm@1.0.0 test:isolation
@@ -698,8 +710,8 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           {/* TAB 5: TECHNICAL ARCHITECTURE */}
           {activeTab === 'architecture' && (
             <div role="tabpanel" id="panel-architecture" aria-labelledby="tab-architecture">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.25rem' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <h4 style={{ fontSize: '1.1rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     Frontend Architecture
                   </h4>
@@ -712,7 +724,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </ul>
                 </div>
 
-                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <h4 style={{ fontSize: '1.1rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     Backend Microservices
                   </h4>
@@ -725,7 +737,7 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
                   </ul>
                 </div>
 
-                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0' }}>
+                <div style={{ background: '#F8FAFC', padding: '1.5rem', borderRadius: '14px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
                   <h4 style={{ fontSize: '1.1rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                     Database & Data Integrity
                   </h4>
@@ -810,6 +822,13 @@ export const AdmissionZenPage: React.FC<AdmissionZenPageProps> = ({ onBackToHome
           </div>
         </div>
       </footer>
+
+      {/* Responsive Style Helpers */}
+      <style>{`
+        @media (max-width: 640px) {
+          .az-hide-mobile { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 };

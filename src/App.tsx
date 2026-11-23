@@ -137,6 +137,7 @@ export function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [formIsSubmitting, setFormIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -216,9 +217,54 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setFormIsSubmitting(true);
+
+    const whatsappMessage = encodeURIComponent(
+      `*New Project Inquiry from Nexcoregen Website* 🚀\n\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `🏢 *Company:* ${formData.company || 'N/A'}\n` +
+      `📱 *Phone:* ${formData.phone}\n` +
+      `✉️ *Email:* ${formData.email}\n` +
+      `🛠️ *Service:* ${formData.service}\n` +
+      `💰 *Budget:* ${formData.budget}\n` +
+      `📝 *Details:* ${formData.details}\n`
+    );
+    const waUrl = `https://wa.me/919209282289?text=${whatsappMessage}`;
+
+    try {
+      await fetch('https://formsubmit.co/ajax/Ankitmpatil1999@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `🚀 New Project Lead: ${formData.name} (${formData.service})`,
+          _cc: 'nexcoregen@ankitpatil1999.online',
+          _template: 'table',
+          Name: formData.name,
+          Company: formData.company || 'N/A',
+          Phone: formData.phone,
+          Email: formData.email,
+          Service: formData.service,
+          Budget: formData.budget,
+          ProjectDetails: formData.details,
+          SubmissionTime: new Date().toLocaleString()
+        })
+      });
+    } catch (err) {
+      console.warn('FormSubmit notification error:', err);
+    } finally {
+      setFormIsSubmitting(false);
+      setFormSubmitted(true);
+      try {
+        window.open(waUrl, '_blank');
+      } catch (err) {
+        // popup fallback
+      }
+    }
   };
 
   if (currentPage === 'privacy') {
@@ -2117,24 +2163,51 @@ export function App() {
                   {formSubmitted ? (
                     <div style={{ textAlign: 'center', padding: '1.5rem 0.5rem' }}>
                       <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>✅</div>
-                      <div style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>Thank You!</div>
+                      <div style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>Thank You {formData.name}!</div>
                       <p style={{ color: '#CBD5E1', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                        Your project inquiry has been received. Our team will contact you within 24 hours.
+                        Your project inquiry has been received and emailed to our engineering team. For fastest response, connect directly on WhatsApp:
                       </p>
-                      <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '380px', margin: '0 auto 1.25rem auto' }}>
                         <a
-                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=nexcoregen@ankitpatil1999.online&su=${encodeURIComponent(`Project Enquiry from ${formData.name || 'Client'}`)}&body=${encodeURIComponent(`Hi Nexcoregen Team,\n\nName: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService: ${formData.service}\nBudget: ${formData.budget}\n\nProject Details:\n${formData.details}\n`)}`}
+                          href={`https://wa.me/919209282289?text=${encodeURIComponent(
+                            `*Project Inquiry from Website*\n👤 Name: ${formData.name}\n📱 Phone: ${formData.phone}\n✉️ Email: ${formData.email}\n🛠️ Service: ${formData.service}\n💰 Budget: ${formData.budget}\n📝 Details: ${formData.details}`
+                          )}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="btn btn-primary"
-                          style={{ fontSize: '0.85rem', padding: '0.6rem 1.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                          className="btn"
+                          style={{
+                            background: '#25D366',
+                            color: '#FFFFFF',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '0.5rem',
+                            fontWeight: 700,
+                            padding: '0.8rem 1.2rem',
+                            borderRadius: '10px',
+                            fontSize: '0.92rem',
+                            textDecoration: 'none'
+                          }}
                         >
-                          <Mail size={15} /> Also Open in Gmail
+                          <MessageCircle size={18} /> Connect on WhatsApp (+91 9209282289)
                         </a>
+                      </div>
+                      <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <button
-                          onClick={() => setFormSubmitted(false)}
+                          onClick={() => {
+                            setFormSubmitted(false);
+                            setFormData({
+                              name: '',
+                              company: '',
+                              phone: '',
+                              email: '',
+                              service: 'Web Development',
+                              budget: '₹50,000 - ₹1,50,000',
+                              details: ''
+                            });
+                          }}
                           className="btn btn-white"
-                          style={{ padding: '0.6rem 1.2rem', fontSize: '0.85rem' }}
+                          style={{ padding: '0.55rem 1.2rem', fontSize: '0.85rem' }}
                         >
                           Submit Another Inquiry
                         </button>
@@ -2205,10 +2278,29 @@ export function App() {
 
                       <button
                         type="submit"
+                        disabled={formIsSubmitting}
                         className="btn"
-                        style={{ background: '#1769E0', color: '#fff', padding: '0.85rem', width: '100%', fontSize: '0.95rem' }}
+                        style={{
+                          background: '#1769E0',
+                          color: '#fff',
+                          padding: '0.85rem',
+                          width: '100%',
+                          fontSize: '0.95rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '0.5rem',
+                          cursor: formIsSubmitting ? 'not-allowed' : 'pointer',
+                          opacity: formIsSubmitting ? 0.8 : 1
+                        }}
                       >
-                        <Send size={16} /> Submit Project Enquiry
+                        {formIsSubmitting ? (
+                          <span>Sending Inquiry to Engineering Team...</span>
+                        ) : (
+                          <>
+                            <Send size={16} /> Submit Project Enquiry
+                          </>
+                        )}
                       </button>
                     </form>
                   )}

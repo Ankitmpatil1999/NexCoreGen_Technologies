@@ -14,7 +14,8 @@ import {
   Award,
   PhoneCall,
   School,
-  ChevronRight
+  ChevronRight,
+  MessageCircle
 } from 'lucide-react';
 import { Logo } from './Logo';
 
@@ -55,14 +56,59 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
     studentCount: '2500 - 5000'
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+
+    const whatsappMessage = encodeURIComponent(
+      `*New CampusOne Enterprise Demo Request* 🎓\n\n` +
+      `🏛️ *Institution:* ${institutionForm.instituteName}\n` +
+      `👤 *Contact Person:* ${institutionForm.pocName}\n` +
+      `📱 *Phone:* ${institutionForm.phone}\n` +
+      `✉️ *Email:* ${institutionForm.email}\n` +
+      `🏷️ *Category:* ${institutionForm.category}\n` +
+      `👥 *Student Count:* ${institutionForm.studentCount}\n\n` +
+      `Please schedule an executive presentation with our Dean / Principal office.`
+    );
+    const waUrl = `https://wa.me/919209282289?text=${whatsappMessage}`;
+
+    try {
+      await fetch('https://formsubmit.co/ajax/Ankitmpatil1999@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `🎓 New CampusOne Demo Request: ${institutionForm.instituteName}`,
+          _cc: 'nexcoregen@ankitpatil1999.online',
+          _template: 'table',
+          Institution: institutionForm.instituteName,
+          ContactPerson: institutionForm.pocName,
+          Phone: institutionForm.phone,
+          Email: institutionForm.email,
+          Category: institutionForm.category,
+          StudentCount: institutionForm.studentCount,
+          SubmissionTime: new Date().toLocaleString()
+        })
+      });
+    } catch (err) {
+      console.warn('FormSubmit notification error:', err);
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+      try {
+        window.open(waUrl, '_blank');
+      } catch (err) {
+        // popup fallback
+      }
+    }
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#F8FAFC', color: '#0F172A', fontFamily: 'inherit' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#F8FAFC', color: '#0F172A', fontFamily: 'inherit', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
       {/* 1. TOP STICKY ENTERPRISE HEADER */}
       <header
         style={{
@@ -72,82 +118,87 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           background: 'rgba(255, 255, 255, 0.97)',
           backdropFilter: 'blur(16px)',
           borderBottom: '1px solid #E2E8F0',
-          padding: '0.85rem 0'
+          padding: '0.65rem 0'
         }}
       >
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
             <button
               type="button"
               onClick={onBackToHome}
               className="btn btn-secondary"
               style={{
-                padding: '0.5rem 0.95rem',
-                fontSize: '0.84rem',
+                padding: '0.42rem 0.75rem',
+                fontSize: '0.82rem',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
-                borderRadius: '8px'
+                gap: '0.35rem',
+                borderRadius: '8px',
+                whiteSpace: 'nowrap'
               }}
             >
-              <ArrowLeft size={16} /> Back to NexCoreGen
+              <ArrowLeft size={15} /> <span>Back</span>
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <div
                 style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '8px',
                   background: 'linear-gradient(135deg, #1E40AF, #3B82F6)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF'
+                  color: '#FFFFFF',
+                  flexShrink: 0
                 }}
               >
-                <GraduationCap size={20} />
+                <GraduationCap size={18} />
               </div>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <span style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0F172A', letterSpacing: '-0.02em' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontWeight: 800, fontSize: '0.95rem', color: '#0F172A', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
                     CampusOne
                   </span>
                   <span
                     style={{
-                      fontSize: '0.65rem',
+                      fontSize: '0.62rem',
                       fontWeight: 800,
-                      padding: '0.15rem 0.45rem',
+                      padding: '0.12rem 0.45rem',
                       borderRadius: '6px',
                       background: '#DBEAFE',
                       color: '#1D4ED8',
-                      textTransform: 'uppercase'
+                      textTransform: 'uppercase',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     Enterprise OS
                   </span>
                 </div>
-                <div style={{ fontSize: '0.68rem', color: '#64748B', fontWeight: 600 }}>
+                <div className="co-hide-mobile" style={{ fontSize: '0.68rem', color: '#64748B', fontWeight: 600 }}>
                   By NexCoreGen Technology Pvt Ltd
                 </div>
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <a
               href="#demo-request"
               className="btn btn-primary"
               style={{
-                padding: '0.55rem 1.15rem',
-                fontSize: '0.85rem',
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.8rem',
                 borderRadius: '8px',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.4rem'
+                gap: '0.35rem',
+                fontWeight: 700,
+                whiteSpace: 'nowrap'
               }}
             >
-              Request Institutional Demo <ChevronRight size={15} />
+              <span>Book Demo</span> <ChevronRight size={14} />
             </a>
           </div>
         </div>
@@ -872,21 +923,63 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
             }}
           >
             {formSubmitted ? (
-              <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
+              <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
                 <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem auto' }}>
                   <CheckCircle2 size={32} />
                 </div>
-                <h3 style={{ fontSize: '1.6rem', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
+                <h3 style={{ fontSize: 'clamp(1.3rem, 3vw, 1.6rem)', color: '#071A3A', fontWeight: 800, marginBottom: '0.5rem' }}>
                   Institutional Demo Request Received!
                 </h3>
-                <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '520px', margin: '0 auto 1.5rem auto' }}>
-                  Thank you. Our engineering team at <strong>NexCoreGen Technology Pvt Ltd</strong> will contact your office within 24 hours to coordinate the technical presentation.
+                <p style={{ color: '#64748B', fontSize: '0.92rem', maxWidth: '520px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
+                  Thank you <strong>{institutionForm.pocName || 'Sir/Madam'}</strong>. Your consultation request for <strong>{institutionForm.instituteName}</strong> has been logged and dispatched to our engineering desk.
                 </p>
+
+                {/* Instant WhatsApp Priority Button */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '440px', margin: '0 auto 1.5rem auto' }}>
+                  <a
+                    href={`https://wa.me/919209282289?text=${encodeURIComponent(
+                      `*CampusOne Institutional Demo Confirmation*\n\n🏛️ Institute: ${institutionForm.instituteName}\n👤 Contact: ${institutionForm.pocName}\n📱 Phone: ${institutionForm.phone}\n✉️ Email: ${institutionForm.email}\n🏷️ Category: ${institutionForm.category}\n👥 Students: ${institutionForm.studentCount}\n\nPlease confirm our demo schedule.`
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn"
+                    style={{
+                      background: '#25D366',
+                      color: '#FFFFFF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem',
+                      fontWeight: 700,
+                      padding: '0.85rem 1.25rem',
+                      borderRadius: '10px',
+                      textDecoration: 'none',
+                      boxShadow: '0 4px 14px rgba(37, 211, 102, 0.35)',
+                      fontSize: '0.95rem'
+                    }}
+                  >
+                    <MessageCircle size={20} /> Connect with Ankit on WhatsApp (+91 9209282289)
+                  </a>
+                  <div style={{ fontSize: '0.76rem', color: '#64748B' }}>
+                    ⚡ Tap to send pre-filled details directly on WhatsApp for 1-hour priority confirmation.
+                  </div>
+                </div>
+
                 <button
                   type="button"
-                  onClick={() => setFormSubmitted(false)}
+                  onClick={() => {
+                    setFormSubmitted(false);
+                    setInstitutionForm({
+                      instituteName: '',
+                      pocName: '',
+                      email: '',
+                      phone: '',
+                      category: 'Autonomous Engineering College',
+                      studentCount: '2500 - 5000'
+                    });
+                  }}
                   className="btn btn-secondary"
-                  style={{ borderRadius: '8px' }}
+                  style={{ borderRadius: '8px', padding: '0.6rem 1.2rem', fontSize: '0.85rem' }}
                 >
                   Submit Another Inquiry
                 </button>
@@ -989,6 +1082,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="btn btn-primary"
                   style={{
                     padding: '0.95rem 1.5rem',
@@ -999,10 +1093,16 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '0.5rem'
+                    gap: '0.5rem',
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    opacity: isSubmitting ? 0.8 : 1
                   }}
                 >
-                  Confirm & Schedule Institutional Presentation <ArrowRight size={18} />
+                  {isSubmitting ? (
+                    <span>Submitting Request to Systems Architect...</span>
+                  ) : (
+                    <>Confirm & Schedule Institutional Presentation <ArrowRight size={18} /></>
+                  )}
                 </button>
               </form>
             )}
@@ -1035,6 +1135,13 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           </div>
         </div>
       </footer>
+
+      {/* Responsive helper for CampusOne */}
+      <style>{`
+        @media (max-width: 640px) {
+          .co-hide-mobile { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 };
