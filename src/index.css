@@ -434,7 +434,7 @@ input, select, textarea {
 }
 
 /* Responsive Hide/Show Helpers */
-@media (min-width: 900px) {
+@media (min-width: 980px) {
   .mobile-menu-trigger {
     display: none !important;
   }
@@ -443,7 +443,7 @@ input, select, textarea {
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 979px) {
   .mobile-menu-trigger {
     display: inline-flex !important;
   }

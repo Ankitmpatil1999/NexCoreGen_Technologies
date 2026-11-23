@@ -296,13 +296,15 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '1rem',
-              padding: '1.5rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+              gap: '0.85rem',
+              padding: 'clamp(0.85rem, 2.5vw, 1.5rem)',
               background: '#FFFFFF',
               borderRadius: '20px',
               border: '1px solid #E2E8F0',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.04)'
+              boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
+              width: '100%',
+              boxSizing: 'border-box'
             }}
           >
             <div style={{ textAlign: 'left', padding: '0.5rem 0.75rem' }}>
@@ -363,12 +365,16 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           <div
             style={{
               display: 'flex',
-              gap: '0.5rem',
+              gap: '0.4rem',
               overflowX: 'auto',
               paddingBottom: '0.5rem',
               borderBottom: '2px solid #E2E8F0',
-              marginBottom: '2.5rem',
-              scrollbarWidth: 'thin'
+              marginBottom: '2rem',
+              scrollbarWidth: 'thin',
+              WebkitOverflowScrolling: 'touch',
+              width: '100%',
+              maxWidth: '100%',
+              boxSizing: 'border-box'
             }}
             role="tablist"
             aria-label="CampusOne System Capabilities"
@@ -393,22 +399,23 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                   onClick={() => setActiveTab(tab.id as any)}
                   style={{
                     position: 'relative',
-                    padding: '0.8rem 1.4rem',
+                    padding: '0.65rem 1rem',
                     background: isSelected ? '#EFF6FF' : 'transparent',
                     border: 'none',
                     borderRadius: '8px 8px 0 0',
                     color: isSelected ? '#1D4ED8' : '#64748B',
                     fontWeight: isSelected ? 800 : 600,
-                    fontSize: '0.92rem',
+                    fontSize: '0.86rem',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    gap: '0.45rem',
                     whiteSpace: 'nowrap',
+                    flexShrink: 0,
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  <Icon size={17} color={isSelected ? '#1D4ED8' : '#94A3B8'} />
+                  <Icon size={16} color={isSelected ? '#1D4ED8' : '#94A3B8'} />
                   <span>{tab.label}</span>
                   {isSelected && (
                     <div
@@ -431,7 +438,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           {/* TAB PANEL 1: ARCHITECTURE & DUAL-DB */}
           {activeTab === 'architecture' && (
             <div role="tabpanel" id="panel-architecture" aria-labelledby="tab-architecture">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', alignItems: 'center' }}>
                 <div>
                   <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: '#DBEAFE', color: '#1E40AF', borderRadius: '6px', fontSize: '0.78rem', fontWeight: 800, marginBottom: '0.75rem' }}>
                     DATA SOVEREIGNTY & ISOLATION
@@ -527,7 +534,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                 </p>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.25rem' }}>
                 {[
                   {
                     title: 'Outcome-Based Education (OBE)',
@@ -647,7 +654,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           {/* TAB PANEL 3: ZERO-LEAKAGE FInANCIAL LEDGER SIMULATOR */}
           {activeTab === 'ledger' && (
             <div role="tabpanel" id="panel-ledger" aria-labelledby="tab-ledger">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem', alignItems: 'center' }}>
                 <div>
                   <div style={{ display: 'inline-block', padding: '0.25rem 0.75rem', background: '#DCFCE7', color: '#166534', borderRadius: '6px', fontSize: '0.78rem', fontWeight: 800, marginBottom: '0.75rem' }}>
                     FINANCIAL INTEGRITY & ZERO LEAKAGE
@@ -760,7 +767,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
           {/* TAB PANEL 4: STATUTORY COMPLIANCE & ACCREDITATIONS */}
           {activeTab === 'compliance' && (
             <div role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.25rem' }}>
                 <div style={{ background: '#F8FAFC', padding: '1.75rem', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
                   <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: '#DBEAFE', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', color: '#1E40AF' }}>
                     <Award size={22} />
@@ -851,7 +858,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                   </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
                   <div>
                     <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '0.92rem', marginBottom: '0.35rem' }}>
                       Dual-Database Multi-Tenant Model
@@ -880,14 +887,14 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', background: '#FFFFFF', padding: '1rem 1.25rem', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
+                <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', background: '#FFFFFF', padding: '1rem 1.25rem', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
                   <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#071A3A' }}>
                     Need the complete 1,750+ line technical SRS or College Presentation Deck?
                   </div>
                   <a
                     href="#demo-request"
                     className="btn btn-primary"
-                    style={{ padding: '0.45rem 1rem', fontSize: '0.82rem', borderRadius: '6px', marginLeft: 'auto' }}
+                    style={{ padding: '0.45rem 1rem', fontSize: '0.82rem', borderRadius: '6px' }}
                   >
                     Request SRS Copy
                   </a>
@@ -986,7 +993,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
               </div>
             ) : (
               <form onSubmit={handleDemoSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.84rem', fontWeight: 700, color: '#334155', marginBottom: '0.4rem' }}>
                       Institution / University Name *
@@ -1016,7 +1023,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.84rem', fontWeight: 700, color: '#334155', marginBottom: '0.4rem' }}>
                       Official Email Address *
@@ -1046,7 +1053,7 @@ export const CampusOnePage: React.FC<CampusOnePageProps> = ({ onBackToHome }) =>
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.84rem', fontWeight: 700, color: '#334155', marginBottom: '0.4rem' }}>
                       Institution Type

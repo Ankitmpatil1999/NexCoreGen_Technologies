@@ -123,7 +123,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#FFFFFF', color: '#0F172A', fontFamily: 'inherit' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#FFFFFF', color: '#0F172A', fontFamily: 'inherit', width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>
       {/* 1. TOP STICKY NAVBAR */}
       <header
         style={{
@@ -133,28 +133,29 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
           background: 'rgba(255, 255, 255, 0.96)',
           backdropFilter: 'blur(12px)',
           borderBottom: '1px solid #E2E8F0',
-          padding: '0.85rem 0'
+          padding: '0.65rem 0'
         }}
       >
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
           {/* Brand and Back Button */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
             <button
               onClick={onBackToHome}
               className="btn btn-secondary"
               style={{
-                padding: '0.5rem 1rem',
-                fontSize: '0.85rem',
+                padding: '0.42rem 0.75rem',
+                fontSize: '0.82rem',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
-                borderRadius: '8px'
+                gap: '0.35rem',
+                borderRadius: '8px',
+                whiteSpace: 'nowrap'
               }}
             >
-              <ArrowLeft size={16} /> Back to NexCoreGen
+              <ArrowLeft size={15} /> <span>Back</span>
             </button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
               <div
                 onClick={onBackToHome}
                 style={{
@@ -331,9 +332,9 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-              gap: '1.25rem',
-              padding: '1.25rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+              gap: '1rem',
+              padding: 'clamp(0.85rem, 2.5vw, 1.25rem)',
               background: '#FFFFFF',
               borderRadius: '16px',
               border: '1px solid #E2E8F0',
@@ -465,7 +466,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
               </div>
 
               {/* Dashboard Layout */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem' }}>
                 {/* Metric 1: Live Members */}
                 <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '14px', padding: '1.25rem', border: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ fontSize: '0.75rem', color: '#94A3B8', textTransform: 'uppercase', fontWeight: 700 }}>Total Registered Members</div>
@@ -497,7 +498,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
               </div>
 
               {/* Lower Section: Member Live Feed & WhatsApp Queue */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem', marginTop: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.25rem', marginTop: '1.25rem' }}>
                 {/* Real-Time Gate Logs */}
                 <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '14px', padding: '1.25rem', border: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#fff', marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
@@ -549,20 +550,21 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '2.5rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+                gap: '2rem',
                 alignItems: 'center',
                 background: '#F8FAFC',
                 borderRadius: '24px',
-                padding: '2.5rem',
+                padding: 'clamp(1.25rem, 3.5vw, 2.5rem)',
                 border: '1px solid #E2E8F0'
               }}
             >
               {/* Left Column: Mobile App Mockup */}
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                 <div
                   style={{
-                    width: '320px',
+                    width: '100%',
+                    maxWidth: '320px',
                     borderRadius: '40px',
                     background: '#0B132B',
                     padding: '12px',
@@ -793,7 +795,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.5rem' }}>
             {/* Advantage 1 */}
             <div className="saas-card" style={{ borderTop: '4px solid #EF4444' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem', fontSize: '1.5rem' }}>
@@ -971,7 +973,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
             </div>
 
             {/* Results Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: '1rem', marginBottom: '2rem' }}>
               <div style={{ background: '#F0FDF4', padding: '1.5rem', borderRadius: '16px', border: '1px solid #BBF7D0', textAlign: 'center' }}>
                 <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#15803D', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   Monthly Fees Recovered
@@ -1037,7 +1039,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'stretch' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', alignItems: 'stretch' }}>
             {/* Tier 1: Starter */}
             <div className="saas-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
@@ -1223,7 +1225,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
               </div>
             ) : (
               <form onSubmit={handleDemoSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))', gap: '1.25rem' }}>
                   <div>
                     <label style={formLabel}>GYM / FITNESS CLUB NAME *</label>
                     <input
@@ -1248,7 +1250,7 @@ export const FitCorePage: React.FC<FitCorePageProps> = ({ onBackToHome, onNaviga
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))', gap: '1.25rem' }}>
                   <div>
                     <label style={formLabel}>PHONE / WHATSAPP NUMBER *</label>
                     <input

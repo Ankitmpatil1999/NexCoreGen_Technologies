@@ -1286,7 +1286,7 @@ export function App() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.25rem' }}>
               <div style={{ background: 'rgba(255,255,255,0.04)', padding: '1.25rem', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#93C5FD', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                   <Shield size={16} /> Dual-DB Physical Tenant Isolation
@@ -1596,8 +1596,8 @@ export function App() {
               border: '2px solid #FDE68A',
               boxShadow: '0 15px 40px rgba(217, 119, 6, 0.08)',
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '2.5rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+              gap: 'clamp(1.5rem, 3.5vw, 2.5rem)',
               alignItems: 'center'
             }}
           >
@@ -1628,7 +1628,7 @@ export function App() {
                 Commissioned by an educational client. Built to ingest <strong>5,000+ student records in under 3 seconds</strong>, broadcast personalized WhatsApp templates at <strong>80 messages/second with BullMQ</strong>, and protect counselor privacy with an architectural <strong>IDOR Shield</strong>.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.85rem', marginBottom: '2rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: '0.85rem', marginBottom: '2rem' }}>
                 <div style={{ padding: '0.75rem', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
                   <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#16A34A' }}>⚡ 5,000+ Ingest / 3s</div>
                   <div style={{ fontSize: '0.75rem', color: '#64748B' }}>Streaming Excel/CSV parser</div>
@@ -1742,7 +1742,7 @@ export function App() {
           </div>
 
           {/* 4 Rich Project Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.75rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
             {portfolioData.map((proj) => (
               <div
                 key={proj.id}
@@ -1858,9 +1858,9 @@ export function App() {
       </section>
 
       {/* 8. WHY NEXCOREGEN SECTION (2-COLUMN LAYOUT MATCHING IMAGE 4) */}
-      <section id="why-us" style={{ padding: '6rem 0' }}>
+      <section id="why-us" style={{ padding: 'clamp(3.5rem, 6vw, 6rem) 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(2rem, 4vw, 3.5rem)', alignItems: 'center' }}>
             {/* Left side: Heading & CTA */}
             <div>
               <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
@@ -1878,7 +1878,7 @@ export function App() {
             </div>
 
             {/* Right side: 2x2 Grid of 4 Cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem' }}>
               <div className="saas-card" style={{ padding: '1.75rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', fontSize: '1.3rem' }}>
                   ⚡
@@ -1954,7 +1954,7 @@ export function App() {
               }}
             />
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '1.5rem', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: '1.25rem', textAlign: 'center', position: 'relative', zIndex: 1 }}>
               <div style={{ padding: '0.5rem 0.5rem' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--color-primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, margin: '0 auto 1rem auto', fontSize: '1.1rem', boxShadow: '0 4px 12px rgba(23, 105, 224, 0.4)' }}>
                   1
